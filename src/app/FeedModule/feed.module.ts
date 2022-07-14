@@ -12,8 +12,11 @@ import { SharedModule } from '../SharedModule/shared.module';
   imports: [
     CommonModule,
     SharedModule,
-    FeedComponent
+    
   ],
+  exports: [
+    FeedComponent
+  ]
 
 })
 export class FeedModule { }

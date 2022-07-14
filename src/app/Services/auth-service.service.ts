@@ -4,11 +4,11 @@ import { Injectable } from '@angular/core';
   providedIn: 'root',
 })
 export class AuthServices {
-  public AllUsers: UserModel[] = [
-    { UserId: 1, UserName: 'Hassan' },
-    { UserId: 2, UserName: 'Hanan' },
-    { UserId: 3, UserName: 'Kareem' },
-  ];
+  // // public AllUsers: UserModel[] = [
+  // //   { UserId: 1, UserName: 'Hassan' },
+  // //   { UserId: 2, UserName: 'Hanan' },
+  // //   { UserId: 3, UserName: 'Kareem' },
+  // ];
 
   public isLoggedin: boolean = false;
   constructor() {}
@@ -35,5 +35,8 @@ export class AuthServices {
   //     if (element.UserId == id) {
   //     }
   //   });
+
+
+  
   // }
 }

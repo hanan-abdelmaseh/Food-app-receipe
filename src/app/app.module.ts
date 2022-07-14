@@ -10,14 +10,6 @@ import { SharedModule } from './SharedModule/shared.module';
 
 /* import auth*/
 
-import {
-  SocialLoginModule,
-  SocialAuthServiceConfig,
-} from '@abacritt/angularx-social-login';
-import {
-  GoogleLoginProvider,
-  FacebookLoginProvider,
-} from '@abacritt/angularx-social-login';
 
 import { MainLayoutComponent } from './Components/main-layout/main-layout.component';
 import { FeedModule } from './FeedModule/feed.module';
@@ -43,31 +35,13 @@ import { FeedModule } from './FeedModule/feed.module';
 
     /* shared*/
     SharedModule,
-    FeedModule,
+   FeedModule,
  
-    SocialLoginModule,
+   
    
   ],
   providers: [
-    {
-      provide: 'SocialAuthServiceConfig',
-      useValue: {
-        autoLogin: false,
-        providers: [
-          {
-            id: GoogleLoginProvider.PROVIDER_ID,
-            provider: new GoogleLoginProvider('clientId'),
-          },
-          {
-            id: FacebookLoginProvider.PROVIDER_ID,
-            provider: new FacebookLoginProvider('clientId'),
-          },
-        ],
-        onError: (err) => {
-          console.error(err);
-        },
-      } as SocialAuthServiceConfig,
-    },
+   
   ],
   bootstrap: [AppComponent],
 })
