@@ -1,0 +1,110 @@
+/*main navigation*/
+.main-navigation{
+position: relative;
+width: 225px;
+height: 100vh;
+overflow: hidden;
+display: flex;
+padding: 0;
+flex-shrink: 0;
+flex-direction: column;
+box-sizing: border-box;
+z-index: 5005;
+transition: all 600ms ease;
+}
+.nav-section{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 2.5em 0 0;
+}
+.logo{
+    margin-top: 40px;
+}
+.separator{
+    width: 1.5em;
+    border-bottom: 3px solid #e3e3e3;
+    margin: 1em 0;
+}
+/*nav scroll*/
+.nav-scroll{
+    overflow-y: auto;
+    overflow-x: hidden;
+    padding-top: 10px;
+    flex: 1;
+}
+.profile,
+.learnMore{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+.profile-main{
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.profile-main img{
+    border-radius: 50%;
+    width: 56px;
+    height: 56px;
+}
+
+.nav-features{
+    margin: 2.5em 0 0 ;
+}
+.link-item{
+    text-decoration: none;
+    cursor: pointer;
+    display: block;
+    position: relative;
+    line-height: 2;
+    padding: 0 0 0 32px;
+}
+/*footer*/
+.nav-footer{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 130px;
+    vertical-align: top;
+    box-shadow: 0 -1em 3em #fff;
+}
+
+.additional-Links{
+    box-sizing: border-box;
+    width: 56px;
+    height: 56px;
+    padding: 0;
+    font-size: 1em;
+}
+.dots{
+    color: var(--main-color);
+    display: inline-block;
+    text-align: center;
+    line-height: 1.25;
+    transform: scale(2);
+    transform-origin: bottom center;
+}
+.btn-title{
+    color:var( --bg-initial);
+    text-align: center;
+    margin-bottom: 10px;
+    font-size: 15px;
+    line-height: 1;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+.links{
+    text-align: center;
+    padding-bottom: 5px;
+}
+.links-item{
+    position: relative;
+    text-decoration: none;
+    left: -4px;
+    font-size: 12px;
+    padding: 4px 0 4px 8px;
+    box-sizing: border-box;
+}

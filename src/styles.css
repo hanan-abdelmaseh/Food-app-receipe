@@ -1,0 +1,65 @@
+/* You can add global styles to this file, and also import other style files */
+@import url('https://fonts.googleapis.com/css2?family=Mulish:wght@200;300;400;700&display=swap');
+@import "~bootstrap/dist/css/bootstrap.css";
+
+*{    
+    padding: 0;
+    margin: 0;
+    font-family: 'Mulish' , sans-serif !important;
+    text-decoration: none;
+    box-sizing: border-box;
+    outline: none;
+    transition: all 0.3s;
+}
+/*Colors*/
+:root {
+    --main-color: #519259;
+    --secondary-color:#FEBD2E ;
+    --bg-white: #FFFFFF;
+    --bg-black: #232323;
+    --bg-gray: #bababa ;
+    --bg-initial:#4a4a4a ;
+    --bg-link:#707070;
+}
+
+
+
+html
+{
+    font-size: 62.5%;
+    scroll-behavior: smooth;
+    overflow-x: hidden;
+    scroll-padding-top: 7rem;
+}
+
+
+
+/*fonts*/
+h2{font-size : 40px}
+h4{font-size: 24px !important;}
+h5{font-size: 18px !important;}
+p{font-size : 14px !important;
+   color: var(--bg-link);} 
+h4{
+    font-weight: 700 !important;
+    color: var(--bg-black);
+}
+
+a{
+    font-size: 15px;
+    line-height: 1;
+    color:var(--bg-link)
+}
+/*button*/
+.Learn-btn{
+    color:var(--bg-white);
+    background-color: var(--main-color);
+    padding:4px 24px;
+    font-size: 16px;
+    border-radius: 3rem;
+    }
+.btn:hover{
+   color: var(--main-color);
+   background-color: var(--bg-white);
+   border: 1px solid var(--main-color);
+}    
