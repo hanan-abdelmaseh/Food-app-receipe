@@ -28,12 +28,21 @@ import {
 import { FormsModule } from '@angular/forms';
 
 @NgModule({
-  declarations: [AppComponent, MainLayoutComponent, HeroComponent],
+
+  declarations: [
+    AppComponent,
+    MainLayoutComponent,
+    HeroComponent,
+ 
+   
+  ],
+
 
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
+    /* shared*/
     AuthModule,
     SocialLoginModule,
     UserModule,
@@ -41,7 +50,6 @@ import { FormsModule } from '@angular/forms';
     FormsModule,
     SharedModule,
   ],
-
   providers: [
     {
       provide: 'SocialAuthServiceConfig',
