@@ -13,6 +13,7 @@ import { SharedModule } from './SharedModule/shared.module';
 
 import { MainLayoutComponent } from './Components/main-layout/main-layout.component';
 import { FeedModule } from './FeedModule/feed.module';
+import { HeroComponent } from './Components/hero/hero.component';
 
 
 
@@ -23,6 +24,7 @@ import { FeedModule } from './FeedModule/feed.module';
   declarations: [
     AppComponent,
     MainLayoutComponent,
+    HeroComponent,
  
    
   ],
@@ -31,6 +33,7 @@ import { FeedModule } from './FeedModule/feed.module';
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
+  
 
 
     /* shared*/
