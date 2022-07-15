@@ -31,10 +31,6 @@
     opacity: .8;
 }
 
-.pointer-onhover:hover {
-    cursor: pointer;
-}
-
 .header-content {
     width: 100%;
     height: 100%;
@@ -45,12 +41,11 @@
 
 .delete-collection {
     height: 20px;
-    color: white;
     bottom: 0px;
     right: 0px;
     margin: 0px 20px 20px 0px;
     position: absolute;
-    z-index: 2;
+    z-index: 3;
 }
 
 .icon-container {
@@ -64,7 +59,7 @@
 
 .search-icon:hover {
     cursor: pointer;
-    filter: invert(47%) sepia(84%) saturate(2672%) hue-rotate(175deg) brightness(103%) contrast(116%);
+    filter: invert(49%) sepia(30%) saturate(568%) hue-rotate(76deg) brightness(96%) contrast(97%);
 }
 
 .recipes-section {
