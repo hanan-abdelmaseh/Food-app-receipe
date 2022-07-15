@@ -1,0 +1,107 @@
+.icon {
+    width: 40%;
+    overflow: hidden;
+}
+
+.preferences {
+    transform-origin: top center;
+    width: 100%;
+    margin: 10px auto;
+    background-image: url("data:image/svg+xml,%3csvg width='100%25' height='100%25' xmlns='http://www.w3.org/2000/svg'%3e%3crect width='100%25' height='100%25' fill='none' rx='24' ry='24' stroke='%23BABABAFF' stroke-width='4' stroke-dasharray='15' stroke-dashoffset='10' stroke-linecap='square'/%3e%3c/svg%3e");
+    fill-opacity: .6;
+    padding: 10px;
+    -ms-overflow-style: none;
+    /* for Internet Explorer, Edge */
+    scrollbar-width: none;
+    /* for Firefox */
+    overflow-y: scroll;
+}
+
+.add-pref-outerbg:hover,
+.pref-outerbg:hover {
+    background-color: #3a9691;
+}
+
+.preferences::-webkit-scrollbar {
+    display: none;
+    /* for Chrome, Safari, and Opera */
+}
+
+.close {
+    width: 20px;
+    height: 20px;
+}
+
+@media screen and (min-width: 992px) {
+    .pref-outerbg,
+    .add-pref-outerbg {
+        width: 9em;
+        height: 9em;
+        background-color: lightgray;
+        fill-opacity: .5;
+        border-radius: 50%;
+    }
+    .pref-content,
+    .add-pref-content {
+        width: 8.5em;
+        height: 8.5em;
+        background-color: white;
+        border-radius: 50%;
+    }
+    .pref-outerbg {
+        width: 7.5em;
+        height: 7.5em;
+    }
+    .pref-content {
+        width: 7em;
+        height: 7em;
+    }
+    .cat-name {
+        width: 80%;
+        text-align: center;
+        font-size: .7em;
+        text-overflow: ellipsis;
+    }
+    .pref-item {
+        width: 60%
+    }
+}
+
+@media screen and (max-width: 992px) {
+    .pref-outerbg,
+    .add-pref-outerbg {
+        width: 6em;
+        height: 6em;
+        background-color: lightgray;
+        fill-opacity: .5;
+        border-radius: 50%;
+    }
+    .pref-content,
+    .add-pref-content {
+        width: 5.5em;
+        height: 5.5em;
+        background-color: white;
+        border-radius: 50%;
+    }
+    .pref-outerbg {
+        width: 6em;
+        height: 6em;
+    }
+    .pref-content {
+        width: 5.5em;
+        height: 5.5em;
+    }
+    .cat-name {
+        width: 80%;
+        text-align: center;
+        font-size: .5em;
+        text-overflow: ellipsis;
+    }
+    .text-add {
+        text-align: center;
+        font-size: .8em;
+    }
+    .pref-item {
+        width: 90%
+    }
+}

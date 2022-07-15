@@ -1,0 +1,24 @@
+<h3 class="text-center m-auto my-4">Collections</h3>
+<hr class="w-75 mb-5 mx-auto" />
+<!-- <section class="d-flex flex-wrap w-100 mx-3 justify-content-center"> -->
+<section class="d-flex m-auto mx-lg-5 flex-wrap justify-content-around">
+    <div class="add-collection-card collection d-flex flex-column align-items-center justify-content-center m-3">
+        <i class="plus-icon">
+      <img class="w-100" src="../../../assets/images/icon-plus.png" alt="" />
+    </i>
+        <h5 class="add-collection-text">Add Collection</h5>
+    </div>
+    <ng-container *ngFor="let collection of collectionsList">
+        <section class="collection d-flex flex-column justify-content-between m-3" (click)="openColletionDetails(collection.collectionName)">
+            <figure>
+                <img class="w-100 collection-img" src="{{ collection.collectionImg }}" alt="" srcset="" />
+            </figure>
+            <div class="d-flex justify-content-between w-100" style="color: var(--bg-initial)">
+                <div class="collection-name">
+                    {{ collection.collectionName }}
+                </div>
+                <div>{{ collection.noOfRecipes }} Recipes</div>
+            </div>
+        </section>
+    </ng-container>
+</section>
