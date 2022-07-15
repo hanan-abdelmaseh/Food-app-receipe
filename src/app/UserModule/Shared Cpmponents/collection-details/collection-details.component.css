@@ -1,0 +1,72 @@
+.collection-header {
+    width: 100%;
+    height: 250px;
+    text-align: center;
+    overflow: hidden;
+    position: relative;
+}
+
+.collection-img-container {
+    margin: auto;
+    overflow: hidden;
+    height: 100%;
+    width: 100%;
+    object-fit: contain;
+}
+
+.collection-img {
+    max-width: 100%;
+    transform: scale(2);
+    width: 100%;
+    z-index: -1;
+}
+
+.blur {
+    width: 100%;
+    height: 100%;
+    top: 0px;
+    position: absolute;
+    background-color: black;
+    z-index: 1;
+    opacity: .8;
+}
+
+.pointer-onhover:hover {
+    cursor: pointer;
+}
+
+.header-content {
+    width: 100%;
+    height: 100%;
+    top: 0px;
+    position: absolute;
+    z-index: 2;
+}
+
+.delete-collection {
+    height: 20px;
+    color: white;
+    bottom: 0px;
+    right: 0px;
+    margin: 0px 20px 20px 0px;
+    position: absolute;
+    z-index: 2;
+}
+
+.icon-container {
+    width: 150px;
+    height: 150px;
+}
+
+.search-icon {
+    max-width: 100%;
+}
+
+.search-icon:hover {
+    cursor: pointer;
+    filter: invert(47%) sepia(84%) saturate(2672%) hue-rotate(175deg) brightness(103%) contrast(116%);
+}
+
+.recipes-section {
+    margin-top: 100px;
+}

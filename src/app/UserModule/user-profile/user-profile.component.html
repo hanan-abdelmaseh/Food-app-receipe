@@ -1,0 +1,80 @@
+<!-- <div class="container-fluid d-flex flex-column my-4">
+    <div class="user-avatar text-light">
+        <img class="w-100" src="../../../assets/images/user-avatar.jpg" alt="" />
+    </div>
+    <section class="user-info">
+        <div class="bio" (click)="editName()" (mouseover)="showNamePencile()" (mouseout)="showNamePencile()" [hidden]="!nameIsShown">
+            <span *ngIf="user.bio != null">{{ user.userName }}</span>
+            <span *ngIf="user.bio == null">Empty</span>
+            <img src="../../../assets/images/pen.png" alt="" srcset="" class="mx-1 bio-edit" [hidden]="!namePencileIsShown" />
+        </div>
+        <div [hidden]="nameIsShown">
+            <input class="form-control bio-input" type="text" [(ngModel)]="user.userName" />
+            <button [disabled]="user.userName == null" (click)="saveName()">
+        save
+      </button>
+        </div>
+
+        <div class="bio" (click)="editBio()" (mouseover)="showPencile()" (mouseout)="showPencile()" [hidden]="!bioIsShown">
+            <span *ngIf="user.bio != null">{{ user.bio }}</span>
+            <span *ngIf="user.bio == null">Tell us about yourself</span>
+            <img src="../../../assets/images/pen.png" alt="" srcset="" class="mx-1 bio-edit" [hidden]="!bioPencileIsShown" />
+        </div>
+        <div [hidden]="bioIsShown">
+            <input class="form-control bio-input" type="text" [(ngModel)]="user.bio" />
+            <button (click)="saveBio()">save</button>
+        </div>
+    </section>
+</div> -->
+<main class="d-flex flex-column justify-content-center">
+    <section class="d-flex flex-lg-row flex-column align-items-center justify-content-center w-100 mt-5 main-page">
+        <div class="user-avatar text-light">
+            <img class="w-100" src="../../../assets/images/user-avatar.jpg" alt="" />
+        </div>
+        <section class="user-info d-flex flex-column align-items-center align-items-lg-start">
+            <div class="user-name m-1">
+                <div>{{ user.userName }}</div>
+                <img src="../../../assets/images/pen.png" hidden alt="" srcset="" class="mx-1 bio-edit" [hidden]="!namePencileIsShown" />
+            </div>
+
+            <div class="bio">
+                <span *ngIf="user.bio != null">{{ user.bio }}</span>
+                <span *ngIf="user.bio == null">Tell us about yourself</span>
+                <img src="../../../assets/images/pen.png" alt="" hidden srcset="" class="mx-1 bio-edit" [hidden]="!bioPencileIsShown" />
+            </div>
+            <div class="d-flex flex-column flex-lg-row align-items-center mt-2">
+                <div class="user-social d-flex flex-row">
+                    <div class="social-link">
+                        <img class="w-100" src="../../../assets/images/facebook-link.png" alt="" />
+                    </div>
+                    <div class="social-link">
+                        <img class="w-100" src="../../../assets/images/twitter.png" alt="" />
+                    </div>
+                    <div class="social-link">
+                        <img class="w-100" src="../../../assets/images/website.png" alt="" />
+                    </div>
+                </div>
+                <div class="sep-line"></div>
+
+                <div>
+                    <p>
+                        <span class="location-item">City</span>,
+                        <span class="location-item">State</span>,
+                        <span class="location-item">Countery</span>
+                    </p>
+                </div>
+            </div>
+        </section>
+    </section>
+    <div class="inside-nav d-flex d-flex-lg-column flex-wrap justify-content-center">
+        <a routerLink="/profile/collections" routerLinkActive="active">SAVED RECIPES</a
+    >
+    <a routerLink="/profile/preferences" routerLinkActive="active"
+      >PREFERENCES</a
+    >
+    <a routerLink="/profile/setting" routerLinkActive="active">SETTINGS</a>
+    </div>
+    <div class="mx-lg-5 mx-3">
+        <router-outlet></router-outlet>
+    </div>
+</main>
