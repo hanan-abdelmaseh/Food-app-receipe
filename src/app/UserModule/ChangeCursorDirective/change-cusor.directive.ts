@@ -4,7 +4,7 @@ import { Directive, ElementRef, HostListener } from '@angular/core';
   selector: '[ChangeCursor]',
 })
 export class ChangeCusorDirective {
-  constructor(private eleRef: ElementRef) {}
+  constructor(public eleRef: ElementRef) {}
 
   @HostListener('mouseover') mouse() {
     this.eleRef.nativeElement.style.cursor = 'pointer';
