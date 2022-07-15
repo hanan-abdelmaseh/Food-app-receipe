@@ -1,7 +1,7 @@
 import { Directive, ElementRef, HostListener } from '@angular/core';
 
 @Directive({
-  selector: '[ChangeCusor]',
+  selector: '[ChangeCursor]',
 })
 export class ChangeCusorDirective {
   constructor(private eleRef: ElementRef) {}
@@ -9,6 +9,4 @@ export class ChangeCusorDirective {
   @HostListener('mouseover') mouse() {
     this.eleRef.nativeElement.style.cursor = 'pointer';
   }
-
-  @HostListener('mouseout') mouseout() {}
 }

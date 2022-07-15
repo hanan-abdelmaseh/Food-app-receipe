@@ -2,7 +2,7 @@
     display: flex;
     width: 220px;
     height: 220px;
-    background-image: url("data:image/svg+xml,%3csvg width='100%25' height='100%25' xmlns='http://www.w3.org/2000/svg'%3e%3crect width='100%25' height='100%25' fill='none' rx='24' ry='24' stroke='%23BABABAFF' stroke-width='4' stroke-dasharray='15' stroke-dashoffset='10' stroke-linecap='square'/%3e%3c/svg%3e");
+    background-image: url("data:image/svg+xml,%3csvg width='100%25' height='100%25' xmlns='http://www.w3.org/2000/svg'%3e%3crect width='100%25' height='100%25' fill='none' rx='24' ry='24' stroke='%23FEBD2EFF' stroke-width='4' stroke-dasharray='16' stroke-dashoffset='3' stroke-linecap='square'/%3e%3c/svg%3e");
     border-radius: 30px;
 }
 
@@ -13,8 +13,7 @@
 }
 
 .add-collection-text {
-    font-size: .9em;
-    color: #3a9691;
+    color: var(--main-color);
     margin-top: 10px;
     height: 40px;
     white-space: nowrap;
@@ -49,4 +48,9 @@ figure {
     width: 220px;
     height: 220px;
     border-radius: 16px;
+}
+
+h3 {
+    color: var( --bg-initial);
+    font-size: 1.8em !important;
 }
