@@ -7,12 +7,13 @@ import { UserProfileComponent } from './UserModule/user-profile/user-profile.com
 import { UserCollectionsComponent } from './UserModule/user-collections/user-collections.component';
 import { UserPreferencesComponent } from './UserModule/user-preferences/user-preferences.component';
 import { CollectionDetailsComponent } from './UserModule/Shared Cpmponents/collection-details/collection-details.component';
+import { FeedComponent } from './FeedModule/Components/feed/feed.component';
 
 const routes: Routes = [
   { path: '', pathMatch: 'full', redirectTo: 'mainLAyout' },
   { path: 'mainLAyout', component: MainLayoutComponent },
   { path: '', pathMatch: 'full', redirectTo: 'home' },
-
+  { path: 'home', component: FeedComponent },
   { path: 'login', component: LoginComponent },
   {
     path: 'profile/collections/:collectionName',

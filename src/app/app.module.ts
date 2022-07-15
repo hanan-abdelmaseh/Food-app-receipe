@@ -36,7 +36,9 @@ import { FormsModule } from '@angular/forms';
     AuthModule,
     SocialLoginModule,
     UserModule,
+    FeedModule,
     FormsModule,
+    SharedModule,
   ],
 
   providers: [
