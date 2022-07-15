@@ -1,0 +1,25 @@
+.navbar-nav{    
+padding-left: 18%;
+}
+
+
+.fa-solid{
+    font-family: 'Font Awesome 6 Free' !important;
+    color: var(--secondary-color);
+    cursor: pointer;
+    font-size: 16px;
+}
+a{
+    font-size: 18px;
+}
+.nav-item{
+    margin-left: 25px;
+    padding: 15px 0;
+    cursor: pointer;
+    
+}
+.user-operation a {
+    margin: 0 10px;
+}
+
+

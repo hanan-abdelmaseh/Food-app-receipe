@@ -5,7 +5,7 @@ import { SliderComponent } from './Components/slider/slider.component';
 import { CardComponent } from './Components/card/card.component';
 import { RouterModule } from '@angular/router';
 import { NavbarComponent } from './Components/navbar/navbar.component';
-
+import {MatMenuModule} from '@angular/material/menu';
 
 
 @NgModule({
@@ -17,7 +17,8 @@ import { NavbarComponent } from './Components/navbar/navbar.component';
   ],
   imports: [
     CommonModule,
-    RouterModule
+    RouterModule,
+    MatMenuModule
   ],
   exports: [
     HeaderComponent,

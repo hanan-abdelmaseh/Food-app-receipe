@@ -7,6 +7,7 @@ import { SharedModule } from './SharedModule/shared.module';
 
 import { MainLayoutComponent } from './Components/main-layout/main-layout.component';
 import { FeedModule } from './FeedModule/feed.module';
+import { HeroComponent } from './Components/hero/hero.component';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -27,12 +28,19 @@ import {
 import { FormsModule } from '@angular/forms';
 
 @NgModule({
-  declarations: [AppComponent, MainLayoutComponent],
+  declarations: [
+    AppComponent,
+    MainLayoutComponent,
+    HeroComponent,
+ 
+   
+  ],
 
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
+    /* shared*/
     AuthModule,
     SocialLoginModule,
     UserModule,
@@ -40,7 +48,6 @@ import { FormsModule } from '@angular/forms';
     FormsModule,
     SharedModule,
   ],
-
   providers: [
     {
       provide: 'SocialAuthServiceConfig',
