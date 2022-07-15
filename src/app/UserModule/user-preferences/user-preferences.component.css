@@ -1,6 +1,7 @@
 .icon {
     width: 40%;
     overflow: hidden;
+    text-align: center;
 }
 
 .preferences {
@@ -19,7 +20,7 @@
 
 .add-pref-outerbg:hover,
 .pref-outerbg:hover {
-    background-color: #3a9691;
+    background-color: var(--main-color);
 }
 
 .preferences::-webkit-scrollbar {
@@ -32,39 +33,42 @@
     height: 20px;
 }
 
-@media screen and (min-width: 992px) {
-    .pref-outerbg,
-    .add-pref-outerbg {
-        width: 9em;
-        height: 9em;
-        background-color: lightgray;
-        fill-opacity: .5;
-        border-radius: 50%;
-    }
-    .pref-content,
-    .add-pref-content {
-        width: 8.5em;
-        height: 8.5em;
-        background-color: white;
-        border-radius: 50%;
-    }
-    .pref-outerbg {
-        width: 7.5em;
-        height: 7.5em;
-    }
-    .pref-content {
-        width: 7em;
-        height: 7em;
-    }
-    .cat-name {
-        width: 80%;
-        text-align: center;
-        font-size: .7em;
-        text-overflow: ellipsis;
-    }
-    .pref-item {
-        width: 60%
-    }
+.pref-outerbg,
+.add-pref-outerbg {
+    width: 9em;
+    height: 9em;
+    background-color: var(--secondary-color);
+    fill-opacity: .5;
+    border-radius: 50%;
+}
+
+.pref-content,
+.add-pref-content {
+    width: 8.5em;
+    height: 8.5em;
+    background-color: white;
+    border-radius: 50%;
+}
+
+.pref-outerbg {
+    width: 7.5em;
+    height: 7.5em;
+}
+
+.pref-content {
+    width: 7em;
+    height: 7em;
+}
+
+.cat-name {
+    width: 80%;
+    text-align: center;
+    font-size: .7em;
+    text-overflow: ellipsis;
+}
+
+.pref-item {
+    width: 60%
 }
 
 @media screen and (max-width: 992px) {
@@ -72,16 +76,11 @@
     .add-pref-outerbg {
         width: 6em;
         height: 6em;
-        background-color: lightgray;
-        fill-opacity: .5;
-        border-radius: 50%;
     }
     .pref-content,
     .add-pref-content {
         width: 5.5em;
         height: 5.5em;
-        background-color: white;
-        border-radius: 50%;
     }
     .pref-outerbg {
         width: 6em;

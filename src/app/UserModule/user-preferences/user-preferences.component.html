@@ -9,7 +9,7 @@
           let favouritePref of preferencesList[i].categories;
           let y = index
         " class="d-flex flex-nowrap me-2">
-                <div ChangeCusor class="add-pref-outerbg d-flex align-items-center justify-content-center position-relative" (click)="removeFromPreferences(favouritePref, preferencesList[i])">
+                <div ChangeCursor class="add-pref-outerbg d-flex align-items-center justify-content-center position-relative" (click)="removeFromPreferences(favouritePref, preferencesList[i])">
                     <div class="add-pref-content d-flex flex-column align-items-center justify-content-center">
                         <div class="icon">
                             <img class="w-100" src="../../../assets/images/fish.png " alt=" " srcset="" />
@@ -19,16 +19,16 @@
                 </div>
             </article>
             <article class="d-flex flex-nowrap">
-                <div ChangeCusor class="add-pref-outerbg d-flex align-items-center justify-content-center position-relative" (click)="showThisPreferencesList(i)">
+                <div ChangeCursor class="add-pref-outerbg d-flex align-items-center justify-content-center position-relative" (click)="showThisPreferencesList(i)">
                     <div class="add-pref-content d-flex flex-column align-items-center justify-content-center">
                         <div class="icon">
-                            <img class="w-100" src="../../../assets/images/add.png " alt=" " srcset="" />
+                            <img class="icon w-75" src="../../../assets/images/add.png " alt=" " srcset="" />
                         </div>
                         <span class="text-add">Add {{ pref.name }}</span>
                     </div>
                 </div>
-                <div ChangeCusor>
-                    <img *ngIf="preferencesListIsShown[i] == true" class="close" src="../../../assets/images/cross.png " (click)="showThisPreferencesList(i)" alt=" " srcset="" />
+                <div ChangeCursor>
+                    <img *ngIf="preferencesListIsShown[i] == true" class="close" src="../../../assets/images/add.png " (click)="showThisPreferencesList(i)" alt=" " srcset="" />
                 </div>
             </article>
         </section>
@@ -37,7 +37,7 @@
         allPreferences[i].categories.length != 0
       " class="preferences">
             <div class="pref-item d-flex overflow-auto flex-lg-wrap m-auto">
-                <div ChangeCusor *ngFor="let cat of pref.categories" class="pref-outerbg flex-shrink-0 d-flex align-items-center justify-content-center m-2">
+                <div ChangeCursor *ngFor="let cat of pref.categories" class="pref-outerbg flex-shrink-0 d-flex align-items-center justify-content-center m-2">
                     <div (click)="addToPreferencesList(cat, pref)" class="pref-content d-flex flex-column align-items-center justify-content-start pt-lg-4 pt-3">
                         <div class="icon">
                             <img class="w-100" src="../../../assets/images/fish.png " alt=" " srcset="" />
