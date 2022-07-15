@@ -92,14 +92,17 @@
                             "./node_modules/@angular/material/prebuilt-themes/indigo-pink.css",
                             "src/styles.css"
                         ],
-<<<<<<< HEAD
+
+                        "scripts": [
+
+
+                        ]
+
                         "scripts": [
 
                            
                         ]
-=======
-                        "scripts": []
->>>>>>> c48df0129e5a7bccb490b197666de3f79a9bc176
+
                     }
                 }
             }

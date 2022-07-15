@@ -28,6 +28,7 @@ import {
 import { FormsModule } from '@angular/forms';
 
 @NgModule({
+
   declarations: [
     AppComponent,
     MainLayoutComponent,
@@ -35,6 +36,7 @@ import { FormsModule } from '@angular/forms';
  
    
   ],
+
 
   imports: [
     BrowserModule,
