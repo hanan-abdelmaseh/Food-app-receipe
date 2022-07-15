@@ -1,5 +1,12 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+/*imports*/
+import { SharedModule } from './SharedModule/shared.module';
+
+/* import auth*/
+
+import { MainLayoutComponent } from './Components/main-layout/main-layout.component';
+import { FeedModule } from './FeedModule/feed.module';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -20,7 +27,8 @@ import {
 import { FormsModule } from '@angular/forms';
 
 @NgModule({
-  declarations: [AppComponent],
+  declarations: [AppComponent, MainLayoutComponent],
+
   imports: [
     BrowserModule,
     AppRoutingModule,

@@ -2,12 +2,15 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { LoginComponent } from './AuthModule/login/login.component';
 import { UserSettingsComponent } from './UserModule/user-settings/user-settings.component';
+import { MainLayoutComponent } from './Components/main-layout/main-layout.component';
 import { UserProfileComponent } from './UserModule/user-profile/user-profile.component';
 import { UserCollectionsComponent } from './UserModule/user-collections/user-collections.component';
 import { UserPreferencesComponent } from './UserModule/user-preferences/user-preferences.component';
 import { CollectionDetailsComponent } from './UserModule/Shared Cpmponents/collection-details/collection-details.component';
 
 const routes: Routes = [
+  { path: '', pathMatch: 'full', redirectTo: 'mainLAyout' },
+  { path: 'mainLAyout', component: MainLayoutComponent },
   { path: '', pathMatch: 'full', redirectTo: 'home' },
 
   { path: 'login', component: LoginComponent },
