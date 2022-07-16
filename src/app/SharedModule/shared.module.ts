@@ -6,6 +6,8 @@ import { CardComponent } from './Components/card/card.component';
 import { RouterModule } from '@angular/router';
 import { NavbarComponent } from './Components/navbar/navbar.component';
 import {MatMenuModule} from '@angular/material/menu';
+import { RecipeDetailsComponent } from './Components/recipe-details/recipe-details.component';
+import { NotFoundComponent } from './Components/not-found/not-found.component';
 
 
 @NgModule({
@@ -13,7 +15,9 @@ import {MatMenuModule} from '@angular/material/menu';
     HeaderComponent,
     SliderComponent,
     CardComponent,
-    NavbarComponent
+    NavbarComponent,
+    RecipeDetailsComponent,
+    NotFoundComponent
   ],
   imports: [
     CommonModule,

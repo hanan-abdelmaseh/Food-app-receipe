@@ -8,6 +8,8 @@ import { UserCollectionsComponent } from './UserModule/user-collections/user-col
 import { UserPreferencesComponent } from './UserModule/user-preferences/user-preferences.component';
 import { CollectionDetailsComponent } from './UserModule/Shared Cpmponents/collection-details/collection-details.component';
 import { FeedComponent } from './FeedModule/Components/feed/feed.component';
+import { RecipeDetailsComponent } from './SharedModule/Components/recipe-details/recipe-details.component';
+import { NotFoundComponent } from './SharedModule/Components/not-found/not-found.component';
 
 const routes: Routes = [
   { path: '', pathMatch: 'full', redirectTo: 'mainLAyout' },
@@ -15,6 +17,10 @@ const routes: Routes = [
   { path: '', pathMatch: 'full', redirectTo: 'home' },
   { path: 'home', component: FeedComponent },
   { path: 'login', component: LoginComponent },
+  { path: 'recipe/notfound', component: NotFoundComponent },
+  { path: 'recipe/:recipeId', component: RecipeDetailsComponent },
+  { path: 'feed', component: FeedComponent },
+
   {
     path: 'profile/collections/:collectionName',
     component: CollectionDetailsComponent,
