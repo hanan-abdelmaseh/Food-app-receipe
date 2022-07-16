@@ -8,6 +8,8 @@ import { SliderImg } from 'src/app/SharedModule/Interface/slider-img';
   styleUrls: ['./feed.component.css']
 })
 export class FeedComponent implements OnInit {
+  title:string = "Feed" ; 
+  text:string = "Our Feed"
 imgagesList:SliderImg[] =[] ;
   constructor(private _ImagesService:ImagesService) { }
 

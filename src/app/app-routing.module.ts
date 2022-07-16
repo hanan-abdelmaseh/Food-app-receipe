@@ -11,12 +11,27 @@ import { FeedComponent } from './FeedModule/Components/feed/feed.component';
 import { LoginComponent } from './AuthModule/login/login.component';
 import { CollectionDetailsComponent } from './UserModule/Shared Cpmponents/collection-details/collection-details.component';
 import { UserSettingsComponent } from './UserModule/user-settings/user-settings.component';
+import { AboutComponent } from './Components/about/about.component';
+import { HomeComponent } from './Components/home/home.component';
+import { BrwosingComponent } from './browsing/Components/brwosing/brwosing.component';
+import { PantryComponent } from './PantryModule/Components/pantry/pantry.component';
+
 
 const routes: Routes = [
   { path: '', pathMatch: 'full', redirectTo: 'mainLAyout' },
-  { path: 'mainLAyout', component: MainLayoutComponent },
+    { path: 'mainLAyout', component: MainLayoutComponent , 
+    children:[ 
+      { path: 'home', component: HomeComponent },
+      { path: 'feed', component: FeedComponent },
+      { path: 'about', component: AboutComponent },
+      { path: 'browse', component: BrwosingComponent},
+      {path:'pantry' , component:PantryComponent}
+  ]},
  
-  { path: 'home', component: FeedComponent },
+ 
+  
+ 
+ 
   { path: 'login', component: LoginComponent },
   {
     path: 'profile/collections/:collectionName',

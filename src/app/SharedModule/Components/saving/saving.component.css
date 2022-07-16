@@ -1,0 +1,6 @@
+.fa-solid{
+    font-family: 'Font Awesome 6 Free' !important;
+    color: var(--main-color);
+    cursor: pointer;
+    font-size: 30px; 
+}

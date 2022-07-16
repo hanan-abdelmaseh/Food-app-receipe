@@ -16,6 +16,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 /* import auth*/
 import { AuthModule } from './AuthModule/auth.module';
 import { UserModule } from './UserModule/user.module';
+import { BrowsingModule } from './browsing/browsing.module';
+import { PantryModule } from './PantryModule/pantry.module';
 
 import {
   SocialLoginModule,
@@ -26,6 +28,12 @@ import {
   FacebookLoginProvider,
 } from '@abacritt/angularx-social-login';
 import { FormsModule } from '@angular/forms';
+import { AboutComponent } from './Components/about/about.component';
+import { HomeComponent } from './Components/home/home.component';
+
+
+
+
 
 @NgModule({
 
@@ -33,6 +41,10 @@ import { FormsModule } from '@angular/forms';
     AppComponent,
     MainLayoutComponent,
     HeroComponent,
+    AboutComponent,
+    HomeComponent,
+
+   
  
    
   ],
@@ -49,6 +61,9 @@ import { FormsModule } from '@angular/forms';
     FeedModule,
     FormsModule,
     SharedModule,
+    BrowsingModule,
+    PantryModule
+
   ],
   providers: [
     {

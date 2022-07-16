@@ -6,6 +6,8 @@ import { CardComponent } from './Components/card/card.component';
 import { RouterModule } from '@angular/router';
 import { NavbarComponent } from './Components/navbar/navbar.component';
 import {MatMenuModule} from '@angular/material/menu';
+import { BreadCrumbComponent } from './Components/bread-crumb/bread-crumb.component';
+import { SavingComponent } from './Components/saving/saving.component';
 
 
 @NgModule({
@@ -13,7 +15,9 @@ import {MatMenuModule} from '@angular/material/menu';
     HeaderComponent,
     SliderComponent,
     CardComponent,
-    NavbarComponent
+    NavbarComponent,
+    BreadCrumbComponent,
+    SavingComponent
   ],
   imports: [
     CommonModule,
@@ -24,7 +28,9 @@ import {MatMenuModule} from '@angular/material/menu';
     HeaderComponent,
     SliderComponent,
     CardComponent ,
-    NavbarComponent 
+    NavbarComponent ,
+    BreadCrumbComponent,
+    SavingComponent
   ]
 })
 export class SharedModule { }
