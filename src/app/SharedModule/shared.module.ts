@@ -8,6 +8,10 @@ import { NavbarComponent } from './Components/navbar/navbar.component';
 import {MatMenuModule} from '@angular/material/menu';
 import { BreadCrumbComponent } from './Components/bread-crumb/bread-crumb.component';
 import { SavingComponent } from './Components/saving/saving.component';
+import { SearchComponent } from './Components/search/search.component';
+import { FilterComponent } from './Components/filter/filter.component';
+import { CarsolComponent } from './Components/carsol/carsol.component';
+import { FooterComponent } from './Components/footer/footer.component';
 
 
 @NgModule({
@@ -17,7 +21,11 @@ import { SavingComponent } from './Components/saving/saving.component';
     CardComponent,
     NavbarComponent,
     BreadCrumbComponent,
-    SavingComponent
+    SavingComponent,
+    SearchComponent,
+    FilterComponent,
+    CarsolComponent,
+    FooterComponent
   ],
   imports: [
     CommonModule,
@@ -30,7 +38,11 @@ import { SavingComponent } from './Components/saving/saving.component';
     CardComponent ,
     NavbarComponent ,
     BreadCrumbComponent,
-    SavingComponent
+    SavingComponent,
+    FooterComponent,
+    CarsolComponent,
+    SearchComponent,
+    FilterComponent
   ]
 })
 export class SharedModule { }

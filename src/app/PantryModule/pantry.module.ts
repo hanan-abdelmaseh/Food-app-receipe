@@ -5,13 +5,14 @@ import { SharedModule } from '../SharedModule/shared.module';
 
 
 
+
 @NgModule({
   declarations: [
     PantryComponent
   ],
   imports: [
     CommonModule,
-    SharedModule
+    SharedModule,
   ],
   exports :[
     PantryComponent

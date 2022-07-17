@@ -32,9 +32,6 @@ import { AboutComponent } from './Components/about/about.component';
 import { HomeComponent } from './Components/home/home.component';
 
 
-
-
-
 @NgModule({
 
   declarations: [
@@ -43,6 +40,7 @@ import { HomeComponent } from './Components/home/home.component';
     HeroComponent,
     AboutComponent,
     HomeComponent,
+    
 
    
  
@@ -64,7 +62,10 @@ import { HomeComponent } from './Components/home/home.component';
     BrowsingModule,
     PantryModule
 
-  ],
+  ],exports:[
+    
+  ]
+  ,
   providers: [
     {
       provide: 'SocialAuthServiceConfig',

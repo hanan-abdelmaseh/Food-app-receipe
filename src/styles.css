@@ -83,18 +83,28 @@ span {
 /*button*/
 
 .Learn-btn {
-    color: var(--bg-white);
     background-color: var(--main-color);
+}
+.Learn-btn ,.submit-btn{
     padding: 4px 24px;
     font-size: 16px;
     border-radius: 3rem;
+    color: var(--bg-white);
 }
-
-.btn:hover {
+.Learn-btn:hover {
     color: var(--main-color);
     background-color: var(--bg-white);
     border: 1px solid var(--main-color);
 }
+.submit-btn {
+    background-color: var(--secondary-color);
+}
+.submit-btn:hover {
+    color: var(--secondary-color);
+    background-color: var(--bg-white);
+    border: 1px solid var(--secondary-color);
+}
+
 
 
 
