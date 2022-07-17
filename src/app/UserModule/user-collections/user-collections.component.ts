@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { CollectionModel } from 'src/app/Models/Collection Model/collection-model';
 import { CollectionsService } from 'src/app/Services/Profile Services/Collections-Service/collections-service.service';
+import { CurrentUserService } from 'src/app/Services/Profile Services/Current-User-Service/current-user.service';
+import { UserSettingsService } from 'src/app/Services/Profile Services/User-Settings-Service/user-settings.service';
 
 @Component({
   selector: 'app-user-collections',
@@ -9,10 +11,11 @@ import { CollectionsService } from 'src/app/Services/Profile Services/Collection
   styleUrls: ['./user-collections.component.css'],
 })
 export class UserCollectionsComponent implements OnInit {
+  isAddFormShown: boolean = false;
   collectionsList: CollectionModel[] | null = null;
 
   constructor(
-    private collectionService: CollectionsService,
+    public collectionService: CollectionsService,
     private route: Router
   ) {}
 
@@ -20,6 +23,12 @@ export class UserCollectionsComponent implements OnInit {
     this.route.navigate(['/profile/collections', collectionName]);
   }
   ngOnInit(): void {
-    this.collectionsList = this.collectionService.collectionsList;
+    this.collectionService.getAllCollections();
+    this.collectionsList = this.collectionService.userCollectionsList;
+  }
+
+  showHideAddForm() {
+    console.log('open/colse');
+    this.isAddFormShown = !this.isAddFormShown;
   }
 }

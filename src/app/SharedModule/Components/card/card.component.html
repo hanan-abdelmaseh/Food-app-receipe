@@ -15,3 +15,14 @@
         <a href="#" class="btn Learn-btn mb-2">Learn More</a>
     </div>
 </div>
+<div>
+    <div>Recipe Name : {{ currentRecipe?.recipeName }}</div>
+
+    <div>Recipe Auther : {{ recipeAuther?.id }}</div>
+
+    <button *ngFor="let collection of currentUser?.userCollections" (click)="
+      addToCollectionRecipes(collection.collectionName, currentRecipe!.recipeId)
+    ">
+    add to collection {{ collection.collectionName }}
+  </button>
+</div>

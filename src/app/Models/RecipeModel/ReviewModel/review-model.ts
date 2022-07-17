@@ -1,10 +1,8 @@
 import { UserModel } from '../../User Model/user-model';
 
-export class ReviewModel {
-  constructor(
-    public reviewWriterId: number,
-    public reviewDate: string,
-    public reviewContent: string,
-    public rating: number
-  ) {}
+export interface ReviewModel {
+  reviewWriterId: number;
+  reviewDate: string;
+  reviewContent: string;
+  rating: number;
 }

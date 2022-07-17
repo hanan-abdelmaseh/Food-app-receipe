@@ -1,3 +1,4 @@
-export class NutritionModel {
-  constructor(public nutritionName: string, public nutritionQuantity: number) {}
+export interface NutritionModel {
+  nutritionName: string;
+  nutritionQuantity: number;
 }

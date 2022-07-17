@@ -16,11 +16,25 @@
                 {{ currentCollection?.collectionDescription }}
             </div>
         </div>
-        <div ChangeCursor class="d-flex delete-collection">
+        <div ChangeCursor class="d-flex delete-collection" (click)="deleteCollection(currentCollection!.collectionName)">
             <img class="mx-2" src="../../../assets/images/delete.png" alt="" srcset="" />
             <span> Delete this collection</span>
         </div>
     </section>
+    <Section>
+        <div *ngFor="
+        let recipeId of currentCollection?.collectioRecipes;
+        let x = index
+      ">
+            <div>
+                {{ collectionRecipe[x].recipeName }}
+            </div>
+            <button (click)="removeRecipe(recipeId, currentCollection!.collectionName)">
+        delete
+      </button>
+            <button (click)="openRecipeDetails(recipeId)">open</button>
+        </div>
+    </Section>
     <section [class.d-none]="currentCollection?.noOfRecipes != 0 ? true : false" class="d-flex flex-column align-items-center justify-content-center recipes-section">
         <div class="icon-container">
             <img class="search-icon w-100" src="../../../assets/svg/search-icon.svg" alt="" />

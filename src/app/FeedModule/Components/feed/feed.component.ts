@@ -30,6 +30,7 @@ export class FeedComponent implements OnInit {
 
   openRecipeDetails(recipeId: number) {
     this.route.navigate(['/recipe', recipeId]);
+
     // }
   }
 }

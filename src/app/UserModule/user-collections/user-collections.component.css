@@ -2,8 +2,8 @@
     display: flex;
     width: 220px;
     height: 220px;
-    background-image: url("data:image/svg+xml,%3csvg width='100%25' height='100%25' xmlns='http://www.w3.org/2000/svg'%3e%3crect width='100%25' height='100%25' fill='none' rx='24' ry='24' stroke='%23FEBD2EFF' stroke-width='4' stroke-dasharray='16' stroke-dashoffset='3' stroke-linecap='square'/%3e%3c/svg%3e");
-    border-radius: 30px;
+    background-image: url("data:image/svg+xml,%3csvg width='100%25' height='100%25' xmlns='http://www.w3.org/2000/svg'%3e%3crect width='100%25' height='100%25' fill='none' rx='7' ry='7' stroke='%23FEBD2EFF' stroke-width='3' stroke-dasharray='8' stroke-dashoffset='0' stroke-linecap='square'/%3e%3c/svg%3e");
+    border-radius: 7px;
 }
 
 .plus-icon {
@@ -24,10 +24,6 @@
     overflow: hidden;
     min-width: 220px;
     max-width: 220px;
-}
-
-.collection:hover {
-    cursor: pointer;
 }
 
 .collection-img {
@@ -53,4 +49,42 @@ figure {
 h3 {
     color: var( --bg-initial);
     font-size: 1.8em !important;
+}
+
+input {
+    border: none;
+    font-size: 1.2em;
+    background-color: white;
+}
+
+.collection-name-input {
+    width: 160px;
+}
+
+input:focus {
+    outline: none !important;
+    border: none;
+    box-shadow: none;
+    caret-color: var(--main-color);
+    text-align: start;
+}
+
+.separator {
+    width: 1.5px;
+    height: 15px;
+    background-color: var(--secondary-color);
+}
+
+.cancel-btn,
+.add-btn {
+    margin: 0px 5px;
+    font-size: 1em;
+}
+
+.add-btn {
+    color: var(--main-color);
+}
+
+.cancel-btn {
+    color: var( --bg-gray);
 }

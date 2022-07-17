@@ -1,9 +1,7 @@
-export class CollectionModel {
-  constructor(
-    public collectionName: string,
-    public collectionImg: string,
-    public collectionDescription: string,
-    public collectioRecipes: string[],
-    public noOfRecipes: number
-  ) {}
+export interface CollectionModel {
+  collectionName: string;
+  collectionImg: string;
+  collectionDescription: string;
+  collectioRecipes: number[];
+  noOfRecipes: number;
 }

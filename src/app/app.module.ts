@@ -26,17 +26,11 @@ import {
   FacebookLoginProvider,
 } from '@abacritt/angularx-social-login';
 import { FormsModule } from '@angular/forms';
+import { CurrentUserService } from './Services/Profile Services/Current-User-Service/current-user.service';
+import { CollectionsService } from './Services/Profile Services/Collections-Service/collections-service.service';
 
 @NgModule({
-
-  declarations: [
-    AppComponent,
-    MainLayoutComponent,
-    HeroComponent,
- 
-   
-  ],
-
+  declarations: [AppComponent, MainLayoutComponent, HeroComponent],
 
   imports: [
     BrowserModule,

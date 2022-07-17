@@ -25,6 +25,7 @@ const routes: Routes = [
     path: 'profile/collections/:collectionName',
     component: CollectionDetailsComponent,
   },
+  { path: 'profile', pathMatch: 'full', redirectTo: 'profile/collections' },
   {
     path: 'profile',
     component: UserProfileComponent,

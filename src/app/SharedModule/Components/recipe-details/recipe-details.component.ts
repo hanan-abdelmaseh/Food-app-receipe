@@ -22,16 +22,18 @@ export class RecipeDetailsComponent implements OnInit {
 
   ngOnInit(): void {
     let recipeId = this.activatedRoute.snapshot.paramMap.get('recipeId');
+
     if (recipeId != null) {
       this.recipeService.getCurrentRecipeById(+recipeId);
+
       if (this.recipeService.currentRecipe != null) {
         this.currentRecipe = this.recipeService.currentRecipe;
+
         this.userService.getUserById(this.currentRecipe.auther);
         if (this.userService.getUser != null) {
           this.recipeAuther = this.userService.getUser;
         }
       } else if (this.recipeService.currentRecipe == undefined) {
-        console.log('error');
         this.route.navigate(['recipe/notfound']);
       }
     }
