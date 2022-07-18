@@ -1,7 +1,7 @@
 <main class="w-100 d-flex flex-column">
     <section class="w-100 d-flex flex-column justify-content-between align-items-center flex-md-row m-auto">
         <article class="recipe-data d-flex flex-column text-center">
-            <h2>{{ currentRecipe!.recipeName }}</h2>
+            <h2 class="recipe-name">{{ currentRecipe!.recipeName }}</h2>
             <span>
         {{ recipeAuther!.userName }}
       </span>
@@ -43,7 +43,8 @@
     <section class="d-flex w-100">
         <section class="main-section">
             <section class="d-flex flex-column justify-content-center">
-                <article class="ingredients-nutrition w-100 d-flex flex-column flex-md-row justify-content-center align-items-center">
+                <article class="ingredients-nutrition w-100"></article>
+                <article class="d-flex flex-column flex-md-row">
                     <div class="ingredients">
                         <div class="d-flex justify-content-between align-items-center inner-block">
                             <h3>Ingrediants</h3>
