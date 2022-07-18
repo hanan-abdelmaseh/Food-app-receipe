@@ -30,6 +30,7 @@ import {
 import { FormsModule } from '@angular/forms';
 import { AboutComponent } from './Components/about/about.component';
 import { HomeComponent } from './Components/home/home.component';
+import { NewsletterComponent } from './Components/newsletter/newsletter.component';
 
 
 @NgModule({
@@ -40,6 +41,7 @@ import { HomeComponent } from './Components/home/home.component';
     HeroComponent,
     AboutComponent,
     HomeComponent,
+    NewsletterComponent,
     
 
    
