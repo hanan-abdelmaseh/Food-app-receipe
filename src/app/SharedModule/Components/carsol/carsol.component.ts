@@ -5,19 +5,20 @@ import { CarsolImg } from '../../Interface/carsol-img';
 @Component({
   selector: 'app-carsol',
   templateUrl: './carsol.component.html',
-  styleUrls: ['./carsol.component.css']
+  styleUrls: ['./carsol.component.css'],
 })
 export class CarsolComponent implements OnInit {
-  @Input() carsolItems:CarsolImg[]=[];
-  selectedIndex:number =0 ;
+  @Input() carsolItems: CarsolImg[] = [];
+  selectedIndex: number = 0;
+  public x: number;
 
+  ////controls
 
-  ////controls 
-
-@Input() listItems:CarsolImg[] =[];
-  constructor(private CarsolService:CarsolService) {
+  @Input() listItems: CarsolImg[] = [];
+  constructor(private CarsolService: CarsolService) {
     this.listItems = this.CarsolService.listShown;
-   }
+    this.x = this.CarsolService.x;
+  }
 
   ngOnInit(): void {
     this.listItems = this.CarsolService.listShown;
@@ -25,33 +26,32 @@ export class CarsolComponent implements OnInit {
   prevois() {
     this.CarsolService.previous();
     this.listItems = this.CarsolService.listShown;
+    this.x = this.CarsolService.x;
+    this.x = this.CarsolService.x;
   }
 
   next() {
     this.CarsolService.next();
     this.listItems = this.CarsolService.listShown;
+    this.x = this.CarsolService.x;
   }
-  onPrev(){
+  onPrev() {
     console.log(this.selectedIndex);
-    console.log(this.carsolItems.length -1)
+    console.log(this.carsolItems.length - 1);
 
-    if( this.selectedIndex === 0)
-     {
-      this.selectedIndex === this.carsolItems.length -1 ;
+    if (this.selectedIndex === 0) {
+      this.selectedIndex === this.carsolItems.length - 1;
+    } else {
+      this.selectedIndex--;
     }
-     else{
-    this.selectedIndex--;
-    }
-
   }
-  onNext(){
+  onNext() {
     console.log(this.selectedIndex);
-    console.log(this.carsolItems.length -1)
-    if(this.selectedIndex === this.carsolItems.length -1){
-      this.selectedIndex =0
+    console.log(this.carsolItems.length - 1);
+    if (this.selectedIndex === this.carsolItems.length - 1) {
+      this.selectedIndex = 0;
+    } else {
+      this.selectedIndex++;
     }
-else{
-    this.selectedIndex++;
-    } 
   }
 }
