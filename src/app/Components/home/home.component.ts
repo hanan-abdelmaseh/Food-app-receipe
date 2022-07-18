@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { CarsolService } from 'src/app/Services/carsol.service';
+import { CarsolImg } from 'src/app/SharedModule/Interface/carsol-img';
 
 @Component({
   selector: 'app-home',
@@ -6,10 +8,12 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
-
-  constructor() { }
+   carsolList:CarsolImg[] =[];
+  constructor(private _CarsolService:CarsolService) { }
 
   ngOnInit(): void {
+
+    this.carsolList = this._CarsolService.GetAllItems();
   }
 
 }

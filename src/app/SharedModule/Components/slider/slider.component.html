@@ -8,13 +8,13 @@
                        [ngClass]="{'image-active':selectedIndex === i}"
                        >
              </div>
+             
         </div>
         <div class="col-md-12">
             <div *ngIf="indicators" class="dots-container">
                 <span *ngFor="let dot of images ; let i = index"
                       class="dot" [ngClass]="{'active':selectedIndex === i}" 
                       (click)="selectedImg(i)">
-  
                 </span>
                </div>
         </div>

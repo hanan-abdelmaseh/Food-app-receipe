@@ -12,6 +12,8 @@ import { SearchComponent } from './Components/search/search.component';
 import { FilterComponent } from './Components/filter/filter.component';
 import { CarsolComponent } from './Components/carsol/carsol.component';
 import { FooterComponent } from './Components/footer/footer.component';
+import { NextDirective } from './Components/directives/next.directive';
+import { PrevDirective } from './Components/directives/prev.directive';
 
 
 @NgModule({
@@ -25,7 +27,9 @@ import { FooterComponent } from './Components/footer/footer.component';
     SearchComponent,
     FilterComponent,
     CarsolComponent,
-    FooterComponent
+    FooterComponent,
+    NextDirective,
+    PrevDirective
   ],
   imports: [
     CommonModule,
