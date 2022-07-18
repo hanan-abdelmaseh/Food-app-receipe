@@ -5,7 +5,9 @@ import { CarsolImg } from '../SharedModule/Interface/carsol-img';
   providedIn: 'root'
 })
 export class CarsolService {
-  private carsolItemList :CarsolImg[] =[]
+  private carsolItemList :CarsolImg[] =[];
+  public listShown:CarsolImg[] =[];
+  private x:number =0 ;
   constructor() {
     this.carsolItemList=[
       {  Id:1,
@@ -67,9 +69,51 @@ export class CarsolService {
 
     
 
-    ]
+    ] ;
+    this.listShown = [
+      this.carsolItemList[this.x],
+      this.carsolItemList[this.x + 1],
+      this.carsolItemList[this.x + 2],
+      this.carsolItemList[this.x + 3],
+      this.carsolItemList[this.x + 4],
+      this.carsolItemList[this.x + 5],
+    ];
 
    }
+
+   next() {
+    this.x++;
+    this.listShown = [
+      this.carsolItemList[this.x],
+      this.carsolItemList[this.x + 1],
+      this.carsolItemList[this.x + 2],
+      this.carsolItemList[this.x + 3],
+      this.carsolItemList[this.x + 4],
+      this.carsolItemList[this.x + 5],
+    ];
+    console.log(this.x);
+  }
+  previous() {
+   
+      this.x--;
+      this.listShown = [
+        this.carsolItemList[this.x],
+        this.carsolItemList[this.x + 1],
+        this.carsolItemList[this.x + 2],
+        this.carsolItemList[this.x + 3],
+        this.carsolItemList[this.x + 4],
+        this.carsolItemList[this.x + 5],
+  
+      ];
+      console.log(this.x);
+    
+   
+  }
+
+
+
+
+
    GetAllItems():CarsolImg[]
 {
   return this.carsolItemList;

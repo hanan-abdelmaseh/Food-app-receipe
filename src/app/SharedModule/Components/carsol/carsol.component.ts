@@ -14,12 +14,22 @@ export class CarsolComponent implements OnInit {
 
   ////controls 
 
-
-  constructor() {
-   
+@Input() listItems:CarsolImg[] =[];
+  constructor(private CarsolService:CarsolService) {
+    this.listItems = this.CarsolService.listShown;
    }
 
   ngOnInit(): void {
+    this.listItems = this.CarsolService.listShown;
+  }
+  prevois() {
+    this.CarsolService.previous();
+    this.listItems = this.CarsolService.listShown;
+  }
+
+  next() {
+    this.CarsolService.next();
+    this.listItems = this.CarsolService.listShown;
   }
   onPrev(){
     console.log(this.selectedIndex);

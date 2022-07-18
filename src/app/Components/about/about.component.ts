@@ -7,7 +7,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AboutComponent implements OnInit {
   title:string = "About";
-  text:string ="About Us"
+  text:string ="About Us";
+  Url:string ='home'
   constructor() { }
 
   ngOnInit(): void {

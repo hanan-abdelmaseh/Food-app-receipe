@@ -1,4 +1,6 @@
+import { Location } from '@angular/common';
 import { Component, Input, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-bread-crumb',
@@ -8,9 +10,15 @@ import { Component, Input, OnInit } from '@angular/core';
 export class BreadCrumbComponent implements OnInit {
  @Input() Title:string ="";
  @Input() Text:string="";
-  constructor() { }
+ @Input() pageUrl:string ='';
+  constructor( private router :Router) { }
 
   ngOnInit(): void {
   }
+  goback(){
+ 
+    this.router.navigate(['../home']);
+    }
+  
 
 }
