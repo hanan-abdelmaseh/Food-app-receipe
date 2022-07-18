@@ -5,6 +5,9 @@ export interface UserModel {
   userCollections?: CollectionModel[];
   wantedPreferences?: PreferencesModel[];
   unWantedPreferences?: PreferencesModel[];
+  recipesWrittenByUser?: number[];
+  noOfUserCollections?: number;
+  noOfRecipesWritten?: number;
   userName: string;
   bio: string;
   id: number;

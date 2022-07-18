@@ -15,4 +15,5 @@ export interface RecipeModel {
   seving: number;
   tags: string[];
   directions: string;
+  noOfIngrediants: number;
 }

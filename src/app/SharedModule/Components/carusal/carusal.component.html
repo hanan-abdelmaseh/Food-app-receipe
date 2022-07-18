@@ -1,0 +1,8 @@
+<div class="w-75 d-flex justify-content-center m-auto my-5">
+    <button (click)="prevois()">Previous</button>
+    <div *ngFor="let item of listShown" class="w-25 text-center">
+        <h1>{{ item }}</h1>
+    </div>
+
+    <button (click)="next()">Next</button>
+</div>

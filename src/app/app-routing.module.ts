@@ -10,6 +10,7 @@ import { CollectionDetailsComponent } from './UserModule/Shared Cpmponents/colle
 import { FeedComponent } from './FeedModule/Components/feed/feed.component';
 import { RecipeDetailsComponent } from './SharedModule/Components/recipe-details/recipe-details.component';
 import { NotFoundComponent } from './SharedModule/Components/not-found/not-found.component';
+import { CarusalComponent } from './SharedModule/Components/carusal/carusal.component';
 
 const routes: Routes = [
   { path: '', pathMatch: 'full', redirectTo: 'mainLAyout' },
@@ -26,6 +27,7 @@ const routes: Routes = [
     component: CollectionDetailsComponent,
   },
   { path: 'profile', pathMatch: 'full', redirectTo: 'profile/collections' },
+  { path: 'car', component: CarusalComponent },
   {
     path: 'profile',
     component: UserProfileComponent,

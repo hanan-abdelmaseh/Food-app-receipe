@@ -59,6 +59,7 @@ export class RecipeService {
             reviewWriterId: 1,
           },
         ],
+        noOfIngrediants: 5,
       },
       {
         auther: 2,
@@ -133,7 +134,9 @@ export class RecipeService {
             reviewWriterId: 4,
           },
         ],
+        noOfIngrediants: 4,
       },
+
       {
         auther: 3,
         avgRating: 1,
@@ -205,6 +208,7 @@ export class RecipeService {
             reviewWriterId: 4,
           },
         ],
+        noOfIngrediants: 6,
       },
     ];
   }
