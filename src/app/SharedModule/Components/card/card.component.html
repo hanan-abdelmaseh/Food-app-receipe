@@ -15,7 +15,7 @@
         <a href="#" class="btn Learn-btn mb-2">Learn More</a>
     </div>
 </div>
-<div>
+<div (click)="openRecipeDetails(currentRecipe!.recipeId)">
     <div>Recipe Name : {{ currentRecipe?.recipeName }}</div>
 
     <div>Recipe Auther : {{ recipeAuther?.id }}</div>

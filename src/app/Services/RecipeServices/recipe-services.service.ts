@@ -18,6 +18,10 @@ export class RecipeService {
         ingrediants: ['chicked', 'rice', 'water'],
         nutritions: [
           {
+            nutritionName: 'CALORIES',
+            nutritionQuantity: 858,
+          },
+          {
             nutritionName: 'SODIUM',
             nutritionQuantity: 858,
           },
@@ -40,11 +44,12 @@ export class RecipeService {
         ],
         numberAddingToCollections: 3,
         recipeId: 1,
-        recipeImg: '',
+        recipeImg:
+          'https://lh3.googleusercontent.com/y__X45OA9m35h4ZRYbxGBxziURMTUm6quQtFTxtiUCEqnzypGg8ZF6hSX6nMWNLKTnCDmyduiKR6fpIwKnVvLA=s640-c-rw-v1-e365',
         recipeName: 'Chiken Wings',
         seving: 10,
         tags: ['dinner', 'Juice', 'orange', 'soup', 'Meat'],
-        time: '10 Hours',
+        time: '10',
         reviews: [
           {
             rating: 5,
@@ -63,6 +68,10 @@ export class RecipeService {
 
         ingrediants: ['ground ginger', 'ground cardamom', 'Rice', 'water'],
         nutritions: [
+          {
+            nutritionName: 'CALORIES',
+            nutritionQuantity: 858,
+          },
           {
             nutritionName: 'SODIUM',
             nutritionQuantity: 210,
@@ -86,7 +95,8 @@ export class RecipeService {
         ],
         numberAddingToCollections: 1502,
         recipeId: 2,
-        recipeImg: '',
+        recipeImg:
+          'https://lh3.googleusercontent.com/qflddJtvZRaWPPxX-10NTcH37bGdjaxcgzf14AhtyQ5CCPogzIviqZkNuW5i-oMLXjJQgMQmyW9GyeQsURtWfQ=s640-c-rw-v1-e365',
         recipeName: 'Tamales',
         seving: 10,
         tags: [
@@ -99,7 +109,7 @@ export class RecipeService {
           'soup',
           'Meat',
         ],
-        time: '10 Hours',
+        time: '10',
         reviews: [
           {
             rating: 5,
@@ -140,6 +150,10 @@ export class RecipeService {
         ],
         nutritions: [
           {
+            nutritionName: 'CALORIES',
+            nutritionQuantity: 858,
+          },
+          {
             nutritionName: 'SODIUM',
             nutritionQuantity: 10,
           },
@@ -162,11 +176,12 @@ export class RecipeService {
         ],
         numberAddingToCollections: 1502,
         recipeId: 3,
-        recipeImg: '',
+        recipeImg:
+          'https://lh3.googleusercontent.com/9Fn_vrzLW0Y9Dz894BUAIHNrIal3zYTwxzxKSbZga8Z5xN0l620z8OB-BRE11JC8l7bI2vdjvWXoILEg6nZAevq_mT0bJlBa9WY=s640-c-rw-v1-e365',
         recipeName: 'Smashed Cowboy Kabobs',
         seving: 10,
         tags: ['Easy', 'dinner', 'Juice', 'orange', 'soup', 'Meat'],
-        time: '10 Hours',
+        time: '10',
         reviews: [
           {
             rating: 2,

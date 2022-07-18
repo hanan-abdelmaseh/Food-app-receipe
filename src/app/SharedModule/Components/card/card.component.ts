@@ -1,4 +1,5 @@
 import { Component, Input, OnChanges, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { RecipeModel } from 'src/app/Models/RecipeModel/recipe-model';
 import { UserModel } from 'src/app/Models/User Model/user-model';
 import { CollectionsService } from 'src/app/Services/Profile Services/Collections-Service/collections-service.service';
@@ -16,8 +17,11 @@ export class CardComponent implements OnInit, OnChanges {
   public currentUser: UserModel | null = null;
   constructor(
     private userService: CurrentUserService,
+    private route: Router,
     private collectionService: CollectionsService
-  ) {}
+  ) {
+    this.currentRecipe = this.recivedRecipe;
+  }
 
   ngOnChanges(): void {
     this.currentRecipe = this.recivedRecipe;
@@ -36,5 +40,10 @@ export class CardComponent implements OnInit, OnChanges {
 
     console.log(this.currentUser?.userCollections);
     console.log(this.collectionService?.userCollectionsList);
+  }
+
+  openRecipeDetails(recipeId: number) {
+    this.route.navigate(['/recipe', recipeId]);
+    console.log('navigate to' + recipeId);
   }
 }

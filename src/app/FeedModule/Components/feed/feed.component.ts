@@ -27,10 +27,4 @@ export class FeedComponent implements OnInit {
   ngOnInit(): void {
     this.imgagesList = this._ImagesService.GetAllImg();
   }
-
-  openRecipeDetails(recipeId: number) {
-    this.route.navigate(['/recipe', recipeId]);
-
-    // }
-  }
 }

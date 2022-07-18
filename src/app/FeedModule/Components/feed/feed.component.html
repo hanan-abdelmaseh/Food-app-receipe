@@ -1,7 +1,7 @@
 <app-slider [images]="imgagesList" [autoSlide]="true"></app-slider>
-<!--just for you -->
+just for you
 <div class="container">
-    <div class="row">
+    <!-- <div class="row">
         <div class="col-m-12">
             <h4>Just For You</h4>
         </div>
@@ -20,7 +20,7 @@
         <div class="col-md-3">
             <app-card></app-card>
         </div>
-    </div>
+    </div> -->
     <div class="row mt-5">
         <div class="col-md-3" *ngFor="let recipe of recipesList">
             <app-card [recivedRecipe]="recipe"></app-card>
