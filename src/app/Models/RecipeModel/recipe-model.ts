@@ -12,7 +12,7 @@ export interface RecipeModel {
   avgRating: number;
   recipeImg: string;
   numberAddingToCollections: number;
-  seving: number;
+  serving: number;
   tags: string[];
   directions: string;
   noOfIngrediants: number;

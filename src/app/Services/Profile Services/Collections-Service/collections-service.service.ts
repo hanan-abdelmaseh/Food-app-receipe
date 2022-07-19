@@ -36,11 +36,6 @@ export class CollectionsService {
       if (collection.collectionName == collectionName) {
         this.userService.currentUser.userCollections?.splice(index, 1);
         this.getAllCollections();
-        localStorage.clear();
-        localStorage.setItem(
-          'users',
-          JSON.stringify(this.userService.allUsers)
-        );
       }
     });
   }
@@ -54,7 +49,6 @@ export class CollectionsService {
       noOfRecipes: 0,
     });
     this.getAllCollections();
-    localStorage.setItem('users', JSON.stringify(this.userService.allUsers));
   }
 
   updateCollection(collectionName: string, collecionDesc?: string) {
@@ -69,8 +63,6 @@ export class CollectionsService {
       ].collectionDescription = collecionDesc == undefined ? '' : collecionDesc;
     }
     this.getAllCollections();
-    localStorage.clear();
-    localStorage.setItem('users', JSON.stringify(this.userService.allUsers));
   }
 
   addToCollectionRecipes(collectionName: string, recipeId: number) {

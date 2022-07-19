@@ -28,6 +28,7 @@ import {
 import { FormsModule } from '@angular/forms';
 import { CurrentUserService } from './Services/Profile Services/Current-User-Service/current-user.service';
 import { CollectionsService } from './Services/Profile Services/Collections-Service/collections-service.service';
+import { ReviewService } from './Services/ReviewService/review-service.service';
 
 @NgModule({
   declarations: [AppComponent, MainLayoutComponent, HeroComponent],
@@ -64,6 +65,7 @@ import { CollectionsService } from './Services/Profile Services/Collections-Serv
         },
       } as SocialAuthServiceConfig,
     },
+    [CurrentUserService, ReviewService],
   ],
   bootstrap: [AppComponent],
 })

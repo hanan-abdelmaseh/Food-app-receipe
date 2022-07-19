@@ -30,8 +30,8 @@ export class CardComponent implements OnInit, OnChanges {
   ngOnInit(): void {
     this.currentUser = this.userService.currentUser;
     if (this.currentRecipe?.auther != null) {
-      this.userService.getUserById(this.currentRecipe?.auther);
-      this.recipeAuther = this.userService.getUser;
+      let user = this.userService.getUserById(this.currentRecipe?.auther)!;
+      this.recipeAuther = user;
     }
   }
 

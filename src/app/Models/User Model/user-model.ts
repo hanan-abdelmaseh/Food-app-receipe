@@ -17,4 +17,5 @@ export interface UserModel {
   userFacebook: string;
   userTwitter: string;
   userSite: string;
+  userImg?: string;
 }

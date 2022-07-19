@@ -1,7 +1,5 @@
 import { Injectable } from '@angular/core';
 import { RecipeModel } from 'src/app/Models/RecipeModel/recipe-model';
-import { UserModel } from 'src/app/Models/User Model/user-model';
-import { CurrentUserService } from '../Profile Services/Current-User-Service/current-user.service';
 
 @Injectable({
   providedIn: 'root',
@@ -9,6 +7,7 @@ import { CurrentUserService } from '../Profile Services/Current-User-Service/cur
 export class RecipeService {
   public recipesList: RecipeModel[];
   public currentRecipe?: RecipeModel;
+
   constructor() {
     this.recipesList = [
       {
@@ -47,7 +46,7 @@ export class RecipeService {
         recipeImg:
           'https://lh3.googleusercontent.com/y__X45OA9m35h4ZRYbxGBxziURMTUm6quQtFTxtiUCEqnzypGg8ZF6hSX6nMWNLKTnCDmyduiKR6fpIwKnVvLA=s640-c-rw-v1-e365',
         recipeName: 'Chiken Wings',
-        seving: 10,
+        serving: 10,
         tags: ['dinner', 'Juice', 'orange', 'soup', 'Meat'],
         time: '10',
         reviews: [
@@ -57,6 +56,20 @@ export class RecipeService {
               "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book",
             reviewDate: '18/8/12',
             reviewWriterId: 1,
+          },
+          {
+            rating: 5,
+            reviewContent:
+              "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book",
+            reviewDate: '18/8/12',
+            reviewWriterId: 2,
+          },
+          {
+            rating: 5,
+            reviewContent:
+              "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book",
+            reviewDate: '18/8/12',
+            reviewWriterId: 3,
           },
         ],
         noOfIngrediants: 5,
@@ -99,7 +112,7 @@ export class RecipeService {
         recipeImg:
           'https://lh3.googleusercontent.com/qflddJtvZRaWPPxX-10NTcH37bGdjaxcgzf14AhtyQ5CCPogzIviqZkNuW5i-oMLXjJQgMQmyW9GyeQsURtWfQ=s640-c-rw-v1-e365',
         recipeName: 'Tamales',
-        seving: 10,
+        serving: 10,
         tags: [
           'Quick And Easy',
           'Quick',
@@ -182,7 +195,7 @@ export class RecipeService {
         recipeImg:
           'https://lh3.googleusercontent.com/9Fn_vrzLW0Y9Dz894BUAIHNrIal3zYTwxzxKSbZga8Z5xN0l620z8OB-BRE11JC8l7bI2vdjvWXoILEg6nZAevq_mT0bJlBa9WY=s640-c-rw-v1-e365',
         recipeName: 'Smashed Cowboy Kabobs',
-        seving: 10,
+        serving: 10,
         tags: ['Easy', 'dinner', 'Juice', 'orange', 'soup', 'Meat'],
         time: '10',
         reviews: [
@@ -219,5 +232,11 @@ export class RecipeService {
         this.currentRecipe = recipe;
       }
     });
+  }
+  getRecipeById(recipeId: number) {
+    let recipe = this.recipesList?.find(
+      (recipe) => recipeId == recipe.recipeId
+    );
+    return recipe;
   }
 }
