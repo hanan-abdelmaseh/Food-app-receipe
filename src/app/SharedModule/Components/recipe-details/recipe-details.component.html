@@ -154,7 +154,7 @@
                             <img *ngIf="
                   currentUserHasReview == false &&
                   currentUser!.id == review.reviewWriterId
-                " class="delete-review-icon" src="../../../../assets/images/cross.png" alt="" srcset="" (click)="deleteReview()" />
+                " class="delete-review-icon" src="../../../../assets/images/cross.png" alt="" srcset="" (click)="deleteReview(i)" />
                         </div>
                         <div>
                             {{ review.rating }}

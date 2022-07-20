@@ -22,9 +22,9 @@ export class ReviewService {
   }
 
   addReview(newReview: ReviewModel) {
-    this.recipeService.currentRecipe?.reviews.push(newReview);
-    this.getAllReviews();
-    this.getReviewsWriters();
+    // this.recipeService.currentRecipe?.reviews.push(newReview);
+    // this.getAllReviews();
+    // this.getReviewsWriters();
   }
 
   getReviewsWriters() {
@@ -35,12 +35,11 @@ export class ReviewService {
     });
   }
 
-  deleteReview() {
-    let index = this.allReviews.findIndex(
-      (review) => review.reviewWriterId == this.userService.currentUser.id
-    );
-    console.log(index);
+  deleteReview(index: number) {
     this.allReviews.splice(index, 1);
     this.recipeReviewers?.splice(index, 1);
+    console.log(index);
+    console.log(this.allReviews);
+    console.log(this.recipeReviewers);
   }
 }

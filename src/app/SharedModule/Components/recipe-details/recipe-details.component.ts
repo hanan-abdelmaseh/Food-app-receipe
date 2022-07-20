@@ -90,7 +90,8 @@ export class RecipeDetailsComponent implements OnInit {
   }
 
   getAllReviews() {
-    this.allReviews = this.currentRecipe?.reviews!;
+    this.reviewService.getAllReviews();
+    this.allReviews = this.reviewService.allReviews;
   }
 
   getRecipeReviewrs() {
@@ -102,11 +103,11 @@ export class RecipeDetailsComponent implements OnInit {
   }
 
   isCurrentUserHasReview() {
-    this.reviewService.allReviews.forEach((review) => {
-      if (review.reviewWriterId == this.currentUser?.id) {
-        this.currentUserHasReview = true;
-      }
-    });
+    // this.reviewService.allReviews.forEach((review) => {
+    //   if (review.reviewWriterId == this.currentUser?.id) {
+    //     this.currentUserHasReview = true;
+    //   }
+    // });
   }
 
   addNewReview(
@@ -115,22 +116,22 @@ export class RecipeDetailsComponent implements OnInit {
     reviewContent: string,
     rating: number
   ) {
-    let newReview = {
-      reviewWriterId: reviewWriterId,
-      reviewDate: reviewDate,
-      reviewContent: reviewContent,
-      rating: rating,
-    };
-    this.reviewService.addReview(newReview);
-    this.allReviews = this.reviewService.allReviews;
-    this.recipeReviwers = this.reviewService.recipeReviewers;
-    this.currentUserHasReview = true;
+    // let newReview = {
+    //   reviewWriterId: reviewWriterId,
+    //   reviewDate: reviewDate,
+    //   reviewContent: reviewContent,
+    //   rating: rating,
+    // };
+    // this.reviewService.addReview(newReview);
+    // this.allReviews = this.reviewService.allReviews;
+    // this.recipeReviwers = this.reviewService.recipeReviewers;
+    // this.currentUserHasReview = true;
   }
 
-  deleteReview() {
-    this.reviewService.deleteReview();
-    this.allReviews = this.reviewService.allReviews;
-    this.recipeReviwers = this.reviewService.recipeReviewers;
-    this.currentUserHasReview = false;
+  deleteReview(index: number) {
+    // this.reviewService.deleteReview(index);
+    // this.allReviews = this.reviewService.allReviews;
+    // this.recipeReviwers = this.reviewService.recipeReviewers;
+    // this.currentUserHasReview = false;
   }
 }
