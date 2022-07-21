@@ -15,6 +15,7 @@ import { AboutComponent } from './Components/about/about.component';
 import { HomeComponent } from './Components/home/home.component';
 import { BrwosingComponent } from './browsing/Components/brwosing/brwosing.component';
 import { PantryComponent } from './PantryModule/Components/pantry/pantry.component';
+import { ReceipeComponent } from './ReceipesModule/Components/receipe/receipe.component';
 
 
 const routes: Routes = [
@@ -24,6 +25,7 @@ const routes: Routes = [
       { path: 'home', component: HomeComponent },
       { path: 'feed', component: FeedComponent },
       { path: 'about', component: AboutComponent },
+      {path:'receipe' ,component:ReceipeComponent},
       { path: 'browse', component: BrwosingComponent},
       {path:'pantry' , component:PantryComponent}
   ]},

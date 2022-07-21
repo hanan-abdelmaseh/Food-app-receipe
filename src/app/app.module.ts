@@ -31,8 +31,12 @@ import { FormsModule } from '@angular/forms';
 import { AboutComponent } from './Components/about/about.component';
 import { HomeComponent } from './Components/home/home.component';
 import { NewsletterComponent } from './Components/newsletter/newsletter.component';
+import { ReceipesModule } from './ReceipesModule/receipes.module';
 
 
+
+import { NgxPaginationModule } from 'ngx-pagination';
+import{HttpClientModule} from '@angular/common/http'
 @NgModule({
 
   declarations: [
@@ -62,7 +66,10 @@ import { NewsletterComponent } from './Components/newsletter/newsletter.componen
     FormsModule,
     SharedModule,
     BrowsingModule,
-    PantryModule
+    PantryModule,
+    ReceipesModule,
+    NgxPaginationModule,
+    HttpClientModule
 
   ],exports:[
     
