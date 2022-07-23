@@ -27,7 +27,7 @@ import {
   GoogleLoginProvider,
   FacebookLoginProvider,
 } from '@abacritt/angularx-social-login';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AboutComponent } from './Components/about/about.component';
 import { HomeComponent } from './Components/home/home.component';
 import { NewsletterComponent } from './Components/newsletter/newsletter.component';
@@ -36,7 +36,11 @@ import { ReceipesModule } from './ReceipesModule/receipes.module';
 
 
 import { NgxPaginationModule } from 'ngx-pagination';
-import{HttpClientModule} from '@angular/common/http'
+import{HttpClientModule} from '@angular/common/http';
+
+import {MatSelectModule} from '@angular/material/select';
+import { MatOptionModule } from '@angular/material/core';
+import { MatFormFieldModule } from '@angular/material/form-field';
 @NgModule({
 
   declarations: [
@@ -64,12 +68,17 @@ import{HttpClientModule} from '@angular/common/http'
     UserModule,
     FeedModule,
     FormsModule,
+    ReactiveFormsModule,
     SharedModule,
     BrowsingModule,
     PantryModule,
     ReceipesModule,
     NgxPaginationModule,
-    HttpClientModule
+    HttpClientModule,
+    MatSelectModule,
+    MatFormFieldModule,
+    MatOptionModule
+    
 
   ],exports:[
     

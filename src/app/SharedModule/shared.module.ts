@@ -15,7 +15,9 @@ import { FooterComponent } from './Components/footer/footer.component';
 import { NextDirective } from './Components/directives/next.directive';
 import { PrevDirective } from './Components/directives/prev.directive';
 
-
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import {MatSelectModule} from '@angular/material/select';
+import {  MatFormFieldModule } from '@angular/material/form-field';
 @NgModule({
   declarations: [
     HeaderComponent,
@@ -34,7 +36,13 @@ import { PrevDirective } from './Components/directives/prev.directive';
   imports: [
     CommonModule,
     RouterModule,
-    MatMenuModule
+    MatMenuModule,
+    MatSelectModule,
+   
+    FormsModule,
+    ReactiveFormsModule,
+    MatFormFieldModule
+    
   ],
   exports: [
     HeaderComponent,
@@ -46,7 +54,8 @@ import { PrevDirective } from './Components/directives/prev.directive';
     FooterComponent,
     CarsolComponent,
     SearchComponent,
-    FilterComponent
+    FilterComponent,
+    
   ]
 })
 export class SharedModule { }

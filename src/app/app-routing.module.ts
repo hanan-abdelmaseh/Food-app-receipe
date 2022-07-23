@@ -19,15 +19,24 @@ import { ReceipeComponent } from './ReceipesModule/Components/receipe/receipe.co
 
 
 const routes: Routes = [
-  { path: '', pathMatch: 'full', redirectTo: 'mainLAyout' },
-    { path: 'mainLAyout', component: MainLayoutComponent , 
+  { path: '',component: MainLayoutComponent,
     children:[ 
+      {path:'' , redirectTo:'/home' , pathMatch:'full'},
       { path: 'home', component: HomeComponent },
       { path: 'feed', component: FeedComponent },
       { path: 'about', component: AboutComponent },
       {path:'receipe' ,component:ReceipeComponent},
       { path: 'browse', component: BrwosingComponent},
-      {path:'pantry' , component:PantryComponent}
+      {path:'pantry' , component:PantryComponent},
+      {
+        path: 'profile',
+        component: UserProfileComponent,
+        children: [
+          { path: 'collections', component: UserCollectionsComponent },
+          { path: 'preferences', component: UserPreferencesComponent },
+          { path: 'setting', component: UserSettingsComponent },
+        ],
+      },
   ]},
  
  
@@ -39,15 +48,7 @@ const routes: Routes = [
     path: 'profile/collections/:collectionName',
     component: CollectionDetailsComponent,
   },
-  {
-    path: 'profile',
-    component: UserProfileComponent,
-    children: [
-      { path: 'collections', component: UserCollectionsComponent },
-      { path: 'preferences', component: UserPreferencesComponent },
-      { path: 'setting', component: UserSettingsComponent },
-    ],
-  },
+  
 ];
 
 @NgModule({
