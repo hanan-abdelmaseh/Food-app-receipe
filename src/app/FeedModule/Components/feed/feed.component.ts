@@ -15,6 +15,8 @@ export class FeedComponent implements OnInit {
   public recipesList: RecipeModel[];
   public currentRecipe: RecipeModel | null = null;
   public recipeAuther: UserModel | null = null;
+  title: string = 'Feed';
+  text: string = 'Our Feed';
   imgagesList: SliderImg[] = [];
   constructor(
     private _ImagesService: ImagesService,

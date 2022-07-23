@@ -16,6 +16,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 /* import auth*/
 import { AuthModule } from './AuthModule/auth.module';
 import { UserModule } from './UserModule/user.module';
+import { BrowsingModule } from './browsing/browsing.module';
+import { PantryModule } from './PantryModule/pantry.module';
 
 import {
   SocialLoginModule,
@@ -31,8 +33,19 @@ import { CollectionsService } from './Services/Profile Services/Collections-Serv
 import { ReviewService } from './Services/ReviewService/review-service.service';
 import { HttpClientModule } from '@angular/common/http';
 
+// @NgModule({
+//   declarations: [AppComponent, MainLayoutComponent, HeroComponent],
+import { AboutComponent } from './Components/about/about.component';
+import { HomeComponent } from './Components/home/home.component';
+
 @NgModule({
-  declarations: [AppComponent, MainLayoutComponent, HeroComponent],
+  declarations: [
+    AppComponent,
+    MainLayoutComponent,
+    HeroComponent,
+    AboutComponent,
+    HomeComponent,
+  ],
 
   imports: [
     BrowserModule,
@@ -46,7 +59,11 @@ import { HttpClientModule } from '@angular/common/http';
     FormsModule,
     SharedModule,
     HttpClientModule,
+    BrowsingModule,
+    PantryModule,
   ],
+
+  exports: [],
   providers: [
     {
       provide: 'SocialAuthServiceConfig',

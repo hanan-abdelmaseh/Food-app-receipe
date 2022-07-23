@@ -12,19 +12,7 @@ box-shadow:  0 8px 16px #dce1e1;
   width: 100%;
   height: 500px;
 }
-.fade{
-  animation-name: fade;
-  animation-duration: 1s;
-}
-@keyframes fade{
-  from {
-     opacity: 0.4;
-  }
-  to {
-     opacity: 1;
-  }
 
-}
 .dots-container{
   display: flex;
   justify-content: center;
