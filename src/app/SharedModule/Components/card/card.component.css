@@ -23,4 +23,13 @@
     cursor: pointer;
     font-size: 20px; 
 }
+/**/
+/* .mat-form-field-infix {
+    display: inline !important;
+    width:0 !important;
+} */
+.mat-form-field{
+    height: 50% !important;
+    width: 20px !important;
+}
 

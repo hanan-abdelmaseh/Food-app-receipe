@@ -35,23 +35,4 @@ export class CarsolComponent implements OnInit {
     this.listItems = this.CarsolService.listShown;
     this.x = this.CarsolService.x;
   }
-  onPrev() {
-    console.log(this.selectedIndex);
-    console.log(this.carsolItems.length - 1);
-
-    if (this.selectedIndex === 0) {
-      this.selectedIndex === this.carsolItems.length - 1;
-    } else {
-      this.selectedIndex--;
-    }
-  }
-  onNext() {
-    console.log(this.selectedIndex);
-    console.log(this.carsolItems.length - 1);
-    if (this.selectedIndex === this.carsolItems.length - 1) {
-      this.selectedIndex = 0;
-    } else {
-      this.selectedIndex++;
-    }
-  }
 }

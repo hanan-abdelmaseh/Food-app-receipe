@@ -1,25 +1,87 @@
-.navbar-nav{    
-padding-left: 18%;
+.navbar {
+    background: linear-gradient(rgba(15, 23, 43, .9), rgba(15, 23, 43, .9));
 }
 
 
-.fa-solid{
+/* .navbar-nav{    
+padding-left: 18%;
+} */
+
+.fa-solid {
     font-family: 'Font Awesome 6 Free' !important;
     color: var(--secondary-color);
     cursor: pointer;
-    font-size: 16px;
+    font-size: 1.7rem;
 }
-a{
-    font-size: 18px;
+
+a {
+    color: #fff !important;
 }
-.nav-item{
-    margin-left: 25px;
+
+.navbar-brand {
+    font-size: 1.8rem;
+}
+
+.navbar-brand img {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+}
+
+a:hover {
+    color: var(--secondary-color) !important;
+}
+
+.fa-utensils {
+    font-size: 2.5rem;
+}
+
+.active {
+    color: var(--secondary-color) !important;
+}
+
+.nav-item {
     padding: 15px 0;
     cursor: pointer;
-    
 }
+
+.user-link {
+    display: inline-block;
+    height: 30px;
+    width: 30px;
+    background-color: #fff;
+    border-radius: 50%;
+}
+
+.user-link:hover {
+    background-color: var(--secondary-color) !important;
+}
+
+.user-link:hover i {
+    color: #fff !important;
+}
+
 .user-operation a {
-    margin: 0 10px;
+    margin: 1em 0px;
 }
 
+.search-link i:hover {
+    color: #fff !important;
+}
 
+.fa-bars {
+    color: #fff !important;
+}
+
+.navbar-toggler:hover .fa-bars {
+    color: var(--secondary-color) !important;
+}
+
+@media only screen and (min-width: 992px) {
+    .nav-item {
+        margin-right: 2em;
+    }
+    .user-operation a {
+        margin: 0 15px;
+    }
+}

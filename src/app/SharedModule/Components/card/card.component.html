@@ -1,4 +1,4 @@
-<div class="card">
+<!-- <div class="card">
     <img src="../../../../assets/images/images1.jpg" class="card-img-top" alt="..." />
     <div class="card-body">
         <h5 class="card-title">Old Fashion Blueberry Cobbler</h5>
@@ -14,13 +14,50 @@
         </div>
         <a href="#" class="btn Learn-btn mb-2">Learn More</a>
     </div>
-</div>
-<!-- <div (click)="openRecipeDetails(currentRecipe!.recipeId)">
-    <div>Recipe Name : {{ currentRecipe?.recipeName }}</div>
-
-    <div>Recipe Auther : {{ recipeAuther?.id }}</div>
-
-    <button *ngFor="let collection of currentUser?.userCollections">
-    add to collection {{ collection.collectionName }}
-  </button>
 </div> -->
+<div (click)="openRecipeDetails(currentRecipe!.recipeId)">
+    <div class="card">
+        <img [src]="imgSrc" class="card-img-top" alt="..." />
+        <div class="card-body">
+            <h5 class="card-title">{{ title }}</h5>
+            <p class="card-text">{{ text }}</p>
+            <div class="starts d-flex justify-content-between">
+                <div class="">
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star-half"></i>
+                </div>
+                <div>
+                    <button class="btn Learn-btn me-auto">
+            <mat-form-field>
+              <mat-select [formControl]="toppings" multiple>
+                <mat-select-trigger>
+                  {{toppings.value?.[0] || ''}}
+                  <span
+                    *ngIf="(toppings.value?.length || 0) > 1"
+                    class="example-additional-selection"
+                  >
+                    (+{{ (toppings.value?.length || 0) - 1 }}
+                    {{ toppings.value?.length === 2 ? "other" : "others" }})
+                  </span>
+                </mat-select-trigger>
+                <mat-option
+                  *ngFor="let topping of toppingList"
+                  [value]="topping"
+                  >{{ topping }}</mat-option
+                >
+              </mat-select>
+            </mat-form-field>
+          </button>
+                </div>
+            </div>
+            <a href="#" class="btn Learn-btn mb-2">Learn More</a>
+        </div>
+    </div>
+
+    <!-- <button *ngFor="let collection of currentUser?.userCollections">
+    add to collection {{ collection.collectionName }}
+  </button> -->
+</div>

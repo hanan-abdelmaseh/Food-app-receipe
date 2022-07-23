@@ -6,7 +6,7 @@
     padding: 0;
     text-align: left;
     color: #FFFFFF;
-    font-size: 15px;
+   
     font-weight: normal;
     text-transform: capitalize;
     transition: .3s;
@@ -28,13 +28,13 @@
     font-family: 'Font Awesome 6 Free' !important;
     color: var(--secondary-color);
     cursor: pointer;
-    font-size: 16px;
+    font-size: 1.7rem;
 }
 .fa-brands{
     font-family: 'Font Awesome 6 Brands' !important;
   
     cursor: pointer;
-    font-size: 16px;
+    font-size: 1.7rem;
 }
 .social-link{
     margin-right: 5px;

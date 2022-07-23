@@ -18,6 +18,7 @@ import { AboutComponent } from './Components/about/about.component';
 import { HomeComponent } from './Components/home/home.component';
 import { BrwosingComponent } from './browsing/Components/brwosing/brwosing.component';
 import { PantryComponent } from './PantryModule/Components/pantry/pantry.component';
+import { ReceipeComponent } from './ReceipesModule/Components/receipe/receipe.component';
 
 const routes: Routes = [
   {
@@ -35,6 +36,7 @@ const routes: Routes = [
       { path: 'recipe/:recipeId', component: RecipeDetailsComponent },
       { path: 'feed', component: FeedComponent },
       { path: 'user/:userId', component: GeneralUserComponent },
+      { path: 'search', component: ReceipeComponent },
 
       {
         path: 'profile/collections/:collectionName',
@@ -52,9 +54,9 @@ const routes: Routes = [
       },
     ],
   },
+  { path: 'login/loignwithemail', component: LoginWithEmailComponent },
 
   { path: 'login', component: LoginComponent },
-  { path: 'login/loignwithemail', component: LoginWithEmailComponent },
 ];
 
 @NgModule({

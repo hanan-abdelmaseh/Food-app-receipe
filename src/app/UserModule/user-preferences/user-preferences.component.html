@@ -40,7 +40,7 @@
         shownPreferencesList[i] == true &&
         allPreferences[i].categories.length != 0
       ">
-            <div class="preferences d-flex overflow-auto flex-lg-wrap m-auto">
+            <div class="w-100 preferences d-flex overflow-hidden flex-wrap m-auto">
                 <div ChangeCursor *ngFor="let cat of pref.categories" class="flex-shrink-0 d-flex align-items-center justify-content-center m-2">
                     <div (click)="addToPreferencesList(cat, pref)" class="d-flex preferences-item rounded-pill flex-column align-items-center justify-content-center">
                         <div class="category-name">{{ cat }}</div>
