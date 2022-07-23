@@ -22,7 +22,7 @@ import { PantryComponent } from './PantryModule/Components/pantry/pantry.compone
 const routes: Routes = [
   {
     path: '',
-    pathMatch: 'full',
+    // pathMatch: 'full',
     component: MainLayoutComponent,
     children: [
       { path: '', pathMatch: 'full', redirectTo: '/home' },
