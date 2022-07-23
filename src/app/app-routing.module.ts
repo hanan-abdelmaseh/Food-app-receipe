@@ -18,6 +18,7 @@ import { PantryComponent } from './PantryModule/Components/pantry/pantry.compone
 import { ReceipeComponent } from './ReceipesModule/Components/receipe/receipe.component';
 
 
+
 const routes: Routes = [
   { path: '',component: MainLayoutComponent,
     children:[ 
