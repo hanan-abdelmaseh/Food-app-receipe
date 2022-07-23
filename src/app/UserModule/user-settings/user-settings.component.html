@@ -1,1 +1,60 @@
-<p>user-settings works!</p>
+<main class="my-5 w-100">
+    <form>
+        <section class="d-flex flex-column w-100 my-5">
+            <div class="mb-3 d-flex justify-content-evenly">
+                <label for="email" class="form-label">Your Email</label>
+                <input type="text" class="form-control custom-input" disabled name="email" id="email" value="Hassanfarag165" />
+            </div>
+            <div class="mb-3 d-flex justify-content-evenly">
+                <label for="name" class="form-label">Your Name</label>
+                <input type="text" class="form-control custom-input" name="name" id="name" />
+            </div>
+            <div class="mb-3 d-flex justify-content-evenly">
+                <label for="password" class="form-label">Your Password</label>
+                <input type="password" class="form-control custom-input" name="password" id="password" />
+            </div>
+            <div class="mb-3 d-flex justify-content-evenly">
+                <label for="bio" class="form-label">Your Bio</label>
+                <textarea class="form-control custom-input" name="bio" id="bio" rows="3"></textarea>
+            </div>
+            <div class="mb-3 d-flex justify-content-evenly">
+                <label for="facebook" class="form-label">FaceBook Acount</label>
+                <input type="text" class="form-control custom-input" name="faceBookLink" id="facebook" />
+            </div>
+            <div class="mb-3 d-flex justify-content-evenly">
+                <label for="twitter" class="form-label">Twitter Acount</label>
+                <input type="text" class="form-control custom-input" name="faceBookLink" id="twitter" />
+            </div>
+            <div class="mb-3 d-flex justify-content-evenly">
+                <label for="website" class="form-label">Your Website</label>
+                <input type="text" class="form-control custom-input" id="website" />
+            </div>
+            <div class="mb-3 d-flex justify-content-evenly">
+                <label for="img" class="form-label">Avatar</label>
+                <input class="form-control custom-input" type="file" id="img" />
+            </div>
+            <div class="w-100 d-flex justify-content-evenly flex-wrap my-3">
+                <div class="mb-3 me-3 d-flex justify-content-evenly">
+                    <label for="city" class="form-label">City</label>
+                    <input type="text" class="form-control custom-input-location" id="city" />
+                </div>
+                <div class="mb-3 me-3 d-flex justify-content-evenly">
+                    <label for="state" class="form-label">State</label>
+                    <input type="text" class="form-control custom-input-location" id="state" />
+                </div>
+                <div class="mb-3 me-3 d-flex justify-content-evenly">
+                    <label for="country" class="form-label">Country</label>
+                    <input type="text" class="form-control custom-input-location" id="country" />
+                </div>
+            </div>
+        </section>
+        <div class="w-100 d-flex justify-content-evenly">
+            <button type="submit" class="custom-submit-btn rounded-pill">
+        Submit
+      </button>
+            <button type="submit" class="custom-cancel-btn rounded-pill">
+        Cancel
+      </button>
+        </div>
+    </form>
+</main>

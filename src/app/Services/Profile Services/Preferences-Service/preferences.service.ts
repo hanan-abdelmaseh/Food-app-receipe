@@ -17,6 +17,14 @@ export class PreferencesService {
         name: 'ALLERGIES',
         categories: [],
       },
+      {
+        name: 'Cusions',
+        categories: [],
+      },
+      {
+        name: 'Disliked Ingrediants',
+        categories: [],
+      },
     ];
     this.allPreferences = [
       {
@@ -44,6 +52,37 @@ export class PreferencesService {
           'GG-FREE',
           'GLUTEN-FREE',
         ],
+      },
+
+      {
+        name: 'Cusions',
+        categories: [
+          'Southwest Asia (middle East)',
+          'Asian',
+          'European',
+          'Southwestern U.S.',
+          'Chinese',
+          'Japanese',
+          'Greek',
+          'Indonesian',
+          'African',
+          'Moroccan',
+          'South African',
+          'Native American',
+          'South American',
+          'Caribbean',
+          'Cuban',
+          'Spanish',
+          'Canadian',
+          'Kid Friendly',
+          'Turkish',
+          'Hawaiian',
+          'German',
+        ],
+      },
+      {
+        name: 'Disliked Ingrediants',
+        categories: ['Egg', 'Meat', 'Fish', 'Soy', 'Chicken'],
       },
     ];
   }

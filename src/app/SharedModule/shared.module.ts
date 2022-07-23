@@ -9,6 +9,7 @@ import {MatMenuModule} from '@angular/material/menu';
 import { RecipeDetailsComponent } from './Components/recipe-details/recipe-details.component';
 import { NotFoundComponent } from './Components/not-found/not-found.component';
 import { CarusalComponent } from './Components/carusal/carusal.component';
+import { GeneralUserComponent } from './Components/general-user/general-user.component';
 
 
 @NgModule({
@@ -19,7 +20,8 @@ import { CarusalComponent } from './Components/carusal/carusal.component';
     NavbarComponent,
     RecipeDetailsComponent,
     NotFoundComponent,
-    CarusalComponent
+    CarusalComponent,
+    GeneralUserComponent
   ],
   imports: [
     CommonModule,

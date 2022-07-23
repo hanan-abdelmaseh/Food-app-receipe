@@ -328,7 +328,7 @@ export class CurrentUserService {
       },
     ];
 
-    this.currentUser = this.allUsers[1];
+    this.currentUser = this.allUsers[3];
   }
 
   getUserById(id: number) {

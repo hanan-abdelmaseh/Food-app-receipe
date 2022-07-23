@@ -64,37 +64,4 @@ export class CollectionsService {
     }
     this.getAllCollections();
   }
-
-  addToCollectionRecipes(collectionName: string, recipeId: number) {
-    let index = this.userService.currentUser.userCollections?.findIndex(
-      (collection) => collection.collectionName == collectionName
-    );
-
-    if (index != undefined) {
-      this.userService.currentUser.userCollections![
-        index
-      ].collectioRecipes.push(recipeId);
-
-      this.userService.currentUser.userCollections![index].noOfRecipes++;
-    }
-    this.getAllCollections();
-    localStorage.clear();
-    localStorage.setItem('users', JSON.stringify(this.userService.allUsers));
-  }
-
-  removeFromCollectionRecipes(collectionName: string, recipeId: number) {
-    let index = this.userService.currentUser.userCollections?.findIndex(
-      (collection) => collection.collectionName == collectionName
-    );
-    if (index != undefined) {
-      let recipeIndex = this.userService.currentUser.userCollections![
-        index
-      ].collectioRecipes.findIndex((index) => index == recipeId);
-      this.userService.currentUser.userCollections![index].noOfRecipes--;
-      this.userService.currentUser.userCollections![
-        index
-      ].collectioRecipes.splice(recipeIndex, 1);
-    }
-    this.getAllCollections();
-  }
 }

@@ -29,6 +29,7 @@ import { FormsModule } from '@angular/forms';
 import { CurrentUserService } from './Services/Profile Services/Current-User-Service/current-user.service';
 import { CollectionsService } from './Services/Profile Services/Collections-Service/collections-service.service';
 import { ReviewService } from './Services/ReviewService/review-service.service';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [AppComponent, MainLayoutComponent, HeroComponent],
@@ -44,6 +45,7 @@ import { ReviewService } from './Services/ReviewService/review-service.service';
     FeedModule,
     FormsModule,
     SharedModule,
+    HttpClientModule,
   ],
   providers: [
     {

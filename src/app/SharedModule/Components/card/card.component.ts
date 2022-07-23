@@ -35,13 +35,6 @@ export class CardComponent implements OnInit, OnChanges {
     }
   }
 
-  addToCollectionRecipes(collectionName: string, recipeId: number) {
-    this.collectionService.addToCollectionRecipes(collectionName, recipeId);
-
-    console.log(this.currentUser?.userCollections);
-    console.log(this.collectionService?.userCollectionsList);
-  }
-
   openRecipeDetails(recipeId: number) {
     this.route.navigate(['/recipe', recipeId]);
     console.log('navigate to' + recipeId);

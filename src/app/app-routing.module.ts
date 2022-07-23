@@ -11,6 +11,8 @@ import { FeedComponent } from './FeedModule/Components/feed/feed.component';
 import { RecipeDetailsComponent } from './SharedModule/Components/recipe-details/recipe-details.component';
 import { NotFoundComponent } from './SharedModule/Components/not-found/not-found.component';
 import { CarusalComponent } from './SharedModule/Components/carusal/carusal.component';
+import { LoginWithEmailComponent } from './AuthModule/login-with-email/login-with-email.component';
+import { GeneralUserComponent } from './SharedModule/Components/general-user/general-user.component';
 
 const routes: Routes = [
   { path: '', pathMatch: 'full', redirectTo: 'mainLAyout' },
@@ -18,9 +20,11 @@ const routes: Routes = [
   { path: '', pathMatch: 'full', redirectTo: 'home' },
   { path: 'home', component: FeedComponent },
   { path: 'login', component: LoginComponent },
+  { path: 'login/loignwithemail', component: LoginWithEmailComponent },
   { path: 'recipe/notfound', component: NotFoundComponent },
   { path: 'recipe/:recipeId', component: RecipeDetailsComponent },
   { path: 'feed', component: FeedComponent },
+  { path: 'user/:userId', component: GeneralUserComponent },
 
   {
     path: 'profile/collections/:collectionName',

@@ -64,13 +64,6 @@ export class RecipeService {
             reviewDate: '18/8/12',
             reviewWriterId: 2,
           },
-          {
-            rating: 5,
-            reviewContent:
-              "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book",
-            reviewDate: '18/8/12',
-            reviewWriterId: 3,
-          },
         ],
         noOfIngrediants: 5,
       },

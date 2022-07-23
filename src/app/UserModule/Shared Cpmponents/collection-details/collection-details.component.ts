@@ -52,10 +52,10 @@ export class CollectionDetailsComponent implements OnInit {
   openRecipeDetails(recipeId: number) {
     this.router.navigate(['/recipe', recipeId]);
   }
-  removeRecipe(recipeId: number, collectionName: string) {
-    this.collectionService.removeFromCollectionRecipes(
-      collectionName,
-      recipeId
-    );
-  }
+  // removeRecipe(recipeId: number, collectionName: string) {
+  //   this.collectionService.removeFromCollectionRecipes(
+  //     collectionName,
+  //     recipeId
+  //   );
+  // }
 }
