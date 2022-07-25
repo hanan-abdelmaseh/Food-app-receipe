@@ -1,6 +1,9 @@
+main {
+    width: 75%;
+}
+
 .icon {
-    width: 40%;
-    overflow: hidden;
+    width: 2em;
     text-align: center;
 }
 
@@ -37,16 +40,16 @@
 }
 
 .add-pref-outerbg {
-    width: 9em;
-    height: 9em;
+    width: 8em;
+    height: 8em;
     background-color: var(--main-color);
     fill-opacity: .5;
     border-radius: 50%;
 }
 
 .add-pref-content {
-    width: 8.5em;
-    height: 8.5em;
+    width: 7.5em;
+    height: 7.5em;
     background-color: white;
     border-radius: 50%;
 }
@@ -56,10 +59,6 @@
     text-align: center;
     font-size: .7em;
     text-overflow: ellipsis;
-}
-
-.pref-item {
-    width: 60%
 }
 
 .preferences-item {
@@ -88,13 +87,8 @@
 }
 
 @media screen and (max-width: 992px) {
-    .add-pref-outerbg {
-        width: 6em;
-        height: 6em;
-    }
-    .add-pref-content {
-        width: 5.5em;
-        height: 5.5em;
+    main {
+        width: 90%;
     }
     .cat-name {
         width: 80%;
@@ -106,7 +100,7 @@
         text-align: center;
         font-size: .8em;
     }
-    .pref-item {
+    /* .pref-item {
         width: 90%
-    }
+    } */
 }

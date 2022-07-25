@@ -1,16 +1,18 @@
-.fa-solid{
+.fa-solid {
     font-family: 'Font Awesome 6 Free' !important;
 }
-.search-container{
-    position:relative;
-    top:-40px;
-    
+
+.search-container {
+    position: relative;
+    top: -40px;
 }
-.search-container .row{
+
+.search-container .row {
     background-color: #F7F4EF;
     border-radius: 0.9rem;
 }
-input{
+
+input {
     position: relative;
     display: block;
     width: 100%;
@@ -24,4 +26,17 @@ input{
     border: 1px solid #e0e0e0;
     transition: all 300ms ease;
     border-radius: 0.9rem;
+}
+
+.filter-section-padding {
+    margin: 1em 0px;
+}
+
+select {
+    font-size: .8em;
+    max-width: 70%;
+}
+
+select:hover {
+    cursor: pointer;
 }

@@ -232,4 +232,5 @@ export class RecipeService {
     );
     return recipe;
   }
+  addRecipe(recipe: RecipeModel) {}
 }

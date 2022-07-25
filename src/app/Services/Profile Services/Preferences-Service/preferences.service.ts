@@ -28,14 +28,14 @@ export class PreferencesService {
     ];
     this.allPreferences = [
       {
-        name: 'DIETS',
+        name: 'Nutrition',
         categories: [
-          'LOW FODMAP',
-          'VEGETARIAN (NO MEAT, NO DAIRY)',
-          'VEGETARIAN',
-          ' VEGAN',
-          'PALEO',
-          'PESCETARIAN',
+          'Low Fat 10g or less per serving',
+          'Low Calories 400 kcal or less per serving',
+          'High Fiber 6g or more per serving ',
+          'Low Carb 30g or less per serving',
+          'Low Sodium 500mg or less per serving',
+          'Low Sugar 10g or less per serving',
         ],
       },
       {

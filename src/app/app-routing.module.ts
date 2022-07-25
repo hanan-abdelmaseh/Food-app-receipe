@@ -18,7 +18,7 @@ import { AboutComponent } from './Components/about/about.component';
 import { HomeComponent } from './Components/home/home.component';
 import { BrwosingComponent } from './browsing/Components/brwosing/brwosing.component';
 import { PantryComponent } from './PantryModule/Components/pantry/pantry.component';
-import { ReceipeComponent } from './ReceipesModule/Components/receipe/receipe.component';
+import { SearchComponent } from './SerarchModule/Components/SearchComponent/search/search.component';
 
 const routes: Routes = [
   {
@@ -36,7 +36,8 @@ const routes: Routes = [
       { path: 'recipe/:recipeId', component: RecipeDetailsComponent },
       { path: 'feed', component: FeedComponent },
       { path: 'user/:userId', component: GeneralUserComponent },
-      { path: 'search', component: ReceipeComponent },
+
+      { path: 'search2', component: SearchComponent },
 
       {
         path: 'profile/collections/:collectionName',

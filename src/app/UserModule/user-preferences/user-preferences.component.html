@@ -1,5 +1,5 @@
-<main class="mt-5 d-flex flex-column w-75 m-auto">
-    <section *ngFor="let pref of allPreferences; let i = index" class="d-flex text-center align-items-center flex-column mt-5 w-100">
+<main class="my-5 d-flex flex-column m-auto">
+    <section *ngFor="let pref of allPreferences; let i = index; let last = last" class="d-flex text-center align-items-center flex-column mt-5 w-100">
         <h3>{{ pref.name }}</h3>
         <h5 class="my-3">
             Select from the {{ pref.name }} below and we will only show you recipes that match.
@@ -10,9 +10,8 @@
             <article class="d-flex flex-nowrap">
                 <div ChangeCursor class="add-pref-outerbg d-flex align-items-center justify-content-center position-relative" (click)="showThisPreferencesList(i)">
                     <div class="add-pref-content d-flex flex-column align-items-center justify-content-center">
-                        <div class="icon">
-                            <img class="icon w-75" src="../../../assets/images/add.png " alt=" " srcset="" />
-                        </div>
+                        <img class="icon" src="../../../assets/images/add.png " alt=" " srcset="" />
+
                         <span class="text-add text-center">{{ pref.name }}</span>
                     </div>
                 </div>
@@ -39,15 +38,15 @@
         <section *ngIf="
         shownPreferencesList[i] == true &&
         allPreferences[i].categories.length != 0
-      ">
-            <div class="w-100 preferences d-flex overflow-hidden flex-wrap m-auto">
-                <div ChangeCursor *ngFor="let cat of pref.categories" class="flex-shrink-0 d-flex align-items-center justify-content-center m-2">
+      " class="preferences">
+            <div class="w-100 d-flex flex-lg-wrap m-auto justify-content-start justify-content-md-center">
+                <div ChangeCursor *ngFor="let cat of pref.categories" class="flex-shrink-0 d-flex align-items-center m-2">
                     <div (click)="addToPreferencesList(cat, pref)" class="d-flex preferences-item rounded-pill flex-column align-items-center justify-content-center">
                         <div class="category-name">{{ cat }}</div>
                     </div>
                 </div>
             </div>
         </section>
-        <div class="horizontal-sep"></div>
+        <div [hidden]="last" class="horizontal-sep"></div>
     </section>
 </main>

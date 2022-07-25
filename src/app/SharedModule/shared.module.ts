@@ -10,10 +10,7 @@ import { RecipeDetailsComponent } from './Components/recipe-details/recipe-detai
 import { NotFoundComponent } from './Components/not-found/not-found.component';
 import { CarusalComponent } from './Components/carusal/carusal.component';
 import { GeneralUserComponent } from './Components/general-user/general-user.component';
-import { BreadCrumbComponent } from './Components/bread-crumb/bread-crumb.component';
 import { SavingComponent } from './Components/saving/saving.component';
-import { SearchComponent } from './Components/search/search.component';
-import { FilterComponent } from './Components/filter/filter.component';
 import { CarsolComponent } from './Components/carsol/carsol.component';
 import { FooterComponent } from './Components/footer/footer.component';
 import { NextDirective } from './Components/directives/next.directive';
@@ -22,6 +19,7 @@ import { PrevDirective } from './Components/directives/prev.directive';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatSelectModule } from '@angular/material/select';
 import { MatFormFieldModule } from '@angular/material/form-field';
+import { BreadCrumbComponent } from './Components/bread-crumb/bread-crumb.component';
 @NgModule({
   declarations: [
     HeaderComponent,
@@ -34,8 +32,6 @@ import { MatFormFieldModule } from '@angular/material/form-field';
     GeneralUserComponent,
     BreadCrumbComponent,
     SavingComponent,
-    SearchComponent,
-    FilterComponent,
     FooterComponent,
   ],
   imports: [
@@ -43,7 +39,6 @@ import { MatFormFieldModule } from '@angular/material/form-field';
     RouterModule,
     MatMenuModule,
     MatSelectModule,
-
     FormsModule,
     ReactiveFormsModule,
     MatFormFieldModule,
@@ -53,11 +48,9 @@ import { MatFormFieldModule } from '@angular/material/form-field';
     SliderComponent,
     CardComponent,
     NavbarComponent,
-    BreadCrumbComponent,
-    SearchComponent,
-    FilterComponent,
     SavingComponent,
     FooterComponent,
+    BreadCrumbComponent,
   ],
 })
 export class SharedModule {}
