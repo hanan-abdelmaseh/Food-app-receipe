@@ -10,7 +10,8 @@ max-height:200px;
 overflow-y: auto;
 /* scroll-behavior: auto; */
 position: relative;
-box-shadow:0,0,0,#000;
+box-shadow:3px 3px 3px 3px #888888;
+border-radius: 0.5rem;
     
    
 }
@@ -29,3 +30,6 @@ box-shadow:0,0,0,#000;
     visibility: hidden;
 }
 
+.searchPantry{
+    background-color:#F7F4EF;
+}

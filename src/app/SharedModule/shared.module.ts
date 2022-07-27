@@ -12,8 +12,7 @@ import { CarusalComponent } from './Components/carusal/carusal.component';
 import { GeneralUserComponent } from './Components/general-user/general-user.component';
 import { BreadCrumbComponent } from './Components/bread-crumb/bread-crumb.component';
 import { SavingComponent } from './Components/saving/saving.component';
-import { SearchComponent } from './Components/search/search.component';
-import { FilterComponent } from './Components/filter/filter.component';
+
 import { CarsolComponent } from './Components/carsol/carsol.component';
 import { FooterComponent } from './Components/footer/footer.component';
 import { NextDirective } from './Components/directives/next.directive';
@@ -34,8 +33,6 @@ import { MatFormFieldModule } from '@angular/material/form-field';
     GeneralUserComponent,
     BreadCrumbComponent,
     SavingComponent,
-    SearchComponent,
-    FilterComponent,
     FooterComponent,
   ],
   imports: [
@@ -54,8 +51,6 @@ import { MatFormFieldModule } from '@angular/material/form-field';
     CardComponent,
     NavbarComponent,
     BreadCrumbComponent,
-    SearchComponent,
-    FilterComponent,
     SavingComponent,
     FooterComponent,
   ],

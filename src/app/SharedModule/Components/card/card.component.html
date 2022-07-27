@@ -1,63 +1,99 @@
-<!-- <div class="card">
-    <img src="../../../../assets/images/images1.jpg" class="card-img-top" alt="..." />
-    <div class="card-body">
-        <h5 class="card-title">Old Fashion Blueberry Cobbler</h5>
-        <p class="card-text">
-            Some quick example text to build on the card title and make up the bulk of the card's content.
-        </p>
-        <div class="starts">
-            <i class="fa-solid fa-star"></i>
-            <i class="fa-solid fa-star"></i>
-            <i class="fa-solid fa-star"></i>
-            <i class="fa-solid fa-star"></i>
-            <i class="fa-solid fa-star-half"></i>
-        </div>
-        <a href="#" class="btn Learn-btn mb-2">Learn More</a>
-    </div>
-</div> -->
-<div (click)="openRecipeDetails(currentRecipe!.recipeId)">
-    <div class="card">
-        <img [src]="imgSrc" class="card-img-top" alt="..." />
+
+<!-- <div (click)="openRecipeDetails(currentRecipe!.recipeId)">
+    <div class="card m-3">
+        <img [src]="imgSrc" class="card-img-top mt-1" alt="..." />
+
         <div class="card-body">
-            <h5 class="card-title">{{ title }}</h5>
-            <p class="card-text">{{ text }}</p>
-            <div class="starts d-flex justify-content-between">
-                <div class="">
-                    <i class="fa-solid fa-star"></i>
-                    <i class="fa-solid fa-star"></i>
-                    <i class="fa-solid fa-star"></i>
-                    <i class="fa-solid fa-star"></i>
-                    <i class="fa-solid fa-star-half"></i>
-                </div>
-                <div>
-                    <button class="btn Learn-btn me-auto">
-            <mat-form-field>
-              <mat-select [formControl]="toppings" multiple>
-                <mat-select-trigger>
-                  {{toppings.value?.[0] || ''}}
-                  <span
-                    *ngIf="(toppings.value?.length || 0) > 1"
-                    class="example-additional-selection"
-                  >
-                    (+{{ (toppings.value?.length || 0) - 1 }}
-                    {{ toppings.value?.length === 2 ? "other" : "others" }})
-                  </span>
-                </mat-select-trigger>
-                <mat-option
-                  *ngFor="let topping of toppingList"
-                  [value]="topping"
-                  >{{ topping }}</mat-option
-                >
-              </mat-select>
-            </mat-form-field>
-          </button>
-                </div>
+            <h4 class="card-title">{{ title }}</h4>
+            <div class="row">
+              <div class="col-lg-12">
+                <div class="starts">
+                  <i class="fa-solid fa-star"></i>
+                  <i class="fa-solid fa-star"></i>
+                  <i class="fa-solid fa-star"></i>
+                  <i class="fa-solid fa-star"></i>
+                  <i class="fa-solid fa-star-half"></i>
+              </div>
+              </div>
             </div>
-            <a href="#" class="btn Learn-btn mb-2">Learn More</a>
+            <div class="row">
+            <div class="col-lg-12">
+              <div class="row d-flex justify-content-center align-items-center">
+                <div class="col-lg-8">
+                  <a href="#" class="btn Learn-btn">Learn More</a>
+                </div>
+                <div class="col-lg-4">
+                  <div class="select">
+                    <mat-form-field>
+                    <mat-select [formControl]="toppings" multiple class="bg-dark">
+                    <mat-select-trigger >
+                    {{toppings.value?.[0] || ''}}
+                    <span
+                      *ngIf="(toppings.value?.length || 0) > 1"
+                      class="example-additional-selection "
+                    >
+                      (+{{ (toppings.value?.length || 0) - 1 }}
+                      {{ toppings.value?.length === 2 ? "other" : "others" }})
+                    </span>
+                    </mat-select-trigger>
+                    <mat-option
+                    *ngFor="let topping of toppingList"
+                    [value]="topping"
+                    >{{ topping }}</mat-option
+                    >
+                    </mat-select>
+                    </mat-form-field>
+                  </div>
+                </div>
+              </div>
+            </div>
+            </div>
+            
         </div>
     </div>
 
-    <!-- <button *ngFor="let collection of currentUser?.userCollections">
+  
+</div>
+<div>
+</div> -->
+ <!-- <button *ngFor="let collection of currentUser?.userCollections">
     add to collection {{ collection.collectionName }}
   </button> -->
-</div>
+    <div class="card">
+        <div class="firstrow"> <h4>First Receipe</h4>  </div>
+        <div class="mediumrow"> <img [src]="imgSrc">
+            <div class="content">
+                <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Similique, ex ut. Quos vitae soluta, ullam, natus quod illum praesentium corrupti illo dolores deserunt esse quidem, error aspernatur non? Illum, id!</p>
+                
+            </div>
+        </div>
+        <div class="lastrow">
+            <div class="boxes"> 
+              <i class="fa-solid fa-star"></i>
+                  <i class="fa-solid fa-star"></i>
+                  <i class="fa-solid fa-star"></i>
+                  <i class="fa-solid fa-star"></i>
+             </div> 
+             <button><mat-form-field >
+              <mat-select [formControl]="toppings" multiple >
+              <mat-select-trigger >
+              {{toppings.value?.[0] || ''}}
+              <span
+                *ngIf="(toppings.value?.length || 0) > 1"
+                class="example-additional-selection "
+              >
+                (+{{ (toppings.value?.length || 0) - 1 }}
+                {{ toppings.value?.length === 2 ? "other" : "others" }})
+              </span>
+              </mat-select-trigger>
+              <mat-option
+              *ngFor="let topping of toppingList"
+              [value]="topping"
+              >{{ topping }}</mat-option
+              >
+              </mat-select>
+              </mat-form-field></button>
+        </div>
+    </div>
+
+

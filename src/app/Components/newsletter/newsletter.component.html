@@ -8,11 +8,12 @@
                         Get access to my latest recipes by joining the weekly newsletter
                     </p>
                 </div>
+
             </div>
             <div class="row">
                 <div class="col-lg-4 col-md-5 text-center m-auto">
                     <form class="mb-5">
-                        <input class="form-control mb-5" type="email" placeholder="Enter your Email Address" />
+                        <input class="form-control mb-5" type="email" placeholder="Enter your Email" />
                         <button class="btn submit-btn">Submit</button>
                     </form>
                 </div>
@@ -22,34 +23,9 @@
 
     <div class="img-cont bg-primary">
         <div class="row m-sm-0">
-            <div class="col-lg-2 col-md-4 col-sm-6">
+            <div class="col-lg-2 col-md-4 col-sm-6 p-0" *ngFor="let img of newsImg">
                 <div class="imgs">
-                    <img src="../../../assets/images/1.jpg" />
-                </div>
-            </div>
-            <div class="col-lg-2 col-md-4 col-sm-6">
-                <div class="imgs">
-                    <img src="../../../assets/images/2.jpg" />
-                </div>
-            </div>
-            <div class="col-lg-2 col-md-4 col-sm-6">
-                <div class="imgs">
-                    <img src="../../../assets/images/3.jpg" />
-                </div>
-            </div>
-            <div class="col-lg-2 col-md-4 col-sm-6">
-                <div class="imgs">
-                    <img src="../../../assets/images/4.jpg" />
-                </div>
-            </div>
-            <div class="col-lg-2 col-md-4 col-sm-6">
-                <div class="imgs">
-                    <img src="../../../assets/images/5.jpg" />
-                </div>
-            </div>
-            <div class="col-lg-2 col-md-4 col-sm-6">
-                <div class="imgs">
-                    <img src="../../../assets/images/6.jpg" />
+                    <img [src]="img.imgUrl" />
                 </div>
             </div>
         </div>

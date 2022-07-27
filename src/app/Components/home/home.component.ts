@@ -22,7 +22,7 @@ export class HomeComponent implements OnInit {
    receipes:any[]=[];
   
    p:number = 1;
-   count: number = 5;
+   count: number = 16;
   constructor(private _CarsolService:CarsolService ,
               private _ReceipesService:ReceipesService) { 
   }
