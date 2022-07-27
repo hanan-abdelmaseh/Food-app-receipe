@@ -1,4 +1,16 @@
-import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+
+import { Component, OnInit } from '@angular/core';
+
+import { MatSnackBar, MatSnackBarHorizontalPosition, MatSnackBarVerticalPosition} from '@angular/material/snack-bar';
+
+import { SnakBarComponent } from '../snak-bar/snak-bar.component';
+
+/** interface will be deleted from here*/
+export interface Allingredient {
+  id:number ,
+  name:string 
+ }
+ /** */
 
 @Component({
   selector: 'app-pantry',
@@ -10,33 +22,79 @@ export class PantryComponent implements OnInit {
   text:string = "Pantry";
   visible:boolean = false;
   ingredientList:string[]=[];
-  MainIngredientList:string[]=[];
-
+  MainIngredientList:Allingredient[]=[];
+  /*filterWord*/
+  searchWord :any;
+  searchedIngredients :Allingredient[] =[];
+  durationInSeconds = 5; 
+ 
   
-  constructor() { 
-   this.MainIngredientList=["Salt","Onion","egg", "Salt","Onion","egg",
-   "Salt","Onion","egg", "Salt","Onion","egg" ,"Salt","Onion","egg", "Salt","Onion","egg"
-  ,  "Salt","Onion","egg","Salt","Onion","egg","Salt","Onion","egg",
-  "egg", "Salt","Onion","egg",
-   "Salt","Onion","egg", "Salt","Onion","egg" ,"Salt","Onion","egg", "Salt","Onion","egg"
-  ,  "Salt","Onion","egg","Salt","Onion","egg","Salt","Onion","egg",
+  horizontalPosition: MatSnackBarHorizontalPosition = 'right';
+  verticalPosition: MatSnackBarVerticalPosition = 'bottom';
+  
+  constructor( private _snackBar: MatSnackBar ) { 
+    /*this will change as it will come from data base
+    i need to make service */
+   this.MainIngredientList=[ {id:1 , name:"Salt"},
+   {id:1 , name:"Salt"},
+   {id:1 , name:"Oil"},
+   {id:1 , name:"Onion"},
+   {id:1 , name:"Eggs"},
+   {id:1 , name:"Water"},
+   {id:1 , name:"Tomato"},
+   {id:1 , name:"Salt"},
+   {id:1 , name:"Oil"},
+   {id:1 , name:"Onion"},
+   {id:1 , name:"Eggs"},
+   {id:1 , name:"Water"},
+   {id:1 , name:"Tomato"},
+   {id:1 , name:"Salt"},
+   {id:1 , name:"Oil"},
+   {id:1 , name:"Onion"},
+   {id:1 , name:"Eggs"},
+   {id:1 , name:"Water"},
+   {id:1 , name:"Tomato"},
+   {id:1 , name:"Salt"},
+   {id:1 , name:"Oil"},
+   {id:1 , name:"Onion"},
+   {id:1 , name:"Eggs"},
+   {id:1 , name:"Water"},
+   {id:1 , name:"Tomato"},
+   {id:1 , name:"Salt"},
+   {id:1 , name:"Oil"},
+   {id:1 , name:"Onion"},
+   {id:1 , name:"Eggs"},
+   {id:1 , name:"Water"},
+   {id:1 , name:"Tomato"},
+   {id:1 , name:"Salt"},
+   {id:1 , name:"Oil"},
+   {id:1 , name:"Onion"},
+   {id:1 , name:"Eggs"},
+   {id:1 , name:"Water"},
+   {id:1 , name:"Tomato"},
+    
 ]
   }
 
   ngOnInit(): void {
+    this.searchedIngredients = this.MainIngredientList ;
   }
+  /*to show suggested container*/
   focusFunction(){
    
     this.visible= true;
 
   }
+  /*to hide suggested cobtainer*/
   onBlur(){
    
     this.visible= false;
    
     
   }
-  printit(item:string){
+  /* to add selected item ang iput value to arrya 
+   to send it to api to get matched data*/
+  Add(item:string){
     console.log("nice");
     this.ingredientList.push(item);
     console.log(this.ingredientList) ;
@@ -51,5 +109,28 @@ export class PantryComponent implements OnInit {
     console.log(this.ingredientList);
    
   }
+  /* to enable user search in ingredient on typing ingredients*/
+   search(){
+    if(this.searchWord == ""){
+      this.ngOnInit();
+    }
+    else{
 
+      this.searchedIngredients = this.searchedIngredients.filter((response)=>{
+             return response.name.toLocaleLowerCase().match(this.searchWord.toLocaleLowerCase());
+      })
+    }
+
+   }
+  
+  
+   /*snackbar function */
+   openSnackBar() {
+    this._snackBar.openFromComponent(SnakBarComponent, {
+      duration: this.durationInSeconds * 1000,
+      horizontalPosition: this.horizontalPosition,
+      verticalPosition: this.verticalPosition,
+    });
+  }
+  
 }

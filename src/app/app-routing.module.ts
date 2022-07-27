@@ -18,7 +18,11 @@ import { AboutComponent } from './Components/about/about.component';
 import { HomeComponent } from './Components/home/home.component';
 import { BrwosingComponent } from './browsing/Components/brwosing/brwosing.component';
 import { PantryComponent } from './PantryModule/Components/pantry/pantry.component';
+<<<<<<< HEAD
 import { SearchComponent } from './SerarchModule/Components/SearchComponent/search/search.component';
+=======
+
+>>>>>>> 930a95353dcf6468151808342af862945924fb3a
 
 const routes: Routes = [
   {
@@ -36,8 +40,12 @@ const routes: Routes = [
       { path: 'recipe/:recipeId', component: RecipeDetailsComponent },
       { path: 'feed', component: FeedComponent },
       { path: 'user/:userId', component: GeneralUserComponent },
+<<<<<<< HEAD
 
       { path: 'search', component: SearchComponent },
+=======
+      
+>>>>>>> 930a95353dcf6468151808342af862945924fb3a
 
       {
         path: 'profile/collections/:collectionName',
