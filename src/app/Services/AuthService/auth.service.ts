@@ -1,3 +1,4 @@
+import { Location } from '@angular/common';
 import { ElementRef, Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { BehaviorSubject } from 'rxjs';
@@ -8,7 +9,7 @@ import { BehaviorSubject } from 'rxjs';
 export class AuthService {
   public isLoggenInSubject: BehaviorSubject<boolean>;
   auth2: any;
-  constructor(private router: Router) {
+  constructor(private router: Router, private location: Location) {
     this.isLoggenInSubject =
       localStorage.getItem('token') == undefined
         ? new BehaviorSubject<boolean>(false)
@@ -27,9 +28,9 @@ export class AuthService {
           'token',
           googleAuthUser.getAuthResponse().id_token
         );
-
+        this.location.back();
         this.isLoggenInSubject.next(true);
-        this.router.navigateByUrl('home');
+
         console.log('Token || ' + googleAuthUser.getAuthResponse().id_token);
         console.log('ID: ' + currentUser.getId());
         console.log('Name: ' + currentUser.getName());
