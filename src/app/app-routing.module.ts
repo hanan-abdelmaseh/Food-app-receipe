@@ -37,7 +37,7 @@ const routes: Routes = [
       { path: 'feed', component: FeedComponent },
       { path: 'user/:userId', component: GeneralUserComponent },
 
-      { path: 'search2', component: SearchComponent },
+      { path: 'search', component: SearchComponent },
 
       {
         path: 'profile/collections/:collectionName',

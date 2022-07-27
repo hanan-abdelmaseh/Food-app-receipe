@@ -36,7 +36,7 @@
         <div
           class="user-operation d-flex text-center justify-content-center align-items-center"
         >
-          <a class="search-link" routerLink="receipe">
+          <a class="search-link" routerLink="search">
             <i class="fa-solid fa-magnifying-glass"></i>
           </a>
         </div>
@@ -45,11 +45,11 @@
                 <i class="fa-solid fa-user pt-2"></i>
             </a>
         </div>
-        <form class="d-flex justify-content-center align-items-center">
-            <a href="#" class="btn submit-btn">Login</a>
+        <form *ngIf="!isUserLogged" class="d-flex justify-content-center align-items-center">
+            <a class="btn submit-btn" routerLink="login">Login</a>
         </form>
-        <form class="d-flex justify-content-center align-items-center">
-            <a href="#" class="btn submit-btn">Logout</a>
+        <form *ngIf="isUserLogged == true" class="d-flex justify-content-center align-items-center">
+            <a class="btn submit-btn" (click)="logOut()">Logout</a>
         </form>
     </div>
     </div>

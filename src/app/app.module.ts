@@ -82,28 +82,7 @@ import { SearchModule } from './SerarchModule/search.module';
   ],
 
   exports: [],
-  providers: [
-    {
-      provide: 'SocialAuthServiceConfig',
-      useValue: {
-        autoLogin: false,
-        providers: [
-          {
-            id: GoogleLoginProvider.PROVIDER_ID,
-            provider: new GoogleLoginProvider('clientId'),
-          },
-          {
-            id: FacebookLoginProvider.PROVIDER_ID,
-            provider: new FacebookLoginProvider('clientId'),
-          },
-        ],
-        onError: (err) => {
-          console.error(err);
-        },
-      } as SocialAuthServiceConfig,
-    },
-    [CurrentUserService, ReviewService],
-  ],
+  providers: [],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

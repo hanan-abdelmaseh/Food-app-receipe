@@ -1,13 +1,18 @@
 import { ElementRef, Injectable } from '@angular/core';
+import { Router } from '@angular/router';
+import { BehaviorSubject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
 })
 export class AuthService {
-  title = 'Codingvila Login With Google';
+  public isLoggenInSubject: BehaviorSubject<boolean>;
   auth2: any;
-  constructor() {
-    console.log('start service');
+  constructor(private router: Router) {
+    this.isLoggenInSubject =
+      localStorage.getItem('token') == undefined
+        ? new BehaviorSubject<boolean>(false)
+        : new BehaviorSubject<boolean>(true);
   }
 
   callLogin(loginElement: ElementRef) {
@@ -18,14 +23,20 @@ export class AuthService {
         //Print profile details in the console logs
 
         let currentUser = googleAuthUser.getBasicProfile();
+        localStorage.setItem(
+          'token',
+          googleAuthUser.getAuthResponse().id_token
+        );
 
-        console.log(currentUser);
+        this.isLoggenInSubject.next(true);
+        this.router.navigateByUrl('home');
         console.log('Token || ' + googleAuthUser.getAuthResponse().id_token);
         console.log('ID: ' + currentUser.getId());
         console.log('Name: ' + currentUser.getName());
         console.log('Image URL: ' + currentUser.getImageUrl());
         console.log('Email: ' + currentUser.getEmail());
       }
+
       // (error: any) => {
       //   alert(JSON.stringify(error, undefined, 2));
       // }
@@ -59,7 +70,12 @@ export class AuthService {
     })(document, 'script', 'google-jssdk');
   }
 
-  logoutnow() {
-    this.auth2.signOut();
+  logOut() {
+    localStorage.removeItem('token');
+    this.isLoggenInSubject.next(false);
+  }
+
+  isLoggedIn() {
+    return this.isLoggenInSubject;
   }
 }

@@ -9,11 +9,13 @@ import { FormsModule } from '@angular/forms';
 import { CollectionDetailsComponent } from './Shared Cpmponents/collection-details/collection-details.component';
 import { ChangeCusorDirective } from './ChangeCursorDirective/change-cusor.directive';
 
-
 @NgModule({
   declarations: [
-    UserSettingsComponent,UserPreferencesComponent,UserCollectionsComponent,
-    UserProfileComponent,CollectionDetailsComponent,
+    UserSettingsComponent,
+    UserPreferencesComponent,
+    UserCollectionsComponent,
+    UserProfileComponent,
+    CollectionDetailsComponent,
     ChangeCusorDirective,
   ],
   imports: [CommonModule, AppRoutingModule, FormsModule],

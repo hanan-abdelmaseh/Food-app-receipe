@@ -13,7 +13,7 @@ import { UserSettingsService } from 'src/app/Services/Profile Services/User-Sett
 export class UserCollectionsComponent implements OnInit {
   isAddFormShown: boolean = false;
   collectionsList: CollectionModel[] | null = null;
-
+  newCollectionName: string | null = null;
   constructor(
     public collectionService: CollectionsService,
     private route: Router
@@ -30,5 +30,10 @@ export class UserCollectionsComponent implements OnInit {
   showHideAddForm() {
     console.log('open/colse');
     this.isAddFormShown = !this.isAddFormShown;
+  }
+
+  addCollection(name: string) {
+    this.newCollectionName = name;
+    console.log(this.newCollectionName);
   }
 }

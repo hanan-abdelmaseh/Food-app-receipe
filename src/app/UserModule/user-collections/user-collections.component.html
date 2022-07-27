@@ -1,37 +1,43 @@
-<h3 class="text-center m-auto my-4">Collections</h3>
-<hr class="w-75 mb-5 mx-auto" />
+<main>
+    <h3 class="text-center m-auto my-4">Collections</h3>
+    <hr class="w-75 mb-5 mx-auto" />
 
-<section class="d-flex mx-5 flex-wrap justify-content-center">
-    <div class="add-collection-card collection d-flex flex-column align-items-center justify-content-center m-3">
-        <div ChangeCursor *ngIf="isAddFormShown == false" class="d-flex flex-column align-items-center justify-content-center" (click)="showHideAddForm()">
-            <i class="plus-icon">
-        <img class="w-100" src="../../../assets/images/icon-plus.png" alt="" />
-      </i>
-            <h5 class="add-collection-text">Add Collection</h5>
+    <section class="d-flex mx-5 flex-wrap justify-content-center">
+        <div class="add-collection-card collection d-flex flex-column align-items-center justify-content-center m-3">
+            <div ChangeCursor *ngIf="isAddFormShown == false" class="d-flex flex-column align-items-center justify-content-center" (click)="showHideAddForm()">
+                <i class="plus-icon">
+          <img
+            class="w-100"
+            src="../../../assets/images/icon-plus.png"
+            alt=""
+          />
+        </i>
+                <h5 class="add-collection-text">Add Collection</h5>
+            </div>
+            <form class="w-100" *ngIf="isAddFormShown == true" (ngSubmit)="addCollection(collectionName.name)">
+                <div class="w-100 d-flex flex-column flex-wrap justify-content-center align-items-center text-center">
+                    <input type="text" class="form-control collection-name-input" #collectionName name="collectionName" placeholder="Collection Name" />
+                    <div class="d-flex align-items-center">
+                        <input class="add-btn" type="submit" value="Add" />
+                        <div class="separator"></div>
+                        <input class="cancel-btn" type="button" value="Cancel" (click)="showHideAddForm()" />
+                    </div>
+                </div>
+            </form>
         </div>
-        <form class="w-100" *ngIf="isAddFormShown == true" (ngSubmit)="showHideAddForm()">
-            <div class="w-100 d-flex flex-column flex-wrap justify-content-center align-items-center text-center">
-                <input type="text" class="form-control collection-name-input" name="collectionName" placeholder="Collection Name" />
-                <div class="d-flex align-items-center">
-                    <input class="add-btn" type="submit" value="Add" />
-                    <div class="separator"></div>
-                    <input class="cancel-btn" type="button" value="Cancel" (click)="showHideAddForm()" />
-                </div>
-            </div>
-        </form>
-    </div>
 
-    <ng-container *ngFor="let collection of collectionsList">
-        <section ChangeCursor class="collection d-flex flex-column justify-content-between m-3" (click)="openColletionDetails(collection.collectionName)">
-            <figure>
-                <img class="w-100 collection-img" src="{{ collection.collectionImg }}" alt="" srcset="" />
-            </figure>
-            <div class="d-flex justify-content-between w-100" style="color: var(--bg-initial)">
-                <div class="collection-name">
-                    {{ collection.collectionName }}
+        <ng-container *ngFor="let collection of collectionsList">
+            <section ChangeCursor class="collection d-flex flex-column justify-content-between m-3" (click)="openColletionDetails(collection.collectionName)">
+                <figure>
+                    <img class="w-100 collection-img" src="{{ collection.collectionImg }}" alt="" srcset="" />
+                </figure>
+                <div class="d-flex justify-content-between w-100" style="color: var(--bg-initial)">
+                    <div class="collection-name">
+                        {{ collection.collectionName }}
+                    </div>
+                    <div>{{ collection.noOfRecipes }} Recipes</div>
                 </div>
-                <div>{{ collection.noOfRecipes }} Recipes</div>
-            </div>
-        </section>
-    </ng-container>
-</section>
+            </section>
+        </ng-container>
+    </section>
+</main>

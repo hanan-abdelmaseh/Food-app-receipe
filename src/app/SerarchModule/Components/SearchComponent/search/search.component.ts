@@ -7,6 +7,7 @@ import { SelectedFiltersModel } from 'src/app/Models/SelectedFiltersModel/select
   styleUrls: ['./search.component.css'],
 })
 export class SearchComponent implements OnInit {
+  filterBtnShown: boolean = false;
   title: string = 'Receipes';
   text: string = 'Our Receipes';
   Time: string[];
@@ -16,6 +17,7 @@ export class SearchComponent implements OnInit {
   Nutritions: string[];
 
   selectedFilters: SelectedFiltersModel = {
+    recipeName: '',
     allergies: 'Dont Have Allergies',
     cuisines: 'All Cuisines',
     ingrediant: '',
@@ -59,9 +61,14 @@ export class SearchComponent implements OnInit {
   }
 
   ngOnInit(): void {}
-
+  hideSearchButton() {
+    this.filterBtnShown = !this.filterBtnShown;
+  }
   printfn() {
     let selectedFilters: SelectedFiltersModel = {};
+    if (this.selectedFilters.recipeName != '') {
+      selectedFilters.recipeName = this.selectedFilters.recipeName;
+    }
     if (this.selectedFilters.ingrediant != '') {
       selectedFilters.ingrediant = this.selectedFilters.ingrediant;
     }

@@ -1,3 +1,7 @@
+main {
+    margin: 0px auto 30px;
+}
+
 .add-collection-card {
     display: flex;
     width: 220px;
