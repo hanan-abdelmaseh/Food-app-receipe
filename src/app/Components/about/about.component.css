@@ -1,0 +1,14 @@
+
+
+.content span{
+    color: var(--main-color);
+    font-size: 4rem !important;
+
+}
+.item{
+    text-align: center;
+}
+
+h2{
+    line-height: 3.5rem;
+}

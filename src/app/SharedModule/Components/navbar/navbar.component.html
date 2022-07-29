@@ -1,95 +1,57 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
-    <div class="container">
-      <a class="navbar-brand" href="#">
-        <i class="fa-solid fa-utensils"></i>
-        Food
-      </a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
-          <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="#">Home</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">About</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Feed</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Receipes</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Browse</a>
-          </li>
-          <li class="nav-item dropdown">
-
-            <a class="nav-link" mat-button [matMenuTriggerFor]="animals">Animal index</a>
-<mat-menu #animals="matMenu">
-  <button mat-menu-item [matMenuTriggerFor]="vertebrates">Vertebrates</button>
-  <button mat-menu-item [matMenuTriggerFor]="invertebrates">Invertebrates</button>
-</mat-menu>
-
-<mat-menu #vertebrates="matMenu">
-  <button mat-menu-item [matMenuTriggerFor]="fish">Fishes</button>
-  <button mat-menu-item [matMenuTriggerFor]="amphibians">Amphibians</button>
-  <button mat-menu-item [matMenuTriggerFor]="reptiles">Reptiles</button>
-  <button mat-menu-item>Birds</button>
-  <button mat-menu-item>Mammals</button>
-</mat-menu>
-
-<mat-menu #invertebrates="matMenu">
-  <button mat-menu-item>Insects</button>
-  <button mat-menu-item>Molluscs</button>
-  <button mat-menu-item>Crustaceans</button>
-  <button mat-menu-item>Corals</button>
-  <button mat-menu-item>Arachnids</button>
-  <button mat-menu-item>Velvet worms</button>
-  <button mat-menu-item>Horseshoe crabs</button>
-</mat-menu>
-
-<mat-menu #fish="matMenu">
-  <button mat-menu-item>Baikal oilfish</button>
-  <button mat-menu-item>Bala shark</button>
-  <button mat-menu-item>Ballan wrasse</button>
-  <button mat-menu-item>Bamboo shark</button>
-  <button mat-menu-item>Banded killifish</button>
-</mat-menu>
-
-<mat-menu #amphibians="matMenu">
-  <button mat-menu-item>Sonoran desert toad</button>
-  <button mat-menu-item>Western toad</button>
-  <button mat-menu-item>Arroyo toad</button>
-  <button mat-menu-item>Yosemite toad</button>
-</mat-menu>
-
-<mat-menu #reptiles="matMenu">
-  <button mat-menu-item>Banded Day Gecko</button>
-  <button mat-menu-item>Banded Gila Monster</button>
-  <button mat-menu-item>Black Tree Monitor</button>
-  <button mat-menu-item>Blue Spiny Lizard</button>
-  <button mat-menu-item disabled>Velociraptor</button>
-</mat-menu>
-
-          </li>
-         
-        </ul>
-        <div class="user-operation">
-            <a class="user-link">
-                <i class="fa-solid fa-user"></i>
-            </a>
-            <a class="cart-link">
-
-            </a>
-
-
+<nav class="navbar navbar-expand-lg navbar-light fixed-top w-100">
+    <div class="container-fluid mx-5">
+        <a class="navbar-brand" routerLink="home">
+            <!-- <i class="fa-solid fa-utensils"></i>
+        Food -->
+            <img src="../../../../assets/images/logo-4.jpg" />
+        </a>
+        <button class="navbar-toggler submit-btn" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <i class="fa-solid fa-bars"></i>
+    </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                    <a class="nav-link" aria-current="page" routerLink="home" routerLinkActive="active">Home</a
+          >
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="about" routerLinkActive="active"
+            >About</a
+          >
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="feed" routerLinkActive="active"
+            >Feed</a
+          >
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="pantry" routerLinkActive="active"
+            >Pantry-Ready</a
+          >
+        </li>
+      </ul>
+      <div
+        class="d-flex flex-column align-items-lg-center flex-lg-row align-items-start"
+      >
+        <div
+          class="user-operation d-flex text-center justify-content-center align-items-center"
+        >
+          <a class="search-link" routerLink="search">
+            <i class="fa-solid fa-magnifying-glass"></i>
+          </a>
         </div>
-        <form class="d-flex">
-          
-            <a href="#" class="btn Learn-btn">Login</a>
-        </form>
-      </div>
+        <div class="user-operation d-flex text-center justify-content-center align-items-center">
+            <a class="user-link">
+                <i class="fa-solid fa-user pt-2"></i>
+            </a>
+        </div>
+        <div *ngIf="!isUserLogged" class="d-flex justify-content-center align-items-center">
+            <a routerLink="login" class="btn submit-btn">Login</a>
+        </div>
+        <div *ngIf="isUserLogged == true" class="d-flex justify-content-center align-items-center">
+            <a class="btn submit-btn" (click)="logOut()">Logout</a>
+        </div>
     </div>
-  </nav>
+    </div>
+    </div>
+</nav>

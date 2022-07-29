@@ -1,0 +1,35 @@
+input{
+    padding: 4px 24px;
+    font-size: 16px;
+    border-radius: 3rem;
+}
+
+.suggested {
+max-height:200px;
+/* overflow-x: hidden; */
+overflow-y: auto;
+/* scroll-behavior: auto; */
+position: relative;
+box-shadow:3px 3px 3px 3px #888888;
+border-radius: 0.5rem;
+    
+   
+}
+.close{
+    position:absolute;
+    right: 0;
+    top: 0;
+}
+.ingredientContent{
+    line-height: 24px;
+    display: flex;
+    align-items: center;
+    font-size: 18px;
+}
+.active{
+    visibility: hidden;
+}
+
+.searchPantry{
+    background-color:#F7F4EF;
+}

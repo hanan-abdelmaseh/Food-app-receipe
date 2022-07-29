@@ -1,45 +1,67 @@
 import { Injectable } from '@angular/core';
 import { CollectionModel } from 'src/app/Models/Collection Model/collection-model';
+import { CurrentUserService } from '../Current-User-Service/current-user.service';
 
 @Injectable({
   providedIn: 'root',
 })
 export class CollectionsService {
-  public collectionsList: CollectionModel[] | null = null;
-  constructor() {
-    this.collectionsList = [
-      {
-        collectionDescription: 'This is First Collection',
-        collectionImg:
-          'https://www.simplyrecipes.com/thmb/O-rhPnz2V3hdqKFPij8NlwZIKqs=/2376x1584/filters:fill(auto,1)/Simply-Recipes-Quesadilla-LEAD-5-55da42a2a306497c85b1328385e44d85.jpg',
-        collectionName: 'First Collection',
-        collectioRecipes: [],
-        noOfRecipes: 0,
-      },
-      {
-        collectionDescription: 'This is Second Collection',
-        collectionImg:
-          'https://assets.bonappetit.com/photos/5d7296eec4af4d0008ad1263/master/pass/Basically-Gojuchang-Chicken-Recipe-Wide.jpg',
-        collectionName: 'Second Collection',
-        collectioRecipes: ['Chicken', 'Meat', 'Food', 'Beef', 'Fish'],
-        noOfRecipes: 5,
-      },
-      {
-        collectionDescription: 'This is Third Collection',
-        collectionImg:
-          'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRglieQRv212_C1bJEwG18YcOJeJL75qlyWfQ&usqp=CAU',
-        collectionName: 'Third Collection',
-        collectioRecipes: ['Fries', 'Meat', 'Shaworma', 'Beef', 'Botatos'],
-        noOfRecipes: 5,
-      },
-      {
-        collectionDescription: 'This is Forth Collection',
-        collectionImg:
-          'https://previews.123rf.com/images/nebulapix/nebulapix1310/nebulapix131000107/23173412-collection-of-asian-food-including-sweet-and-sour.jpg',
-        collectionName: 'Forth Collection',
-        collectioRecipes: ['Chicken', 'Rice', 'Food', 'Tomato', 'Fish'],
-        noOfRecipes: 5,
-      },
-    ];
+  public userCollectionsList: CollectionModel[];
+  public getCollection: CollectionModel | null = null;
+  constructor(private userService: CurrentUserService) {
+    this.userCollectionsList =
+      this.userService.currentUser.userCollections == undefined
+        ? []
+        : this.userService.currentUser.userCollections;
+  }
+
+  getAllCollections() {
+    this.userCollectionsList =
+      this.userService.currentUser.userCollections == undefined
+        ? []
+        : this.userService.currentUser.userCollections;
+  }
+
+  getCollectionByName(collectionName: string) {
+    let collecion = this.userCollectionsList.find(
+      (collection) => collection.collectionName == collectionName
+    );
+    if (collecion != null) {
+      this.getCollection = collecion;
+    }
+  }
+
+  deleteCollection(collectionName: string) {
+    this.userCollectionsList.forEach((collection, index) => {
+      if (collection.collectionName == collectionName) {
+        this.userService.currentUser.userCollections?.splice(index, 1);
+        this.getAllCollections();
+      }
+    });
+  }
+
+  addCollection(collectionName: string, collecionDesc?: string) {
+    this.userService.currentUser.userCollections?.push({
+      collectionName: collectionName,
+      collectionDescription: collecionDesc == undefined ? '' : collecionDesc,
+      collectionImg: '',
+      collectioRecipes: [],
+      noOfRecipes: 0,
+    });
+    this.getAllCollections();
+  }
+
+  updateCollection(collectionName: string, collecionDesc?: string) {
+    let index = this.userService.currentUser.userCollections!.findIndex(
+      (collection) => collection.collectionName == collectionName
+    );
+    if (index != undefined) {
+      this.userService.currentUser.userCollections![index].collectionName =
+        collectionName;
+      this.userService.currentUser.userCollections![
+        index
+      ].collectionDescription = collecionDesc == undefined ? '' : collecionDesc;
+    }
+    this.getAllCollections();
   }
 }

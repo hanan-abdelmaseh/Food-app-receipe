@@ -1,0 +1,186 @@
+<main class="w-100 d-flex flex-column">
+    <section class="w-100 d-flex flex-column flex-md-row justify-content-evenly align-items-center">
+        <article class="recipe-data d-flex flex-column text-center">
+            <h2 class="recipe-name">{{ currentRecipe!.recipeName }}</h2>
+            <span>
+        {{ recipeAuther?.userName }}
+      </span>
+            <div class="user-social d-flex justify-content-between">
+                <img class="face-link" src="../../../../assets/svg/facebook.svg" alt="" />
+                <img class="twitter-link" src="../../../../assets/svg/twitter.svg" alt="" />
+                <img class="site-link" src="../../../../assets/svg/website.svg" alt="" />
+            </div>
+
+            <div class="d-flex recipe-summary justify-content-center">
+                <article class="recipe-summary-item">
+                    <div style="font-size: 40px">{{ ingrediantsCount }}</div>
+                    <span>Ingredients</span>
+                </article>
+                <div class="vertical-sep"></div>
+                <article class="recipe-summary-item">
+                    <div style="font-size: 40px">{{ currentRecipe!.time }}</div>
+                    <span>Hours</span>
+                </article>
+                <div class="vertical-sep"></div>
+                <article class="recipe-summary-item">
+                    <div style="font-size: 40px">
+                        {{ recipeCalories.nutritionQuantity }}
+                    </div>
+                    <span>Calories</span>
+                </article>
+            </div>
+            <span class="mx-auto my-4"> {{ currentRecipe!.serving }} Serving</span>
+
+            <div class="d-flex px-5 my-3 my-md-2 recipe-summary-interaction justify-content-between align-items-center">
+                <div class="Learn-btn">Read Direction</div>
+
+                <img class="add-icon" src="../../../../assets/images/add-recipe.png" alt="" srcset="" />
+            </div>
+        </article>
+        <article class="recipe-img-container">
+            <img class="recipe-img" src="{{ currentRecipe!.recipeImg }}" alt="" srcset="" />
+        </article>
+    </section>
+    <div class="horizontal-sep"></div>
+    <section class="d-flex w-100">
+        <section class="main-section">
+            <section class="d-flex flex-column justify-content-center">
+                <article class="ingredients-nutrition w-100"></article>
+                <article class="d-flex flex-column flex-md-row">
+                    <div class="ingredients">
+                        <div class="d-flex justify-content-between align-items-center inner-block">
+                            <h3>Ingrediants</h3>
+                            <img style="width: 25px; height: 25px" src="../../../../assets/images/flour.png" alt="" />
+                        </div>
+                        <div class="gradiant-line"></div>
+
+                        <ul>
+                            <li *ngFor="let ingredient of currentRecipe!.ingrediants">
+                                <h5>{{ ingredient }}</h5>
+                            </li>
+                            <li *ngFor="let ingredient of currentRecipe!.ingrediants">
+                                <h5>{{ ingredient }}</h5>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="ingredients">
+                        <div class="d-flex justify-content-between align-items-center inner-block">
+                            <h3>Nutritions</h3>
+                            <img style="width: 25px; height: 25px" src="../../../../assets/images/nutritions.png" alt="" />
+                        </div>
+                        <div class="gradiant-line"></div>
+
+                        <ul>
+                            <li *ngFor="let nutrition of currentRecipe!.nutritions">
+                                <div class="d-flex justify-content-between">
+                                    <h5>{{ nutrition["nutritionName"] }}</h5>
+                                    <h5>{{ nutrition["nutritionQuantity"] }}</h5>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </article>
+                <article class="directions d-flex flex-column">
+                    <h3>Directions</h3>
+                    <div class="gradiant-line"></div>
+                    <ng-container *ngFor="let nutrition of currentRecipe!.nutritions; let i = index">
+                        <div class="d-flex align-items-center justify-content-center" style="
+                height: 35px;
+                width: 35px;
+                border-radius: 50%;
+                color: white;
+                background-color: var(--main-color);
+              ">
+                            {{ i + 1 }}
+                        </div>
+                        <div class="direction-text">
+                            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Cum corrupti, placeat aliquam expedita possimus, ducimus fuga maiores laboriosam nam iusto rem! Provident dolor maiores iusto aliquam unde temporibus, doloribus optio?
+                        </div>
+                    </ng-container>
+                </article>
+            </section>
+            <section class="recipe-tags w-100">
+                <h3>Recipe Tags</h3>
+                <div class="d-flex flex-wrap w-100">
+                    <ng-container *ngFor="let tag of currentRecipe!.tags">
+                        <div class="tag rounded-pill">{{ tag }}</div>
+                    </ng-container>
+                </div>
+            </section>
+            <div class="horizontal-sep"></div>
+            <!-- Write a Review -->
+            <section class="reviews">
+                <h3>Write your review</h3>
+                <section class="w-100 d-flex align-items-start my-4">
+                    <div>
+                        <img class="reviewer-img" src="{{ currentUser!.userImg }}" alt="" />
+                    </div>
+                    <div class="reviewer-data d-flex flex-column justify-content-start flex-fill">
+                        <div class="d-flex">
+                            <div class="reviewer-name me-3">
+                                {{ currentUser!.userName }}
+                            </div>
+                        </div>
+                        <div>Rating Builder Here</div>
+                        <div class="my-2 flex-grow-1">
+                            <textarea class="input-review-text" placeholder="write a review or a feedback" type=" text "></textarea>
+                        </div>
+                        <div class="d-flex">
+                            <Button class="submit-btn" (click)="addNewReview(currentUser!.id, '18/185', 'dfdsf', 3)">Submit</Button
+              >
+              <button class="cancel-btn">cancel</button>
+                        </div>
+                    </div>
+                </section>
+            </section>
+
+            <!-- All Reviews -->
+            <section class="reviews">
+                <h3>Reviews</h3>
+                <section class="w-100 d-flex align-items-start my-4" *ngFor="let review of allReviews; let i = index">
+                    <div>
+                        <img class="reviewer-img" src="{{ recipeReviwers![i].userImg }} " alt=" " />
+                    </div>
+                    <div class="reviewer-data d-flex flex-column justify-content-start">
+                        <div class="d-flex justify-content-between align-items-start">
+                            <div class="d-flex">
+                                <div class="reviewer-name me-3">
+                                    {{ recipeReviwers![i].userName }}
+                                </div>
+                                <div>
+                                    {{ review.reviewDate }}
+                                </div>
+                            </div>
+                            <img *ngIf="
+                  currentUserHasReview == false &&
+                  currentUser!.id == review.reviewWriterId
+                " class="delete-review-icon" src="../../../../assets/images/cross.png" alt="" srcset="" (click)="deleteReview(i)" />
+                        </div>
+                        <div>
+                            {{ review.rating }}
+                        </div>
+                        <div class="review-content my-5">
+                            {{ review.reviewContent }}
+                        </div>
+                    </div>
+                </section>
+            </section>
+        </section>
+        <section class="read-next">
+            <article *ngIf="autherRecipes.length > 0">
+                <h2>Read Next</h2>
+                <div class="gradiant-line"></div>
+                <div>
+                    <ng-container *ngFor="let recipe of autherRecipes">
+                        <div class="auther-recipe d-flex align-items-center justify-content-center">
+                            <img class="auther-recipe-image" src="{{ recipe.recipeImg }}" alt="" />
+                            <div class="auther-recipe-name">
+                                {{ recipe.recipeName }}
+                            </div>
+                        </div>
+                    </ng-container>
+                </div>
+            </article>
+        </section>
+    </section>
+</main>

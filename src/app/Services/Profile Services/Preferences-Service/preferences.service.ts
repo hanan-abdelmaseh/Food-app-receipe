@@ -17,17 +17,25 @@ export class PreferencesService {
         name: 'ALLERGIES',
         categories: [],
       },
+      {
+        name: 'Cusions',
+        categories: [],
+      },
+      {
+        name: 'Disliked Ingrediants',
+        categories: [],
+      },
     ];
     this.allPreferences = [
       {
-        name: 'DIETS',
+        name: 'Nutrition',
         categories: [
-          'LOW FODMAP',
-          'VEGETARIAN (NO MEAT, NO DAIRY)',
-          'VEGETARIAN',
-          ' VEGAN',
-          'PALEO',
-          'PESCETARIAN',
+          'Low Fat 10g or less per serving',
+          'Low Calories 400 kcal or less per serving',
+          'High Fiber 6g or more per serving ',
+          'Low Carb 30g or less per serving',
+          'Low Sodium 500mg or less per serving',
+          'Low Sugar 10g or less per serving',
         ],
       },
       {
@@ -44,6 +52,37 @@ export class PreferencesService {
           'GG-FREE',
           'GLUTEN-FREE',
         ],
+      },
+
+      {
+        name: 'Cusions',
+        categories: [
+          'Southwest Asia (middle East)',
+          'Asian',
+          'European',
+          'Southwestern U.S.',
+          'Chinese',
+          'Japanese',
+          'Greek',
+          'Indonesian',
+          'African',
+          'Moroccan',
+          'South African',
+          'Native American',
+          'South American',
+          'Caribbean',
+          'Cuban',
+          'Spanish',
+          'Canadian',
+          'Kid Friendly',
+          'Turkish',
+          'Hawaiian',
+          'German',
+        ],
+      },
+      {
+        name: 'Disliked Ingrediants',
+        categories: ['Egg', 'Meat', 'Fish', 'Soy', 'Chicken'],
       },
     ];
   }

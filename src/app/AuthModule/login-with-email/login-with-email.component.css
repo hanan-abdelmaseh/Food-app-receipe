@@ -1,0 +1,41 @@
+.main-section {
+    width: 30em;
+    max-width: 80%;
+    text-align: center;
+}
+
+.back-icon {
+    width: 1.2em;
+    height: auto;
+}
+
+.back-btn {
+    background-color: white;
+    border: none;
+}
+
+.back-text {
+    background-color: white;
+    color: var(--main-color);
+}
+
+input {
+    text-align: center;
+    color: #4a4a4a;
+    font-size: 1.5em;
+    width: 25em;
+    max-width: 70%;
+    border: none;
+    border-bottom: solid 1px #A9A9A9
+}
+
+form {
+    margin-top: 3em;
+}
+
+.login-btn {
+    background-color: var(--main-color);
+    color: white;
+    border: none;
+    padding: .2em 2em;
+}

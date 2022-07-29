@@ -1,13 +1,21 @@
-export class UserModel {
-  constructor(
-    public userName: string,
-    public bio: string,
-    public id: number,
-    public city: string,
-    public state: string,
-    public country: string,
-    public userFacebook: string,
-    public userTwitter: string,
-    public userSite: string
-  ) {}
+import { CollectionModel } from '../Collection Model/collection-model';
+import { PreferencesModel } from '../Preferences-Model/preferences-model';
+
+export interface UserModel {
+  userCollections?: CollectionModel[];
+  wantedPreferences?: PreferencesModel[];
+  unWantedPreferences?: PreferencesModel[];
+  recipesWrittenByUser?: number[];
+  noOfUserCollections?: number;
+  noOfRecipesWritten?: number;
+  userName: string;
+  bio: string;
+  id: number;
+  city: string;
+  state: string;
+  country: string;
+  userFacebook: string;
+  userTwitter: string;
+  userSite: string;
+  userImg?: string;
 }

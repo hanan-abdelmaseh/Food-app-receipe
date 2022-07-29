@@ -1,0 +1,6 @@
+.breadcrumb-item a{
+    color: #fff !important;
+}
+.breadcrumb-item a:hover{
+    color: var(--secondary-color) !important;
+}

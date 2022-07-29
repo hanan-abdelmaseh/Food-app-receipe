@@ -1,12 +1,9 @@
+.container{
+  height:100vh;
+}
 
-h1{
-    font-size: 5rem !important;
-    line-height: 1.2;
-}
-p{
-    font-size: 1.7rem !important;
-    line-height: 1.2;
-}
+
+
 img{
     animation: imgRotate 50s linear infinite;
 }

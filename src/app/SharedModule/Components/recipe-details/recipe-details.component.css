@@ -1,0 +1,266 @@
+main {
+    padding: 50px 20px;
+    margin: 60px auto 0px;
+}
+
+.recipe-name {
+    font-size: 2em;
+}
+
+.vertical-sep {
+    height: 70px;
+    width: 2px;
+    background-color: var( --secondary-color);
+}
+
+.user-social {
+    width: 10em;
+    margin: 20px auto;
+}
+
+.user-social img {
+    width: 1.2em;
+    height: 1.2em;
+    border-radius: 50%;
+}
+
+.user-social img:hover {
+    cursor: pointer;
+}
+
+.face-link:hover {
+    filter: invert(38%)sepia(17%) hue-rotate(182deg) brightness(95%) contrast(88%) saturate(1965%);
+}
+
+.twitter-link:hover {
+    filter: invert(55%) sepia(21%) saturate(5678%) brightness(98%) contrast(93%) hue-rotate(176deg);
+}
+
+.site-link:hover {
+    filter: hue-rotate(346deg) brightness(104%) contrast(97%) invert(27%) sepia(51%) saturate(2878%);
+}
+
+.recipe-summary {
+    width: 100%;
+    align-items: center;
+}
+
+.recipe-summary-item {
+    text-align: center;
+    margin: 0px 2em;
+}
+
+.recipe-summary-interaction {
+    height: 50px;
+    width: 300px;
+    margin: auto;
+}
+
+.read-directions-btn {
+    background-color: var(--main-color);
+    border-radius: 20px;
+    height: fit-content;
+    padding: 10px 20px;
+    color: white;
+}
+
+.read-directions-btn:hover,
+.add-icon:hover {
+    color: var(--secondary-color);
+    cursor: pointer;
+    transform: scale(1.05);
+}
+
+.add-icon {
+    width: 50px;
+    height: 50px;
+}
+
+.recipe-data {
+    width: 40%;
+}
+
+.recipe-img-container {
+    text-align: center;
+    max-width: 500px;
+    width: 60%;
+}
+
+.recipe-img {
+    width: 100%;
+    object-fit: cover;
+    border-radius: 20px;
+}
+
+.horizontal-sep {
+    width: 100%;
+    height: 2px;
+    margin: 30px auto;
+    background-image: linear-gradient(to right, #ffffff 0%, var(--secondary-color), #ffffff 100%);
+}
+
+span {
+    font-size: 1.1em !important;
+}
+
+.ingredients {
+    padding: 10px;
+    width: 35%;
+    border: 1px solid orange;
+    border-radius: 10px;
+    margin: 20px;
+    height: fit-content;
+}
+
+.inner-block {
+    width: 100%;
+}
+
+.gradiant-line {
+    margin: 10px 0px 15px;
+    width: 100%;
+    height: 2px;
+    background-image: linear-gradient(to right, var(--main-color) 0%, #ffffff 75%);
+}
+
+ul li::marker {
+    color: var(--main-color);
+}
+
+.read-next {
+    width: 35%;
+}
+
+.main-section {
+    width: 65%;
+}
+
+.directions {
+    margin: 20px;
+    padding: 10px;
+}
+
+.direction-text {
+    margin: 10px 0px;
+}
+
+.recipe-tags {
+    margin: 1.1em;
+}
+
+.tag {
+    border: solid var(--main-color) 2px;
+    padding: .3em 2.5em;
+    margin: .8em;
+    font-weight: 500 !important;
+    color: var(--main-color);
+}
+
+.tag:hover {
+    cursor: pointer;
+    background-color: var(--secondary-color);
+}
+
+.auther-recipe {
+    height: 100px;
+    position: relative;
+    object-fit: fill;
+    overflow: hidden;
+    margin: 50px 0px;
+    border-radius: 10px;
+}
+
+.auther-recipe:hover {
+    cursor: pointer;
+    transform: scale(1.05);
+}
+
+.auther-recipe-image {
+    max-width: 100%;
+    height: auto;
+    object-fit: fill;
+    position: absolute;
+    top: -100%;
+    filter: brightness(50%);
+    z-index: -1;
+}
+
+.auther-recipe-name {
+    z-index: 1;
+    color: #ffffff;
+    font-weight: 700;
+    font-size: 1.5em;
+}
+
+.reviewer-img {
+    width: 3em;
+    height: 3em;
+    border-radius: 50%;
+    margin: 0px 1em;
+}
+
+.reviews {
+    margin: 1em;
+}
+
+.input-review-text {
+    width: 100%;
+    height: 8em;
+    text-align: start;
+    border: none;
+}
+
+.input-review-text:focus {
+    outline: none !important;
+    border: 1px solid var(--main-color);
+    box-shadow: none;
+}
+
+.submit-btn,
+.cancel-btn {
+    background-color: var(--main-color);
+    border-radius: 20px;
+    height: fit-content;
+    padding: .5em 1.8em;
+    color: white;
+    border: none;
+    margin-right: 1em;
+}
+
+.cancel-btn {
+    background-color: white;
+    color: var(--main-color);
+}
+
+.submit-btn:hover,
+.cancel-btn:hover {
+    color: var(--secondary-color);
+    cursor: pointer;
+    transform: scale(1.05);
+}
+
+.delete-review-icon {
+    width: 1.5em;
+}
+
+.delete-review-icon:hover {
+    cursor: pointer;
+}
+
+@media screen and (max-width: 992px) {
+    .recipe-img-container {
+        width: 100%;
+    }
+    .recipe-data {
+        width: 100%;
+    }
+    .ingredients {
+        width: 80%;
+    }
+    .read-next {
+        display: none;
+    }
+    .main-section {
+        width: 100%;
+    }
+}

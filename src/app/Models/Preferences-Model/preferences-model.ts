@@ -1,3 +1,4 @@
-export class PreferencesModel {
-  constructor(public name: string, public categories: string[]) {}
+export interface PreferencesModel {
+  name: string;
+  categories: string[];
 }

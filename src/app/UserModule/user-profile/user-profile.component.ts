@@ -8,37 +8,12 @@ import { CurrentUserService } from 'src/app/Services/Profile Services/Current-Us
   styleUrls: ['./user-profile.component.css'],
 })
 export class UserProfileComponent implements OnInit {
-  public bioIsShown: boolean;
-  public nameIsShown: boolean;
-  public bioPencileIsShown: boolean = false;
-  public namePencileIsShown: boolean = false;
+  inEditMode: boolean;
   public user!: UserModel;
   constructor(public userModel: CurrentUserService) {
-    this.nameIsShown = true;
-    this.bioIsShown = true;
-  }
-  showPencile() {
-    this.bioPencileIsShown = !this.bioPencileIsShown;
-  }
-  saveBio() {
-    this.bioIsShown = true;
-  }
-  editBio() {
-    this.bioIsShown = false;
-    console.log('Edit');
+    this.inEditMode = false;
   }
 
-  editName() {
-    this.nameIsShown = false;
-  }
-
-  showNamePencile() {
-    this.namePencileIsShown = !this.namePencileIsShown;
-  }
-
-  saveName() {
-    this.nameIsShown = true;
-  }
   ngOnInit(): void {
     this.user = this.userModel.currentUser;
   }
