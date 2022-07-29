@@ -10,7 +10,7 @@ export class PreferencesService {
   constructor() {
     this.preferencesList = [
       {
-        name: 'DIETS',
+        name: 'Nutrition',
         categories: [],
       },
       {

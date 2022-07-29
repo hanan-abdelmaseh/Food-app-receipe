@@ -18,7 +18,7 @@ import { AuthModule } from './AuthModule/auth.module';
 import { UserModule } from './UserModule/user.module';
 import { BrowsingModule } from './browsing/browsing.module';
 import { PantryModule } from './PantryModule/pantry.module';
-
+import { RatingModule } from 'primeng/rating';
 import {
   SocialLoginModule,
   SocialAuthServiceConfig,
@@ -79,6 +79,7 @@ import { SearchModule } from './SerarchModule/search.module';
     MatOptionModule,
     NgxPaginationModule,
     SearchModule,
+    RatingModule,
   ],
 
   exports: [],

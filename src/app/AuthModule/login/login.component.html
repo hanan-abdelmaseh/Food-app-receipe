@@ -13,9 +13,13 @@
     <span class="btn-text">connect with facebook</span>
   </button> -->
 
-    <button class="btn loginBtn rounded-pill container d-flex justify-content-start align-items-center text-dark px-1" #loginRef>
+    <button class="btn loginBtn rounded-pill container d-flex justify-content-start align-items-center text-dark px-1" #loginRef (click)="signin()">
     <span class="loginBtnIcon bg-light d-flex">
-      <img class="loginBtnImg" src="../../../assets/images/google.png" alt="" />
+      <img
+        class="loginBtnImg"
+        src="../../../assets/images/google.png "
+        alt=" "
+      />
     </span>
     <span class="btn-text text-dark">connect with google</span>
   </button>
@@ -31,5 +35,3 @@
     <span class="btn-text">connect with email</span>
   </button>
 </section>
-
-<button routerLink="/home">Navigate to home</button>

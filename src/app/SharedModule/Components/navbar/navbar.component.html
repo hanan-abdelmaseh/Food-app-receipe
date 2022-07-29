@@ -40,13 +40,13 @@
             <i class="fa-solid fa-magnifying-glass"></i>
           </a>
         </div>
-        <div class="user-operation d-flex text-center justify-content-center align-items-center">
+        <div routerLink="profile" class="user-operation d-flex text-center justify-content-center align-items-center">
             <a class="user-link">
                 <i class="fa-solid fa-user pt-2"></i>
             </a>
         </div>
         <div *ngIf="!isUserLogged" class="d-flex justify-content-center align-items-center">
-            <a routerLink="login" class="btn submit-btn">Login</a>
+            <a (click)="goToLoginPage()" class="btn submit-btn">Login</a>
         </div>
         <div *ngIf="isUserLogged == true" class="d-flex justify-content-center align-items-center">
             <a class="btn submit-btn" (click)="logOut()">Logout</a>

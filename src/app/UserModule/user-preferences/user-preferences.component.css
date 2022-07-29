@@ -91,7 +91,7 @@ main {
     border: 1px solid var(--main-color);
     width: 12em;
     font-size: 1em;
-    margin: 20px auto;
+    margin: 50px auto;
 }
 
 @media screen and (max-width: 992px) {

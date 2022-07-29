@@ -12,13 +12,14 @@ import { NotFoundComponent } from './SharedModule/Components/not-found/not-found
 import { LoginWithEmailComponent } from './AuthModule/login-with-email/login-with-email.component';
 import { GeneralUserComponent } from './SharedModule/Components/general-user/general-user.component';
 import { LoginComponent } from './AuthModule/login/login.component';
-import { CollectionDetailsComponent } from './UserModule/Shared Cpmponents/collection-details/collection-details.component';
+import { CollectionDetailsComponent } from './UserModule/collection-details/collection-details.component';
 import { UserSettingsComponent } from './UserModule/user-settings/user-settings.component';
 import { AboutComponent } from './Components/about/about.component';
 import { HomeComponent } from './Components/home/home.component';
 import { BrwosingComponent } from './browsing/Components/brwosing/brwosing.component';
 import { PantryComponent } from './PantryModule/Components/pantry/pantry.component';
 import { SearchComponent } from './SerarchModule/Components/SearchComponent/search/search.component';
+import { AuthGuard } from './Guard/auth.guard';
 
 const routes: Routes = [
   {
@@ -28,29 +29,59 @@ const routes: Routes = [
     children: [
       { path: '', pathMatch: 'full', redirectTo: '/home' },
       { path: 'home', component: HomeComponent },
-      { path: 'feed', component: FeedComponent },
+      { path: 'feed', component: FeedComponent, canActivate: [AuthGuard] },
       { path: 'about', component: AboutComponent },
-      { path: 'browse', component: BrwosingComponent },
-      { path: 'pantry', component: PantryComponent },
-      { path: 'recipe/notfound', component: NotFoundComponent },
-      { path: 'recipe/:recipeId', component: RecipeDetailsComponent },
-      { path: 'feed', component: FeedComponent },
-      { path: 'user/:userId', component: GeneralUserComponent },
+      {
+        path: 'browse',
+        component: BrwosingComponent,
+        canActivate: [AuthGuard],
+      },
+      { path: 'pantry', component: PantryComponent, canActivate: [AuthGuard] },
+      {
+        path: 'recipe/notfound',
+        component: NotFoundComponent,
+        canActivate: [AuthGuard],
+      },
+      {
+        path: 'recipe/:recipeId',
+        component: RecipeDetailsComponent,
+        canActivate: [AuthGuard],
+      },
+      // { path: 'feed', component: FeedComponent },
+      {
+        path: 'user/:userId',
+        component: GeneralUserComponent,
+        canActivate: [AuthGuard],
+      },
 
-      { path: 'search', component: SearchComponent },
+      { path: 'search', component: SearchComponent, canActivate: [AuthGuard] },
 
       {
         path: 'profile/collections/:collectionName',
         component: CollectionDetailsComponent,
+        canActivate: [AuthGuard],
       },
       { path: 'profile', pathMatch: 'full', redirectTo: 'profile/collections' },
       {
         path: 'profile',
         component: UserProfileComponent,
+        canActivate: [AuthGuard],
         children: [
-          { path: 'collections', component: UserCollectionsComponent },
-          { path: 'preferences', component: UserPreferencesComponent },
-          { path: 'setting', component: UserSettingsComponent },
+          {
+            path: 'collections',
+            component: UserCollectionsComponent,
+            canActivate: [AuthGuard],
+          },
+          {
+            path: 'preferences',
+            component: UserPreferencesComponent,
+            canActivate: [AuthGuard],
+          },
+          {
+            path: 'setting',
+            component: UserSettingsComponent,
+            canActivate: [AuthGuard],
+          },
         ],
       },
     ],

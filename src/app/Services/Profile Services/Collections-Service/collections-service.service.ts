@@ -6,13 +6,10 @@ import { CurrentUserService } from '../Current-User-Service/current-user.service
   providedIn: 'root',
 })
 export class CollectionsService {
-  public userCollectionsList: CollectionModel[];
+  public userCollectionsList: CollectionModel[] = [];
   public getCollection: CollectionModel | null = null;
   constructor(private userService: CurrentUserService) {
-    this.userCollectionsList =
-      this.userService.currentUser.userCollections == undefined
-        ? []
-        : this.userService.currentUser.userCollections;
+    this.getAllCollections();
   }
 
   getAllCollections() {

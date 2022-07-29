@@ -1,6 +1,6 @@
 .collection-header {
     width: 100%;
-    height: 250px;
+    height: 350px;
     text-align: center;
     overflow: hidden;
     position: relative;
@@ -64,4 +64,22 @@
 
 .recipes-section {
     margin: 100px auto;
+}
+
+input {
+    background-color: transparent;
+    font-size: 2.5rem;
+    color: white;
+    font-weight: 700;
+    box-shadow: none;
+    border: none;
+    text-align: center;
+}
+
+input:hover {
+    cursor: pointer;
+}
+
+input:focus {
+    cursor: auto;
 }

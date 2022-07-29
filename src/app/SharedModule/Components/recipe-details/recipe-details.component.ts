@@ -7,6 +7,7 @@ import { UserModel } from 'src/app/Models/User Model/user-model';
 import { CurrentUserService } from 'src/app/Services/Profile Services/Current-User-Service/current-user.service';
 import { RecipeService } from 'src/app/Services/RecipeServices/recipe-services.service';
 import { ReviewService } from 'src/app/Services/ReviewService/review-service.service';
+import { PrimeNGConfig } from 'primeng/api';
 
 @Component({
   selector: 'app-recipe-details',
@@ -23,15 +24,18 @@ export class RecipeDetailsComponent implements OnInit {
   public allReviews?: ReviewModel[];
   public recipeReviwers?: UserModel[];
   public currentUserHasReview: boolean = false;
+  public rate: number = 3;
   constructor(
     public recipeService: RecipeService,
     private activatedRoute: ActivatedRoute,
     public userService: CurrentUserService,
     public reviewService: ReviewService,
-    private route: Router
+    private route: Router,
+    private primengConfig: PrimeNGConfig
   ) {}
 
   ngOnInit(): void {
+    this.primengConfig.ripple = true;
     //Get Recipe ID
     let recipeId = this.activatedRoute.snapshot.paramMap.get('recipeId');
 

@@ -1,10 +1,7 @@
 /* You can add global styles to this file, and also import other style files */
+
 @import url('https://fonts.googleapis.com/css2?family=Mulish:wght@200;300;400;700&display=swap');
-
 @import "~bootstrap/dist/css/bootstrap.css";
-
-
-
 * {
     padding: 0;
     margin: 0;
@@ -14,12 +11,12 @@
     outline: none;
     transition: all 0.3s;
     font-size: 16px;
-  }
-  
-  
-  /*Colors*/
-  
-  :root {
+}
+
+
+/*Colors*/
+
+ :root {
     --main-color: #519259;
     --secondary-color: #FEBD2E;
     --bg-white: #FFFFFF;
@@ -27,65 +24,69 @@
     --bg-gray: #bababa;
     --bg-initial: #4a4a4a;
     --bg-link: #707070;
-  }
+}
 
-  html {
+html {
     font-size: 62.5%;
     scroll-behavior: smooth;
     overflow-x: hidden;
     scroll-padding-top: 7rem;
-  }
- 
-  /*hero section*/
-  .heroSection{
-    background: linear-gradient(rgba(15, 23, 43, .9),
-     rgba(15, 23, 43, .9)), url(./assets/images/bg-hero.jpg);
+}
+
+
+/*hero section*/
+
+.heroSection {
+    background: linear-gradient(rgba(15, 23, 43, .9), rgba(15, 23, 43, .9)), url(./assets/images/bg-hero.jpg);
     background-position: center center;
     background-repeat: no-repeat;
     background-size: cover;
-  }
-  
-  /*fonts*/
-  h1,h2,h3,h4,h5,h6{
+}
+
+
+/*fonts*/
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
     font-weight: 700 !important;
-  }
-  h1{
+}
+
+h1 {
     font-size: 5rem !important;
     line-height: 1.2 !important;
-  }
-  h2 {
+}
+
+h2 {
     font-size: 4rem !important;
-  }
-  
-  h3 {
+}
+
+h3 {
     font-size: 2.5rem !important;
-  }
-  h4 {
-  
+}
+
+h4 {
     font-size: 2rem !important;
-  }
-  h5 {
+}
+
+h5 {
     font-size: 2rem !important;
-  }
-  
-  
-  
- 
-  p{
+}
+
+p {
     font-size: 1.9rem !important;
     line-height: 1.2 !important;
 }
-  
-  
-  
-  a {
+
+a {
     font-size: 1.8rem;
     line-height: 1.2;
     color: var(--bg-link);
     text-decoration: none;
-  }
-  
-
+}
 
 span {
     font-size: 14px !important;
@@ -98,33 +99,47 @@ span {
 .Learn-btn {
     background-color: var(--main-color);
 }
-.Learn-btn ,.submit-btn ,.select-btn{
+
+.Learn-btn,
+.submit-btn,
+.select-btn {
     padding: 4px 24px;
     font-size: 1.8rem;
     border-radius: 3rem;
     color: var(--bg-white);
 }
+
 .Learn-btn:hover {
     color: var(--main-color);
     background-color: var(--bg-white);
     border: 1px solid var(--main-color);
 }
+
 .submit-btn {
     background-color: var(--secondary-color);
 }
+
 .submit-btn:hover {
     color: var(--secondary-color);
     background-color: var(--bg-white);
     border: 1px solid var(--secondary-color);
 }
 
-.select-btn{
+.select-btn {
     color: var(--secondary-color);
     background-color: var(--bg-white);
     border: 1px solid var(--secondary-color) !important;
 }
-.select-btn:hover{
+
+.select-btn:hover {
     background-color: var(--secondary-color);
     color: #FFFFFF;
 }
 
+.swal2-html-container {
+    font-size: 2em !important;
+}
+
+.swal2-title {
+    font-size: 2.5em !important;
+}

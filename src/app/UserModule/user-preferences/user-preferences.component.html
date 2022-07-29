@@ -1,7 +1,7 @@
 <main class="my-5 d-flex flex-column m-auto">
     <section *ngFor="let pref of allPreferences; let i = index; let last = last" class="d-flex text-center align-items-center flex-column mt-5 w-100">
         <h3>{{ pref.name }}</h3>
-        <h5 class="my-3">
+        <h5 class="mt-3 mb-5">
             Select from the {{ pref.name }} below and we will only show you recipes that match.
         </h5>
 
@@ -22,7 +22,7 @@
 
         <!-- Selected Preferences -->
         <article *ngIf="preferencesList.length > 0" class="d-flex flex-wrap align-items-center my-2">
-            <div class="my-3 d-flex flex-wrap align-items-center">
+            <div class="my-3 d-flex justify-content-center flex-wrap align-items-center">
                 <div class="me-3">Selected {{ pref.name }} :</div>
                 <div *ngFor="
             let favouritePref of preferencesList[i].categories;
@@ -49,5 +49,7 @@
         </section>
         <div [hidden]="last" class="horizontal-sep"></div>
     </section>
-    <button class="Learn-btn rounded-pill">Save Preferences</button>
+    <button (click)="save()" class="Learn-btn rounded-pill">
+    Save Preferences
+  </button>
 </main>

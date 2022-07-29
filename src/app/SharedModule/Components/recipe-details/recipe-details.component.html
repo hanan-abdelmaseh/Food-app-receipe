@@ -2,28 +2,36 @@
     <section class="w-100 d-flex flex-column flex-md-row justify-content-evenly align-items-center">
         <article class="recipe-data d-flex flex-column text-center">
             <h2 class="recipe-name">{{ currentRecipe!.recipeName }}</h2>
-            <span>
-        {{ recipeAuther?.userName }}
-      </span>
+            <a href="">
+                <span>
+          {{ recipeAuther?.userName }}
+        </span>
+            </a>
             <div class="user-social d-flex justify-content-between">
-                <img class="face-link" src="../../../../assets/svg/facebook.svg" alt="" />
-                <img class="twitter-link" src="../../../../assets/svg/twitter.svg" alt="" />
-                <img class="site-link" src="../../../../assets/svg/website.svg" alt="" />
+                <a href=""><img class="face-link" src="../../../../assets/svg/facebook.svg" alt="" /></a>
+                <a href="">
+                    <img class="twitter-link" src="../../../../assets/svg/twitter.svg" alt="" />
+                </a>
+                <a href="">
+                    <img class="site-link" src="../../../../assets/svg/website.svg" alt="" />
+                </a>
             </div>
 
             <div class="d-flex recipe-summary justify-content-center">
                 <article class="recipe-summary-item">
-                    <div style="font-size: 40px">{{ ingrediantsCount }}</div>
-                    <span>Ingredients</span>
+                    <div style="font-size: 40px" class="m-3">{{ ingrediantsCount }}</div>
+                    <span class>Ingredients</span>
                 </article>
                 <div class="vertical-sep"></div>
                 <article class="recipe-summary-item">
-                    <div style="font-size: 40px">{{ currentRecipe!.time }}</div>
+                    <div style="font-size: 40px" class="m-3">
+                        {{ currentRecipe!.time }}
+                    </div>
                     <span>Hours</span>
                 </article>
                 <div class="vertical-sep"></div>
                 <article class="recipe-summary-item">
-                    <div style="font-size: 40px">
+                    <div style="font-size: 40px" class="m-3">
                         {{ recipeCalories.nutritionQuantity }}
                     </div>
                     <span>Calories</span>
@@ -121,7 +129,8 @@
                                 {{ currentUser!.userName }}
                             </div>
                         </div>
-                        <div>Rating Builder Here</div>
+                        <!-- <div>Rating Builder Here</div> -->
+
                         <div class="my-2 flex-grow-1">
                             <textarea class="input-review-text" placeholder="write a review or a feedback" type=" text "></textarea>
                         </div>
@@ -184,3 +193,8 @@
         </section>
     </section>
 </main>
+<form #form="ngForm">
+    <bar-rating name="rating" [(ngModel)]="rate" [max]="4"></bar-rating>
+</form>
+<p>form is valid: {{ form.valid ? "true" : "false" }}</p>
+<pre>{{ rate }}</pre>

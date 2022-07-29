@@ -16,6 +16,9 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatSelectModule } from '@angular/material/select';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { BreadCrumbComponent } from './Components/bread-crumb/bread-crumb.component';
+import { RatingModule } from 'primeng/rating';
+import { RatingBuilderComponent } from './Components/RatingBuilder/rating-builder/rating-builder.component';
+import { BarRatingModule } from 'ngx-bar-rating';
 @NgModule({
   declarations: [
     HeaderComponent,
@@ -29,6 +32,7 @@ import { BreadCrumbComponent } from './Components/bread-crumb/bread-crumb.compon
     BreadCrumbComponent,
     SavingComponent,
     FooterComponent,
+    RatingBuilderComponent,
   ],
   imports: [
     CommonModule,
@@ -38,6 +42,8 @@ import { BreadCrumbComponent } from './Components/bread-crumb/bread-crumb.compon
     FormsModule,
     ReactiveFormsModule,
     MatFormFieldModule,
+    RatingModule,
+    BarRatingModule,
   ],
   exports: [
     HeaderComponent,

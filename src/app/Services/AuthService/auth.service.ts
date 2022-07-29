@@ -1,6 +1,6 @@
 import { Location } from '@angular/common';
 import { ElementRef, Injectable } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { BehaviorSubject } from 'rxjs';
 
 @Injectable({
@@ -9,42 +9,46 @@ import { BehaviorSubject } from 'rxjs';
 export class AuthService {
   public isLoggenInSubject: BehaviorSubject<boolean>;
   auth2: any;
-  constructor(private router: Router, private location: Location) {
+  constructor(private router: Router, private lacation: Location) {
     this.isLoggenInSubject =
       localStorage.getItem('token') == undefined
         ? new BehaviorSubject<boolean>(false)
         : new BehaviorSubject<boolean>(true);
+    this.googleAuthSDK();
   }
 
   callLogin(loginElement: ElementRef) {
-    this.auth2.attachClickHandler(
-      loginElement.nativeElement,
-      {},
-      (googleAuthUser: any) => {
-        //Print profile details in the console logs
+    return new Promise((resolve, reject) => {
+      this.auth2.attachClickHandler(
+        loginElement.nativeElement,
+        {},
+        (googleAuthUser: any) => {
+          //Print profile details in the console logs
 
-        let currentUser = googleAuthUser.getBasicProfile();
-        localStorage.setItem(
-          'token',
-          googleAuthUser.getAuthResponse().id_token
-        );
-        this.location.back();
-        this.isLoggenInSubject.next(true);
-
-        console.log('Token || ' + googleAuthUser.getAuthResponse().id_token);
-        console.log('ID: ' + currentUser.getId());
-        console.log('Name: ' + currentUser.getName());
-        console.log('Image URL: ' + currentUser.getImageUrl());
-        console.log('Email: ' + currentUser.getEmail());
-      }
-
-      // (error: any) => {
-      //   alert(JSON.stringify(error, undefined, 2));
-      // }
-    );
+          let currentUser = googleAuthUser.getBasicProfile();
+          localStorage.setItem(
+            'token',
+            googleAuthUser.getAuthResponse().id_token
+          );
+          this.isLoggenInSubject.next(true);
+          resolve(true);
+          console.log('clicked');
+          console.log('Token || ' + googleAuthUser.getAuthResponse().id_token);
+          console.log('ID: ' + currentUser.getId());
+          console.log('Name: ' + currentUser.getName());
+          console.log('Image URL: ' + currentUser.getImageUrl());
+          console.log('Email: ' + currentUser.getEmail());
+        },
+        (error: any) => {
+          this.router.canceledNavigationResolution.replace;
+          alert(JSON.stringify(error, undefined, 2));
+          reject(false);
+        }
+      );
+    });
   }
 
-  googleAuthSDK(loginElement: ElementRef) {
+  googleAuthSDK() {
     (<any>window)['googleSDKLoaded'] = () => {
       (<any>window)['gapi'].load('auth2', () => {
         this.auth2 = (<any>window)['gapi'].auth2.init({
@@ -54,7 +58,7 @@ export class AuthService {
           cookiepolicy: 'single_host_origin',
           scope: 'profile email',
         });
-        this.callLogin(loginElement);
+        // this.callLogin(loginElement);
       });
     };
 
@@ -74,8 +78,10 @@ export class AuthService {
   logOut() {
     localStorage.removeItem('token');
     this.isLoggenInSubject.next(false);
+    this.router.navigate(['/home']);
   }
 
+  loginWithEmail(email: string, password: string) {}
   isLoggedIn() {
     return this.isLoggenInSubject;
   }

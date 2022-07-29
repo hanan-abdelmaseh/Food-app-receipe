@@ -1,9 +1,9 @@
 <main>
     <h3 class="text-center m-auto my-4">Collections</h3>
     <hr class="w-75 mb-5 mx-auto" />
-
+    <!-- Add New Collection Section -->
     <section class="d-flex mx-5 flex-wrap justify-content-center">
-        <div class="add-collection-card collection d-flex flex-column align-items-center justify-content-center m-3">
+        <article class="add-collection-card collection d-flex flex-column align-items-center justify-content-center m-3">
             <div ChangeCursor *ngIf="isAddFormShown == false" class="d-flex flex-column align-items-center justify-content-center" (click)="showHideAddForm()">
                 <i class="plus-icon">
           <img
@@ -16,7 +16,7 @@
             </div>
             <form class="w-100" *ngIf="isAddFormShown == true" (ngSubmit)="addCollection(collectionName.name)">
                 <div class="w-100 d-flex flex-column flex-wrap justify-content-center align-items-center text-center">
-                    <input type="text" class="form-control collection-name-input" #collectionName name="collectionName" placeholder="Collection Name" />
+                    <input type="text" class="form-control collection-name-input" #collectionName name="collectionName" placeholder="Collection Name" required maxlength="20" />
                     <div class="d-flex align-items-center">
                         <input class="add-btn" type="submit" value="Add" />
                         <div class="separator"></div>
@@ -24,7 +24,7 @@
                     </div>
                 </div>
             </form>
-        </div>
+        </article>
 
         <ng-container *ngFor="let collection of collectionsList">
             <section ChangeCursor class="collection d-flex flex-column justify-content-between m-3" (click)="openColletionDetails(collection.collectionName)">

@@ -11,7 +11,7 @@ export class UserPreferencesComponent implements OnInit {
   public shownPreferencesList = [false, false, false, false];
 
   public allPreferences: PreferencesModel[];
-  public allCat = ['Diets', 'Allegries', 'Cusion', 'Disliked Ingredients'];
+  public allCat = ['Nutrition', 'Allegries', 'Cusion', 'Disliked Ingredients'];
   public preferencesList: PreferencesModel[];
   constructor(private preferencesService: PreferencesService) {
     this.allPreferences = this.preferencesService.allPreferences;
@@ -38,5 +38,9 @@ export class UserPreferencesComponent implements OnInit {
     this.preferencesService.addToPreferences(favouritePref, pref);
 
     console.log('Removed');
+  }
+
+  save() {
+    console.log(this.preferencesList);
   }
 }

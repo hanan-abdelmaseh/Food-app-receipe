@@ -16,6 +16,6 @@ export class LoginWithEmailComponent implements OnInit {
 
   ngOnInit(): void {}
   back() {
-    this.router.navigateByUrl('/login').then(() => window.location.reload());
+    this.router.navigateByUrl('/login');
   }
 }
