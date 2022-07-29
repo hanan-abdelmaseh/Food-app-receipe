@@ -27,6 +27,7 @@ export class PantryComponent implements OnInit {
   searchWord :any;
   searchedIngredients :Allingredient[] =[];
   durationInSeconds = 5; 
+  Shown:boolean = true;
  
   
   horizontalPosition: MatSnackBarHorizontalPosition = 'right';
@@ -80,19 +81,14 @@ export class PantryComponent implements OnInit {
     this.searchedIngredients = this.MainIngredientList ;
   }
   /*to show suggested container*/
-  focusFunction(){
-   
+  focusFunction(){  
     this.visible= true;
-
   }
   /*to hide suggested cobtainer*/
   onBlur(){
-   
     this.visible= false;
-   
-    
   }
-  /* to add selected item ang iput value to arrya 
+  /* to add selected item and iput value to array 
    to send it to api to get matched data*/
   Add(item:string){
     console.log("nice");
@@ -107,6 +103,7 @@ export class PantryComponent implements OnInit {
   searchPantry(){
     console.log("search");
     console.log(this.ingredientList);
+    this.Shown=false;
    
   }
   /* to enable user search in ingredient on typing ingredients*/
@@ -115,7 +112,6 @@ export class PantryComponent implements OnInit {
       this.ngOnInit();
     }
     else{
-
       this.searchedIngredients = this.searchedIngredients.filter((response)=>{
              return response.name.toLocaleLowerCase().match(this.searchWord.toLocaleLowerCase());
       })

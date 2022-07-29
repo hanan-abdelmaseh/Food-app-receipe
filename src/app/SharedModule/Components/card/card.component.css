@@ -93,6 +93,7 @@
     transition: all 1s;
     font-weight: 500;
     border-radius: 10px;
+    overflow-y: scroll;
 }
 
 .mediumrow:hover .content {
@@ -137,3 +138,25 @@ button:hover {
     background-color: green;
     font-size: 18px
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

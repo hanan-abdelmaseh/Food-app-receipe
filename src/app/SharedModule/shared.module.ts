@@ -16,6 +16,16 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatSelectModule } from '@angular/material/select';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { BreadCrumbComponent } from './Components/bread-crumb/bread-crumb.component';
+import { SearchNotFoundComponent } from './Components/search-not-found/search-not-found.component';
+
+
+import {RatingModule} from 'primeng/rating';
+import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { StarRatingComponent } from './Components/star-rating/star-rating.component';
+import{MatTooltipModule} from '@angular/material/tooltip';
+import{ MatIconModule} from '@angular/material/icon';
+import {MatButtonModule} from '@angular/material/button';
 @NgModule({
   declarations: [
     HeaderComponent,
@@ -29,6 +39,9 @@ import { BreadCrumbComponent } from './Components/bread-crumb/bread-crumb.compon
     BreadCrumbComponent,
     SavingComponent,
     FooterComponent,
+    SearchNotFoundComponent,
+    StarRatingComponent,
+    
   ],
   imports: [
     CommonModule,
@@ -38,6 +51,12 @@ import { BreadCrumbComponent } from './Components/bread-crumb/bread-crumb.compon
     FormsModule,
     ReactiveFormsModule,
     MatFormFieldModule,
+    RatingModule,
+    BrowserModule,
+    BrowserAnimationsModule,
+    MatTooltipModule,
+    MatIconModule,
+    MatButtonModule
   ],
   exports: [
     HeaderComponent,
@@ -48,6 +67,8 @@ import { BreadCrumbComponent } from './Components/bread-crumb/bread-crumb.compon
     SavingComponent,
     FooterComponent,
     BreadCrumbComponent,
+    SearchNotFoundComponent,
+    StarRatingComponent
   ],
 })
 export class SharedModule {}

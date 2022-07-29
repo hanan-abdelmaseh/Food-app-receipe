@@ -4,7 +4,7 @@
 <div class="container mt-5">
   <div class="row text-center">
     <div class="col-lg-10 col-md-12 m-auto p-2">
-      <h2 class="mb-4">Cook with what you have</h2>
+      <h2 class="mb-5">Cook with what you have</h2>
       <p class="mb-5">Don't want to go to the store? 
         No problem! Enter the ingredients you have on hand,
          and we'll show you recipes you could make. For best results,
@@ -67,4 +67,6 @@
   </div>
   </div>
 
- 
+ <div *ngIf="Shown">
+  <app-search-not-found></app-search-not-found>
+ </div>

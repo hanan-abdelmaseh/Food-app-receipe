@@ -5,6 +5,7 @@ import { CollectionsService } from 'src/app/Services/Profile Services/Collection
 import { CurrentUserService } from 'src/app/Services/Profile Services/Current-User-Service/current-user.service';
 import { Component, Input, OnChanges, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
+import { StarRatingColor } from '../star-rating/star-rating.component';
 
 @Component({
   selector: 'app-card',
@@ -15,6 +16,14 @@ export class CardComponent implements OnInit, OnChanges {
   @Input() title: string = '';
   @Input() text: string = '';
   @Input() imgSrc: string = '';
+  @Input() ReceipeRating :number =0 ;
+  rating:number=4;
+  starCount:number = 5;
+  starColor:StarRatingColor = StarRatingColor.accent;
+  starColorP:StarRatingColor = StarRatingColor.primary;
+  starColorW:StarRatingColor = StarRatingColor.warn;
+
+  val:number = 4;
   /*add to collection button */
   toppings = new FormControl('');
   toppingList: string[] = [
@@ -35,6 +44,9 @@ export class CardComponent implements OnInit, OnChanges {
     private collectionService: CollectionsService
   ) {
     this.currentRecipe = this.recivedRecipe;
+
+
+    this.rating = this.ReceipeRating ;
   }
 
   //testing

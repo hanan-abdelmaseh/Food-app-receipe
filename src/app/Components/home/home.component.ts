@@ -20,6 +20,7 @@ export class HomeComponent implements OnInit {
    //
    //receipes
    receipes:any[]=[];
+   rating:number=4
   
    p:number = 1;
    count: number = 16;

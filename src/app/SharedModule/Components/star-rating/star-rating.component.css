@@ -1,0 +1,12 @@
+.material-icons {
+    font-family: 'Material Icons' !important;
+}
+button{
+    
+    border: none;
+    background-color: #fff;
+}
+.mat-icon{
+    color: var( --secondary-color) !important;
+    background-color: aquamarine;
+}

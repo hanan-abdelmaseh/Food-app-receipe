@@ -47,6 +47,8 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { BreadCrumbComponent } from './SharedModule/Components/bread-crumb/bread-crumb.component';
 import { SearchComponent } from './SerarchModule/Components/SearchComponent/search/search.component';
 import { SearchModule } from './SerarchModule/search.module';
+/*prime ng */
+                 
 @NgModule({
   declarations: [
     AppComponent,
@@ -79,6 +81,7 @@ import { SearchModule } from './SerarchModule/search.module';
     MatOptionModule,
     NgxPaginationModule,
     SearchModule,
+    
   ],
 
   exports: [],

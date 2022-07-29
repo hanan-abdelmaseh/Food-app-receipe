@@ -35,7 +35,7 @@
             <div class="col-lg-3 col-md-6 mb-4" *ngFor="
           let receipe of receipes| paginate: { itemsPerPage: count, currentPage: p } ">
                 <app-card [title]="receipe.title" 
-                [imgSrc]="receipe.image" [text]="receipe.description"></app-card>
+                [imgSrc]="receipe.image" [text]="receipe.description" [ReceipeRating]="rating"></app-card>
             </div>
             <div class="text-center">
                 <pagination-controls (pageChange)="p = $event"></pagination-controls>

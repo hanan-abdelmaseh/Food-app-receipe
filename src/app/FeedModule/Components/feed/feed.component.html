@@ -6,10 +6,12 @@
 <div class="container">
     <div class="row">
         <div class="col-m-12">
-            <h2>Just For You</h2>
+            <h2 class="mb-2">Just For You</h2>
+           <button class="btn submit-btn" (click)="getCollection()">See Your Collection</button>
         </div>
     </div>
-
+</div>
+<div class="container" *ngIf="!shown">
     <div class="row mt-5">
         <div class="col-md-3">
             <app-card></app-card>
@@ -24,9 +26,7 @@
             <app-card></app-card>
         </div>
     </div>
-    <!-- <div class="row mt-5">
-        <div class="col-md-3" *ngFor="let recipe of recipesList">
-            <app-card [recivedRecipe]="recipe"></app-card>
-        </div>
-    </div> -->
+</div>
+<div *ngIf="shown">
+<app-search-not-found></app-search-not-found>
 </div>
