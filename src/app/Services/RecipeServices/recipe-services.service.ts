@@ -1,14 +1,17 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { RecipeModel } from 'src/app/Models/RecipeModel/recipe-model';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root',
 })
+
 export class RecipeService {
   public recipesList: RecipeModel[];
   public currentRecipe?: RecipeModel;
 
-  constructor() {
+  constructor(private _Http:HttpClient) {
     this.recipesList = [
       {
         auther: 1,
@@ -233,4 +236,11 @@ export class RecipeService {
     return recipe;
   }
   addRecipe(recipe: RecipeModel) {}
+  /* get all receipes*/
+  getAllReceipes(){
+    //fake api this will changes
+    //will change in environment
+    return this._Http.get(`${environment.ApiUrl}Recipes/HomeRecipes`);
+   //return this._Http.get('https://fakestoreapi.com/products');
+  }
 }

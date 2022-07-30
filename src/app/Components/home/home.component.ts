@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { CarsolService } from 'src/app/Services/carsol.service';
-import { ReceipesService } from 'src/app/Services/receipes.service';
+import { RecipeService } from 'src/app/Services/RecipeServices/recipe-services.service';
 import { CarsolImg } from 'src/app/SharedModule/Interface/carsol-img';
+import { MainReceipe } from 'src/app/viewModel/main-receipe';
 
  export interface empolyee {
    name:string,
@@ -19,13 +20,14 @@ export class HomeComponent implements OnInit {
 
    //
    //receipes
-   receipes:any[]=[];
-   rating:number=4
-  
+   AllReceipes:MainReceipe[]=[];
+   loading:boolean = false;
+
+  /*pagination */
    p:number = 1;
    count: number = 16;
   constructor(private _CarsolService:CarsolService ,
-              private _ReceipesService:ReceipesService) { 
+              private _ReceipesService:RecipeService) { 
   }
 
   ngOnInit(): void {
@@ -34,9 +36,13 @@ export class HomeComponent implements OnInit {
     this.getAllReceipesData();
   }
   getAllReceipesData(){
+    this.loading= true;
     this._ReceipesService.getAllReceipes().subscribe((res:any)=>{
-      this.receipes= res;
-    });
+      this.AllReceipes= res;
+      this.loading= false;
+      console.log(this.AllReceipes);
+    }
+    );
   }
 
 }

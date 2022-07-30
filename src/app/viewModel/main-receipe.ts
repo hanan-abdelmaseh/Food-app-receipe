@@ -1,8 +1,7 @@
 export interface MainReceipe {
-    ReceipeId:number ,
-    ReceipeName:string ,
-    ReceipeImg :string,
-    ReceipeRating:number ,
-    ReceipeIngredient:string[],
-    
+    receipeID:number ,
+    recipeImage :string,
+    recipeIngredients:string[],
+    recipeName:string ,
+    recipeRating:number ,   
 }

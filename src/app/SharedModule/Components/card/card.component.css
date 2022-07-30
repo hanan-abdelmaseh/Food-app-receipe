@@ -23,7 +23,7 @@
 } */
 .mat-form-field{
    
-    width: 20px !important;
+    width: 18px !important;
     height: 0px !important;
 }
 .mat-form-field-wrapper {
@@ -44,7 +44,7 @@
 
 
 .card {
-   
+   height: 400px;   
     background-color: #fcfcfc;
     border-radius: 12px;
     color: #000000;
@@ -56,7 +56,10 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: center
+    align-items: center;
+    
+    height: 50px;
+
     
 }
 .mediumrow {
@@ -85,7 +88,8 @@
     height: 100%;
     width: 100%;
     border: 1px solid white;
-    background-image: linear-gradient(to right top, #83393c, #778fcd);
+    /*background-image: linear-gradient(to right top, #4de2fc, #99b5fb);*/
+    background-color: #f6dba2;
     position: absolute;
     transform: scale(0) rotate(-180deg);
     padding: 14px;
@@ -93,7 +97,7 @@
     transition: all 1s;
     font-weight: 500;
     border-radius: 10px;
-    overflow-y: scroll;
+
 }
 
 .mediumrow:hover .content {
@@ -113,7 +117,7 @@
 
 .boxes {
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center
 }
 
@@ -123,22 +127,18 @@
 .lastrow button {
     display: flex;
     justify-content: center;
-    margin-top: 15px;
-    height: 50px;
-    width: 50px;
+    height: 45px;
+    width: 45px;
     border-radius: 50%;
-    background-color:var(--secondary-color);
-    color: white;
+    background-color: #fff;
     transition: all 1s;
     cursor: pointer;
-    border:none;
+    border:3px solid var(--secondary-color);
 }
 
-button:hover {
-    background-color: green;
-    font-size: 18px
+.mat-form-field-appearance-legacy .mat-form-field-underline {
+    height: none !important;
 }
-
 
 
 

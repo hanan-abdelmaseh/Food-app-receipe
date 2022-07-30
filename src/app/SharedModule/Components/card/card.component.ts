@@ -14,16 +14,14 @@ import { StarRatingColor } from '../star-rating/star-rating.component';
 })
 export class CardComponent implements OnInit, OnChanges {
   @Input() title: string = '';
-  @Input() text: string = '';
+  @Input() text: string[] = [];
   @Input() imgSrc: string = '';
-  @Input() ReceipeRating :number =0 ;
-  rating:number=4;
+  @Input() receipeRating :number = 0;
+  
   starCount:number = 5;
   starColor:StarRatingColor = StarRatingColor.accent;
   starColorP:StarRatingColor = StarRatingColor.primary;
   starColorW:StarRatingColor = StarRatingColor.warn;
-
-  val:number = 4;
   /*add to collection button */
   toppings = new FormControl('');
   toppingList: string[] = [
@@ -46,7 +44,7 @@ export class CardComponent implements OnInit, OnChanges {
     this.currentRecipe = this.recivedRecipe;
 
 
-    this.rating = this.ReceipeRating ;
+    
   }
 
   //testing

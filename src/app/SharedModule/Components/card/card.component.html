@@ -59,42 +59,40 @@
     add to collection {{ collection.collectionName }}
   </button> -->
 <div class="card">
-    <div class="firstrow">
-        <h4>First Receipe</h4>
+    <div class="firstrow mb-2">
+        <h4>{{title}}</h4>
     </div>
     <div class="mediumrow">
         <img [src]="imgSrc" />
         <div class="content">
             <p>
-                Lorem, ipsum dolor sit amet consectetur adipisicing elit. Similique, ex ut. Quos vitae soluta, ullam, natus quod illum praesentium corrupti illo dolores deserunt esse quidem, error aspernatur non? Illum, id!
+               {{text}}
             </p>
         </div>
     </div>
     <div class="lastrow">
         <div class="boxes">
-            
-
-            <app-star-rating [rating]="rating"  [starCount]="starCount" 
-            [color]="starColor" ></app-star-rating>
-        </div>
-        <button>
-      <mat-form-field>
-        <mat-select [formControl]="toppings" multiple>
-          <mat-select-trigger>
-            {{toppings.value?.[0] || ''}}
-            <span
-              *ngIf="(toppings.value?.length || 0) > 1"
-              class="example-additional-selection"
-            >
-              (+{{ (toppings.value?.length || 0) - 1 }}
-              {{ toppings.value?.length === 2 ? "other" : "others" }})
-            </span>
-          </mat-select-trigger>
-          <mat-option *ngFor="let topping of toppingList" [value]="topping">{{
-            topping
-          }}</mat-option>
-        </mat-select>
-      </mat-form-field>
-    </button>
+            <app-star-rating [rating]="receipeRating"  [starCount]="starCount" [color]="starColor"></app-star-rating>
+            <button>
+              <mat-form-field>
+                <mat-select [formControl]="toppings" multiple>
+                  <mat-select-trigger>
+                    {{toppings.value?.[0] || ''}}
+                    <span
+                      *ngIf="(toppings.value?.length || 0) > 1"
+                      class="example-additional-selection"
+                    >
+                      (+{{ (toppings.value?.length || 0) - 1 }}
+                      {{ toppings.value?.length === 2 ? "other" : "others" }})
+                    </span>
+                  </mat-select-trigger>
+                  <mat-option *ngFor="let topping of toppingList" [value]="topping">{{
+                    topping
+                  }}</mat-option>
+                </mat-select>
+              </mat-form-field>
+            </button>
+          </div>
+        
     </div>
 </div>
