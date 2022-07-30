@@ -23,6 +23,11 @@ import { AuthGuard } from './Guard/auth.guard';
 
 const routes: Routes = [
   {
+    path: 'recipe/notfound',
+    component: NotFoundComponent,
+    canActivate: [AuthGuard],
+  },
+  {
     path: '',
     // pathMatch: 'full',
     component: MainLayoutComponent,
@@ -37,11 +42,7 @@ const routes: Routes = [
         canActivate: [AuthGuard],
       },
       { path: 'pantry', component: PantryComponent, canActivate: [AuthGuard] },
-      {
-        path: 'recipe/notfound',
-        component: NotFoundComponent,
-        canActivate: [AuthGuard],
-      },
+
       {
         path: 'recipe/:recipeId',
         component: RecipeDetailsComponent,

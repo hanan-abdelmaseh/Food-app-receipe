@@ -39,7 +39,7 @@ import { HomeComponent } from './Components/home/home.component';
 import { NewsletterComponent } from './Components/newsletter/newsletter.component';
 
 import { NgxPaginationModule } from 'ngx-pagination';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 
 import { MatSelectModule } from '@angular/material/select';
 import { MatOptionModule } from '@angular/material/core';
@@ -47,6 +47,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { BreadCrumbComponent } from './SharedModule/Components/bread-crumb/bread-crumb.component';
 import { SearchComponent } from './SerarchModule/Components/SearchComponent/search/search.component';
 import { SearchModule } from './SerarchModule/search.module';
+import { AuthInterceptor } from './Interceptors/auth.interceptor';
 @NgModule({
   declarations: [
     AppComponent,
@@ -83,7 +84,9 @@ import { SearchModule } from './SerarchModule/search.module';
   ],
 
   exports: [],
-  providers: [],
+  providers: [
+    { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
