@@ -32,7 +32,6 @@ export class AuthService {
           );
           this.isLoggenInSubject.next(true);
           resolve(true);
-          console.log('clicked');
           console.log('Token || ' + googleAuthUser.getAuthResponse().id_token);
           console.log('ID: ' + currentUser.getId());
           console.log('Name: ' + currentUser.getName());
@@ -58,7 +57,6 @@ export class AuthService {
           cookiepolicy: 'single_host_origin',
           scope: 'profile email',
         });
-        // this.callLogin(loginElement);
       });
     };
 
