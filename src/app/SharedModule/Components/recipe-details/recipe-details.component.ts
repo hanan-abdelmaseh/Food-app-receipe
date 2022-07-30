@@ -20,6 +20,7 @@ export class RecipeDetailsComponent implements OnInit {
   public currentRecipe: RecipeDetailsViewModel | null = null;
   public currentUser?: UserModel;
   public newReview?: ReviewViewModel;
+  public loading: boolean = false;
   // public recipeAuther: UserModel | null = null;
   public ingrediantsCount: number = 0;
   // public recipeCalories!: NutritionModel;
@@ -52,6 +53,7 @@ export class RecipeDetailsComponent implements OnInit {
             this.currentRecipe = recipe;
             this.currentRecipe?.recipeIngredients.forEach((element) => {
               this.ingrediantsCount = this.ingrediantsCount + 1;
+              this.loading = false;
             });
             // Add New Review
             this.newReview = {

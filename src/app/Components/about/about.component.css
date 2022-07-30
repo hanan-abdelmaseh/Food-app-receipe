@@ -1,14 +1,16 @@
-
-
-.content span{
+.content span {
     color: var(--main-color);
     font-size: 4rem !important;
-
 }
-.item{
+
+.item {
     text-align: center;
 }
 
-h2{
+h2 {
     line-height: 3.5rem;
+}
+
+.img-wraper {
+    max-width: 100%;
 }

@@ -1,4 +1,4 @@
-<main class="w-100 d-flex flex-column">
+<main class="w-100 d-flex flex-column" *ngIf="!loading">
     <section class="w-100 d-flex flex-column flex-md-row justify-content-evenly flex-wrap align-items-center">
         <article class="recipe-data d-flex flex-column text-center">
             <h2 class="recipe-name">{{ currentRecipe?.recipeName }}</h2>
@@ -237,4 +237,7 @@
             </article>
         </section>
     </section>
+    <div class="text-center" *ngIf="loading">
+        <app-spinner></app-spinner>
+    </div>
 </main>

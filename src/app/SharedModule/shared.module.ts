@@ -19,6 +19,14 @@ import { BreadCrumbComponent } from './Components/bread-crumb/bread-crumb.compon
 import { RatingModule } from 'primeng/rating';
 import { RatingBuilderComponent } from './Components/RatingBuilder/rating-builder/rating-builder.component';
 import { BarRatingModule } from 'ngx-bar-rating';
+import { SearchNotFoundComponent } from './Components/search-not-found/search-not-found.component';
+import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { StarRatingComponent } from './Components/star-rating/star-rating.component';
+import { MatTooltipModule } from '@angular/material/tooltip';
+import { MatIconModule } from '@angular/material/icon';
+import { MatButtonModule } from '@angular/material/button';
+import { SpinnerComponent } from './Components/spinner/spinner.component';
 @NgModule({
   declarations: [
     HeaderComponent,
@@ -33,6 +41,9 @@ import { BarRatingModule } from 'ngx-bar-rating';
     SavingComponent,
     FooterComponent,
     RatingBuilderComponent,
+    SearchNotFoundComponent,
+    StarRatingComponent,
+    SpinnerComponent,
   ],
   imports: [
     CommonModule,
@@ -43,7 +54,11 @@ import { BarRatingModule } from 'ngx-bar-rating';
     ReactiveFormsModule,
     MatFormFieldModule,
     RatingModule,
-    BarRatingModule,
+    BrowserModule,
+    BrowserAnimationsModule,
+    MatTooltipModule,
+    MatIconModule,
+    MatButtonModule,
   ],
   exports: [
     HeaderComponent,
@@ -54,6 +69,9 @@ import { BarRatingModule } from 'ngx-bar-rating';
     SavingComponent,
     FooterComponent,
     BreadCrumbComponent,
+    SearchNotFoundComponent,
+    StarRatingComponent,
+    SpinnerComponent,
   ],
 })
 export class SharedModule {}

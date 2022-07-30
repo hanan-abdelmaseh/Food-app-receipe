@@ -18,6 +18,7 @@ export class FeedComponent implements OnInit {
   title: string = 'Feed';
   text: string = 'Our Feed';
   imgagesList: SliderImg[] = [];
+  shown:boolean = true ;
   constructor(
     private _ImagesService: ImagesService,
     private recipeService: RecipeService,
@@ -28,5 +29,8 @@ export class FeedComponent implements OnInit {
 
   ngOnInit(): void {
     this.imgagesList = this._ImagesService.GetAllImg();
+  }
+  getCollection(){
+    this.shown= false;
   }
 }

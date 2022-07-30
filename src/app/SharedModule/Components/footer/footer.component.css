@@ -1,12 +1,12 @@
-.footer-title{
+.footer-title {
     color: var(--secondary-color);
 }
-.footer-link{
+
+.footer-link {
     display: block;
     padding: 0;
     text-align: left;
     color: #FFFFFF;
-   
     font-weight: normal;
     text-transform: capitalize;
     transition: .3s;
@@ -19,24 +19,26 @@
     font-weight: 900;
     margin-right: 10px;
 }
-.footer-link:hover 
-,p:hover{
- 
-        letter-spacing: 1px;
+
+.footer-link:hover,
+p:hover {
+    color: var(--secondary-color);
 }
-.fa-solid{
+
+.fa-solid {
     font-family: 'Font Awesome 6 Free' !important;
     color: var(--secondary-color);
     cursor: pointer;
     font-size: 1.7rem;
 }
-.fa-brands{
+
+.fa-brands {
     font-family: 'Font Awesome 6 Brands' !important;
-  
     cursor: pointer;
     font-size: 1.7rem;
 }
-.social-link{
+
+.social-link {
     margin-right: 5px;
     width: 35px;
     height: 35px;
@@ -48,7 +50,8 @@
     border-radius: 35px;
     transition: .3s;
 }
-.social-link:hover{
-color: var(--secondary-color);
-background-color: var(--bg-white);
+
+.social-link:hover {
+    color: var(--secondary-color);
+    background-color: var(--bg-white);
 }

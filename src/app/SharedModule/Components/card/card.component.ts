@@ -5,6 +5,8 @@ import { CollectionsService } from 'src/app/Services/Profile Services/Collection
 import { CurrentUserService } from 'src/app/Services/Profile Services/Current-User-Service/current-user.service';
 import { Component, Input, OnChanges, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
+import { StarRatingColor } from '../star-rating/star-rating.component';
+import { MainReceipe } from 'src/app/viewModel/main-receipe';
 
 @Component({
   selector: 'app-card',
@@ -13,8 +15,14 @@ import { FormControl } from '@angular/forms';
 })
 export class CardComponent implements OnInit, OnChanges {
   @Input() title: string = '';
-  @Input() text: string = '';
+  @Input() text: string[] = [];
   @Input() imgSrc: string = '';
+  @Input() receipeRating: number = 0;
+
+  starCount: number = 5;
+  starColor: StarRatingColor = StarRatingColor.accent;
+  starColorP: StarRatingColor = StarRatingColor.primary;
+  starColorW: StarRatingColor = StarRatingColor.warn;
   /*add to collection button */
   toppings = new FormControl('');
   toppingList: string[] = [
@@ -25,34 +33,23 @@ export class CardComponent implements OnInit, OnChanges {
     'Sausage',
     'Tomato',
   ];
-  @Input() public recivedRecipe: RecipeModel | null = null;
-  public currentRecipe: RecipeModel | null = null;
+  @Input() public recivedRecipe!: MainReceipe;
+  // public currentRecipe: MainReceipe | null = null;
   public recipeAuther: UserModel | null = null;
   public currentUser: UserModel | null = null;
   constructor(
     private userService: CurrentUserService,
     private route: Router,
     private collectionService: CollectionsService
-  ) {
-    this.currentRecipe = this.recivedRecipe;
-  }
+  ) {}
 
   //testing
 
-  ngOnChanges(): void {
-    this.currentRecipe = this.recivedRecipe;
-  }
+  ngOnChanges(): void {}
 
-  ngOnInit(): void {
-    this.currentUser = this.userService.currentUser;
-    if (this.currentRecipe?.auther != null) {
-      let user = this.userService.getUserById(this.currentRecipe?.auther)!;
-      this.recipeAuther = user;
-    }
-  }
+  ngOnInit(): void {}
 
-  openRecipeDetails(recipeId: number) {
-    this.route.navigate(['/recipe', recipeId]);
-    console.log('navigate to' + recipeId);
+  openRecipeDetails() {
+    this.route.navigateByUrl('recipe/' + this.recivedRecipe.recipeID);
   }
 }

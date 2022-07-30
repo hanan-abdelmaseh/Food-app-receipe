@@ -48,6 +48,8 @@ import { BreadCrumbComponent } from './SharedModule/Components/bread-crumb/bread
 import { SearchComponent } from './SerarchModule/Components/SearchComponent/search/search.component';
 import { SearchModule } from './SerarchModule/search.module';
 import { AuthInterceptor } from './Interceptors/auth.interceptor';
+/*prime ng */
+
 @NgModule({
   declarations: [
     AppComponent,
