@@ -20,7 +20,6 @@ import { BrwosingComponent } from './browsing/Components/brwosing/brwosing.compo
 import { PantryComponent } from './PantryModule/Components/pantry/pantry.component';
 import { SearchComponent } from './SerarchModule/Components/SearchComponent/search/search.component';
 import { AuthGuard } from './Guard/auth.guard';
-
 const routes: Routes = [
   {
     path: 'recipe/notfound',

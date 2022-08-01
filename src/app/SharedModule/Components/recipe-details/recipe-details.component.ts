@@ -10,6 +10,7 @@ import { ReviewService } from 'src/app/Services/ReviewService/review-service.ser
 import { PrimeNGConfig } from 'primeng/api';
 import { RecipeDetailsViewModel } from 'src/app/viewModel/RcipeDetailsViewModel/recipe-details-view-model';
 import { ReviewViewModel } from 'src/app/viewModel/ReviewViewModel/review-view-model';
+import { StarRatingColor } from '../star-rating/star-rating.component';
 
 @Component({
   selector: 'app-recipe-details',
@@ -17,6 +18,9 @@ import { ReviewViewModel } from 'src/app/viewModel/ReviewViewModel/review-view-m
   styleUrls: ['./recipe-details.component.css'],
 })
 export class RecipeDetailsComponent implements OnInit {
+  starColor: StarRatingColor = StarRatingColor.accent;
+  starColorP: StarRatingColor = StarRatingColor.primary;
+  starColorW: StarRatingColor = StarRatingColor.warn;
   public currentRecipe: RecipeDetailsViewModel | null = null;
   public currentUser?: UserModel;
   public newReview?: ReviewViewModel;

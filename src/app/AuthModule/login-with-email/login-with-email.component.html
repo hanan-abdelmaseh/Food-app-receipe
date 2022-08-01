@@ -17,19 +17,33 @@
         </article>
 
         <article class="d-felx flex-column">
-            <form action="">
-                <input class="my-4" type="text" name="email" id="" placeholder="Email Adress" required pattern="^[a-zA-z]{1}[a-zA-z0-9.-]{1,49}$" />
-                <input type="password" name="password" id="" placeholder="Password" required />
+            <form (ngSubmit)="loginWithUserName()">
+                <input #loginName="ngModel" (focus)="hideRegiter()" [(ngModel)]="userName" class="my-4" type="text" id="userName" name="userName" placeholder="User Name" pattern="^[a-zA-z]{1}[a-zA-z0-9.-]{1,49}$" required />
+                <input #loginPass="ngModel" (focus)="hideRegiter()" [(ngModel)]="password" type="password" name="password" placeholder="Password" required />
                 <div class="my-5">
-                    <button class="login-btn rounded-pill">Login Now</button>
+                    <input type="submit" class="login-btn rounded-pill" value="login" />
                 </div>
             </form>
         </article>
         <article class="m-5">
-            <h4 class="text-danger">Sorry, You Don't Have an Accout</h4>
+            <div *ngIf="registerSerctionShown">
+                <h4 class="text-danger">Sorry, You Don't Have an Accout</h4>
 
-            <h4 class="m-3">Register Now?</h4>
-            <button class="login-btn rounded-pill m-2">Register Now</button>
+                <h4 class="m-3">Register Now?</h4>
+
+                <article class="d-felx flex-column">
+                    <form (ngSubmit)="registerWithUserName()">
+                        <input [(ngModel)]="registerUserName" class="my-4" type="text" name="userName" placeholder="User Name" pattern="^[a-zA-z]{1}[a-zA-z0-9.-]{1,49}$" required />
+
+                        <input [(ngModel)]="registerPassword" type="password" name="password" placeholder="Password" required />
+                        <div class="my-5">
+                            <button type="submit" class="login-btn rounded-pill m-2">
+                Register Now
+              </button>
+                        </div>
+                    </form>
+                </article>
+            </div>
         </article>
     </section>
 </main>
