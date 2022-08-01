@@ -1,7 +1,16 @@
 import { Location } from '@angular/common';
-import { ElementRef, Injectable } from '@angular/core';
+import {
+  HttpClient,
+  HttpErrorResponse,
+  HttpHeaders,
+  HttpParams,
+  HttpResponse,
+} from '@angular/common/http';
+import { ElementRef, ErrorHandler, Injectable } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { BehaviorSubject } from 'rxjs';
+import { BehaviorSubject, catchError, map, Observable, throwError } from 'rxjs';
+import { EditUserViewModel } from 'src/app/viewModel/EditUserViewModel/edit-user-view-model';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root',
@@ -9,7 +18,7 @@ import { BehaviorSubject } from 'rxjs';
 export class AuthService {
   public isLoggenInSubject: BehaviorSubject<boolean>;
   auth2: any;
-  constructor(private router: Router, private lacation: Location) {
+  constructor(private router: Router, private httpClient: HttpClient) {
     this.isLoggenInSubject =
       localStorage.getItem('token') == undefined
         ? new BehaviorSubject<boolean>(false)
@@ -24,19 +33,29 @@ export class AuthService {
         {},
         (googleAuthUser: any) => {
           //Print profile details in the console logs
-
           let currentUser = googleAuthUser.getBasicProfile();
-          localStorage.setItem(
-            'token',
-            googleAuthUser.getAuthResponse().id_token
-          );
-          this.isLoggenInSubject.next(true);
-          resolve(true);
-          console.log('Token || ' + googleAuthUser.getAuthResponse().id_token);
-          console.log('ID: ' + currentUser.getId());
-          console.log('Name: ' + currentUser.getName());
-          console.log('Image URL: ' + currentUser.getImageUrl());
-          console.log('Email: ' + currentUser.getEmail());
+          console.log(currentUser);
+          this.loginWithGoogle(currentUser).subscribe({
+            next: (response) => {
+              console.log(response);
+              console.log('Logged In');
+              localStorage.setItem(
+                'token',
+                googleAuthUser.getAuthResponse().id_token
+              );
+              this.isLoggenInSubject.next(true);
+              resolve(true);
+            },
+            error: (error) => {
+              console.log(error);
+              if (error.status === 404) {
+                this.CreateNewUser(currentUser);
+                resolve(true);
+              } else {
+                console.log('unkown error occured, try again');
+              }
+            },
+          });
         },
         (error: any) => {
           this.router.canceledNavigationResolution.replace;
@@ -79,7 +98,174 @@ export class AuthService {
     this.router.navigate(['/home']);
   }
 
-  loginWithEmail(email: string, password: string) {}
+  loginWithGoogle(currentUser: any) {
+    let httpHeaders = new HttpHeaders().set('content-type', 'application/json');
+    let httpParams = new HttpParams().set('email', currentUser.getEmail());
+    return this.httpClient
+      .post(`${environment.APIURL}Users/LoginByGoogle`, null, {
+        params: httpParams,
+        headers: httpHeaders,
+        responseType: 'text',
+      })
+      .pipe(
+        map((response: any) => {
+          return response;
+        })
+      );
+  }
+
+  // Create and Initilaize and Login New User
+  CreateNewUser(currentUser: any) {
+    return this.registerWithEmail(currentUser).subscribe({
+      next: (userID) => {
+        console.log('User Created');
+        this.setNewUserData(
+          +userID,
+          currentUser.getName(),
+          undefined,
+          currentUser
+        ).subscribe({
+          next: () => {
+            console.log('User Intilaized');
+            this.loginWithGoogle(currentUser).subscribe({
+              next: (response) => {
+                console.log('Logged In');
+                localStorage.setItem('token', response);
+                this.isLoggenInSubject.next(true);
+                this.initializeDefaultCollections().subscribe({
+                  next: () => {
+                    console.log('Default Collections Added');
+                  },
+                });
+              },
+            });
+          },
+        });
+      },
+      error: () => {
+        console.log('unkown error occured, try again');
+      },
+    });
+  }
+
+  // Create User From Email
+  registerWithEmail(currentUser: any) {
+    let httpHeaders = new HttpHeaders().set('content-type', 'application/json');
+    return this.httpClient.post(
+      `${
+        environment.APIURL
+      }Users/AddUser?userName=${currentUser.getName()}&email=${currentUser.getEmail()}`,
+      '',
+      {
+        headers: httpHeaders,
+        responseType: 'text',
+      }
+    );
+  }
+
+  // Create User From User Name and Password
+  registerWithUserName(userName: string, password: string) {
+    let httpHeaders = new HttpHeaders().set('content-type', 'application/json');
+    return this.httpClient.post(
+      `${environment.APIURL}Users/AddUser?userName=${userName}&password=${password}`,
+      '',
+      {
+        headers: httpHeaders,
+        responseType: 'text',
+      }
+    );
+  }
+  // Intilaize User
+  setNewUserData(
+    userID: number,
+    userName: string,
+    password?: string,
+    currentUser?: any
+  ) {
+    console.log(currentUser);
+    let editUser: EditUserViewModel = {
+      email: currentUser == undefined ? '' : currentUser.getEmail(),
+      userName: currentUser == undefined ? userName : currentUser.getName(),
+      password: currentUser == undefined ? password : '',
+      bio: '',
+      city: '',
+      country: '',
+      facebook: '',
+      site: '',
+      state: '',
+      twitter: '',
+      userImage: '',
+    };
+
+    return this.httpClient.put(
+      `${environment.APIURL}Users/editUserSettings/${userID}`,
+      editUser
+    );
+  }
+  initializeDefaultCollections() {
+    let httpHeaders = new HttpHeaders().set('content-type', 'application/json');
+
+    let newCollection = {
+      collectionId: 0,
+      collectionImage:
+        'https://x.yummlystatic.com/web/default-collection-images/sides.png',
+      collectionName: 'Sides',
+      collectionDescription: '',
+      numberOfRecipes: 0,
+      collectionRecipes: null,
+    };
+    return this.httpClient.post(
+      `${environment.APIURL}Collections/AddCollection`,
+      newCollection,
+      {
+        headers: httpHeaders,
+        responseType: 'text',
+      }
+    );
+  }
+  // Login with UserName Password
+  loginWithUserName(userName: string, password: string) {
+    let httpHeaders = new HttpHeaders().set('content-type', 'application/json');
+    return this.httpClient.post(
+      `${environment.APIURL}Users/Login`,
+      {
+        userName: userName,
+        password: password,
+      },
+      {
+        headers: httpHeaders,
+        responseType: 'text',
+      }
+    );
+  }
+
+  CreateNewUserWithUserName(userName: string, password: string) {
+    return this.registerWithUserName(userName, password).subscribe({
+      next: (userID) => {
+        console.log('User Created');
+        this.setNewUserData(+userID, userName, password).subscribe({
+          next: () => {
+            console.log('User Intilaized');
+            this.loginWithUserName(userName, password).subscribe({
+              next: (response) => {
+                console.log('Logged In');
+                localStorage.setItem('token', response);
+                this.isLoggenInSubject.next(true);
+                this.initializeDefaultCollections().subscribe({
+                  next: () => {
+                    console.log('Default Collections Added');
+                  },
+                });
+              },
+            });
+          },
+        });
+      },
+      error: () => {
+        console.log('unkown error occured, try again');
+      },
+    });
+  }
   isLoggedIn() {
     return this.isLoggenInSubject;
   }
