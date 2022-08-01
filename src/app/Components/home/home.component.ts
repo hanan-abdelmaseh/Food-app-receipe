@@ -5,11 +5,7 @@ import { RecipeService } from 'src/app/Services/RecipeServices/recipe-services.s
 import { CarsolImg } from 'src/app/SharedModule/Interface/carsol-img';
 import { MainReceipe } from 'src/app/viewModel/main-receipe';
 
-export interface empolyee {
-  name: string;
-  age: number;
-  src: string;
-}
+
 
 @Component({
   selector: 'app-home',

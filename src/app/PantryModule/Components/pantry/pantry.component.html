@@ -48,7 +48,7 @@
             <div class="col-lg-12 col-md-12 mt-5 mb-5 ">
               <button class="btn btn-danger close" type="button" (click)="onBlur()">X</button> 
                <button class="btn  mb-2 select-btn"  type="button"
-               *ngFor="let item of searchedIngredients ;let i = index;"
+               *ngFor="let item of MainIngredientList ;let i = index;"
                 (click)="Add(item.name)"
                  mat-stroked-button (click)="openSnackBar()">
                     {{item.name}}
@@ -60,7 +60,8 @@
        </div>
        <div class="row text-center mt-5">
         <div class="col-lg-8 col-md-12 col-md-12 m-auto" >
-          <button type="button" class="btn Learn-btn " (click)="searchPantry()">Search Pantry Ready Receipes</button>
+          <button type="button" class="btn Learn-btn " 
+          (click)="searchPantry()">Search Pantry Ready Receipes</button>
         </div>
       </div>
       </form>
@@ -70,3 +71,25 @@
  <div *ngIf="Shown">
   <app-search-not-found></app-search-not-found>
  </div>
+ <div class="container">
+  <div class="row mt-5" *ngIf="!loading">
+       <div class="col-lg-3 col-md-6 mb-4" *ngFor="
+  let receipe of AllReceipes
+    | paginate: { itemsPerPage: count, currentPage: p };
+  let i = index
+">
+        <div>
+            <app-card [title]="receipe.recipeName" [imgSrc]="receipe.recipeImage" [text]="receipe.recipeIngredients" [recivedRecipe]="receipe" [receipeRating]="receipe.recipeRating"></app-card>
+        </div>
+      
+    </div>
+    <div class="text-center">
+        <pagination-controls (pageChange)="p = $event"></pagination-controls>
+    </div>
+</div>
+
+<!--spinner-->
+<div class="row mt-5 text-center" *ngIf="loading">
+    <app-spinner></app-spinner>
+</div>
+ 

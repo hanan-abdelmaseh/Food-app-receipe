@@ -1,7 +1,11 @@
 
+import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 
 import { MatSnackBar, MatSnackBarHorizontalPosition, MatSnackBarVerticalPosition} from '@angular/material/snack-bar';
+import { PantryService } from 'src/app/Services/PantryService/pantry.service';
+import { MainReceipe } from 'src/app/viewModel/main-receipe';
+import { environment } from 'src/environments/environment';
 
 import { SnakBarComponent } from '../snak-bar/snak-bar.component';
 
@@ -25,60 +29,30 @@ export class PantryComponent implements OnInit {
   MainIngredientList:Allingredient[]=[];
   /*filterWord*/
   searchWord :any;
-  searchedIngredients :Allingredient[] =[];
+/*matched receipes depend on ingredients*/
+AllReceipes: MainReceipe[] = [];
   durationInSeconds = 5; 
   Shown:boolean = true;
- 
+  loading: boolean = false;
+  p: number = 1;
+  count: number = 16;
   
   horizontalPosition: MatSnackBarHorizontalPosition = 'right';
   verticalPosition: MatSnackBarVerticalPosition = 'bottom';
   
-  constructor( private _snackBar: MatSnackBar ) { 
-    /*this will change as it will come from data base
-    i need to make service */
-   this.MainIngredientList=[ {id:1 , name:"Salt"},
-   {id:1 , name:"Salt"},
-   {id:1 , name:"Oil"},
-   {id:1 , name:"Onion"},
-   {id:1 , name:"Eggs"},
-   {id:1 , name:"Water"},
-   {id:1 , name:"Tomato"},
-   {id:1 , name:"Salt"},
-   {id:1 , name:"Oil"},
-   {id:1 , name:"Onion"},
-   {id:1 , name:"Eggs"},
-   {id:1 , name:"Water"},
-   {id:1 , name:"Tomato"},
-   {id:1 , name:"Salt"},
-   {id:1 , name:"Oil"},
-   {id:1 , name:"Onion"},
-   {id:1 , name:"Eggs"},
-   {id:1 , name:"Water"},
-   {id:1 , name:"Tomato"},
-   {id:1 , name:"Salt"},
-   {id:1 , name:"Oil"},
-   {id:1 , name:"Onion"},
-   {id:1 , name:"Eggs"},
-   {id:1 , name:"Water"},
-   {id:1 , name:"Tomato"},
-   {id:1 , name:"Salt"},
-   {id:1 , name:"Oil"},
-   {id:1 , name:"Onion"},
-   {id:1 , name:"Eggs"},
-   {id:1 , name:"Water"},
-   {id:1 , name:"Tomato"},
-   {id:1 , name:"Salt"},
-   {id:1 , name:"Oil"},
-   {id:1 , name:"Onion"},
-   {id:1 , name:"Eggs"},
-   {id:1 , name:"Water"},
-   {id:1 , name:"Tomato"},
-    
-]
-  }
+  constructor( private _snackBar: MatSnackBar  , 
+    private _PantryService:PantryService,
+    private httpClient:HttpClient) { 
+    }
 
   ngOnInit(): void {
-    this.searchedIngredients = this.MainIngredientList ;
+    this.getAllIngredients();
+  }
+  /*get all ingredients */
+  getAllIngredients():any{
+    this._PantryService.getAllIngredients().subscribe((res:any)=>{
+      this.MainIngredientList = res ;
+    });
   }
   /*to show suggested container*/
   focusFunction(){  
@@ -100,11 +74,22 @@ export class PantryComponent implements OnInit {
     //console.log(this.ingredientList) ;
     
   }
-  searchPantry(){
-    console.log("search");
-    console.log(this.ingredientList);
+
+  getPantry(ingredient:any , page :number){
     this.Shown=false;
-   
+    console.log("search");
+    //console.log(this.ingredientList);
+   this.httpClient.post(`${environment.APIURL}Recipes/Pantry_readyRecipes?pageNumber=${page}`
+   ,ingredient).subscribe((res:any)=>{
+      console.log(res);
+       this.AllReceipes = res ;
+       console.log(this.AllReceipes);
+   });
+  }
+  searchPantry(){
+    console.log(this.ingredientList);
+    this.getPantry(this.ingredientList , 1);
+    
   }
   /* to enable user search in ingredient on typing ingredients*/
    search(){
@@ -112,8 +97,9 @@ export class PantryComponent implements OnInit {
       this.ngOnInit();
     }
     else{
-      this.searchedIngredients = this.searchedIngredients.filter((response)=>{
-             return response.name.toLocaleLowerCase().match(this.searchWord.toLocaleLowerCase());
+      this.MainIngredientList = this.MainIngredientList.filter((response)=>{
+             return response.name.toLocaleLowerCase().
+             match(this.searchWord.toLocaleLowerCase());
       })
     }
 
