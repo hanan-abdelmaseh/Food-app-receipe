@@ -1,5 +1,5 @@
 
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 
 import { MatSnackBar, MatSnackBarHorizontalPosition, MatSnackBarVerticalPosition} from '@angular/material/snack-bar';
@@ -75,19 +75,23 @@ AllReceipes: MainReceipe[] = [];
     
   }
 
-  getPantry(ingredient:any , page :number){
+  getPantry(ingredient:any , page:number){
+    let httpHeaders = new HttpHeaders().set('content-type', 'application/json');
     this.Shown=false;
-    console.log("search");
+    console.log("getpantry");
     //console.log(this.ingredientList);
-   this.httpClient.post(`${environment.APIURL}Recipes/Pantry_readyRecipes?pageNumber=${page}`
-   ,ingredient).subscribe((res:any)=>{
-      console.log(res);
+   this.httpClient.post<any>(`https://localhost:7044/api/Recipes/Pantry_readyRecipes?pageNumber=${page}`
+   ,ingredient,{headers:httpHeaders,responseType:'json'}).subscribe((res:any)=>{
+      //console.log(res);
        this.AllReceipes = res ;
+       //console.log(page);
+       console.log("welcome from pantry");
        console.log(this.AllReceipes);
    });
   }
   searchPantry(){
     console.log(this.ingredientList);
+
     this.getPantry(this.ingredientList , 1);
     
   }
