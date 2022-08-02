@@ -95,6 +95,10 @@ AllReceipes: MainReceipe[] = [];
     this.getPantry(this.ingredientList , 1);
     
   }
+  /**to try pagination */
+  pagination(){
+    console.log(this.p);
+  }
   /* to enable user search in ingredient on typing ingredients*/
    search(){
     if(this.searchWord == ""){
