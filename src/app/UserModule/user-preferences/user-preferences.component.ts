@@ -10,34 +10,116 @@ import { PreferencesService } from 'src/app/Services/Profile Services/Preference
 export class UserPreferencesComponent implements OnInit {
   public shownPreferencesList = [false, false, false, false];
 
-  public allPreferences: PreferencesModel[];
-  public allCat = ['Nutrition', 'Allegries', 'Cusion', 'Disliked Ingredients'];
-  public preferencesList: PreferencesModel[];
+  public preferencesTypesList: string[];
+  public unWantedPrefrences: PreferencesModel[] = [];
+  public allPreferences: string[][];
+  public preferencesList: PreferencesModel[] = [];
   constructor(private preferencesService: PreferencesService) {
-    this.allPreferences = this.preferencesService.allPreferences;
-    this.preferencesList = this.preferencesService.preferencesList;
+    this.preferencesTypesList = [
+      'Nutrition',
+      'ALLERGIES',
+      'Cusions',
+      'Disliked Ingrediants',
+    ];
+    this.allPreferences = [
+      [
+        'Low Fat',
+        'Low Calories',
+        'High Fiber',
+        'Low Carb',
+        'Low Sodium',
+        'Low Sugar',
+      ],
+      ['Egg Free', 'Lactose Free'],
+      [
+        'Southwest Asia (middle East)',
+        'Asian',
+        'European',
+        'Southwestern U.S.',
+        'Chinese',
+        'Japanese',
+        'Greek',
+        'Indonesian',
+        'African',
+        'Moroccan',
+        'South African',
+        'Native American',
+        'South American',
+        'Caribbean',
+        'Cuban',
+        'Spanish',
+        'Canadian',
+        'Kid Friendly',
+        'Turkish',
+        'Hawaiian',
+        'German',
+      ],
+      ['Egg', 'Meat', 'Fish', 'Soy', 'Chicken'],
+    ];
   }
   showThisPreferencesList(panelId: number) {
-    if (this.shownPreferencesList[panelId] == false) {
-      for (let i = 0; i < this.shownPreferencesList.length; i++) {
-        if (panelId != i) {
-          this.shownPreferencesList[i] = false;
-        } else this.shownPreferencesList[i] = true;
+    this.shownPreferencesList[panelId] = !this.shownPreferencesList[panelId];
+    for (let i = 0; i < this.shownPreferencesList.length; i++) {
+      if (panelId != i) {
+        this.shownPreferencesList[i] = false;
       }
-    } else this.shownPreferencesList[panelId] = false;
+    }
   }
 
   ngOnInit(): void {
     this.shownPreferencesList = [false, false, false, false];
+    this.getUserPreferences();
   }
 
-  addToPreferencesList(cat: string, pref: PreferencesModel) {
-    this.preferencesService.addToFavourites(cat, pref);
+  getUserPreferences() {
+    this.preferencesService.getCurrentUserPreferences().subscribe({
+      next: (preferences) => {
+        this.preferencesList = preferences;
+        this.initializeUnWanted();
+      },
+    });
   }
-  removeFromPreferences(favouritePref: string, pref: PreferencesModel) {
-    this.preferencesService.addToPreferences(favouritePref, pref);
 
-    console.log('Removed');
+  addToPreferencesList(type: string, name: string) {
+    this.preferencesService.setCurrentUserPreferemces(type, name).subscribe({
+      next: () => {
+        this.getUserPreferences();
+        this.initializeUnWanted();
+      },
+    });
+  }
+  removeFromPreferences(type: string, name: string, id: number) {
+    this.preferencesService.removeFromPreferences(id).subscribe({
+      next: () => {
+        this.getUserPreferences();
+      },
+    });
+  }
+
+  async initializeUnWanted() {
+    this.unWantedPrefrences = [];
+    this.allPreferences.forEach((list, index) => {
+      list.forEach((element) => {
+        if (this.preferencesList.length == 0) {
+          console.log('empty');
+          this.unWantedPrefrences.push({
+            preferenceType: this.preferencesTypesList[index],
+            preferenceValue: element,
+          });
+        } else {
+          let pref = this.preferencesList.find((item) => {
+            return item.preferenceValue === element;
+          });
+          if (pref == undefined) {
+            this.unWantedPrefrences.push({
+              preferenceType: this.preferencesTypesList[index],
+              preferenceValue: element,
+            });
+          }
+        }
+      });
+    });
+    console.log(this.unWantedPrefrences);
   }
 
   save() {

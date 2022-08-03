@@ -31,7 +31,7 @@ export class ReviewService {
     this.recipeReviewers = [];
     this.recipeService.currentRecipe?.reviews.forEach((review) => {
       let user = this.userService.getUserById(review.reviewWriterId)!;
-      this.recipeReviewers?.push(user);
+      // this.recipeReviewers?.push(user);
     });
   }
 

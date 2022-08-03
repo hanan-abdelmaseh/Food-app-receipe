@@ -46,18 +46,10 @@ export class LoginWithEmailComponent implements OnInit {
   }
 
   registerWithUserName() {
-    this.authService
-      .registerWithUserName(this.registerUserName, this.registerPassword)
-      .subscribe({
-        next: (response) => {
-          Swal.fire('registered successfully');
-          console.log('Registered');
-          this.router.navigate(['/home']);
-        },
-        error: () => {
-          console.log('Unexpected Error Occurred');
-        },
-      });
+    this.authService.CreateNewUserWithUserName(
+      this.registerUserName,
+      this.registerPassword
+    );
   }
 
   hideRegiter() {

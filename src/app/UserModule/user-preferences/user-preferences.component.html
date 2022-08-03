@@ -1,8 +1,12 @@
 <main class="my-5 d-flex flex-column m-auto">
-    <section *ngFor="let pref of allPreferences; let i = index; let last = last" class="d-flex text-center align-items-center flex-column mt-5 w-100">
-        <h3>{{ pref.name }}</h3>
+    <section *ngFor="
+      let prefType of preferencesTypesList;
+      let i = index;
+      let last = last
+    " class="d-flex text-center align-items-center flex-column mt-5 w-100">
+        <h3>{{ prefType }}</h3>
         <h5 class="mt-3 mb-5">
-            Select from the {{ pref.name }} below and we will only show you recipes that match.
+            Select from the {{ prefType }} below and we will only show you recipes that match.
         </h5>
 
         <!-- Add Preferences Btn -->
@@ -12,44 +16,48 @@
                     <div class="add-pref-content d-flex flex-column align-items-center justify-content-center">
                         <img class="icon" src="../../../assets/images/add.png " alt=" " srcset="" />
 
-                        <span class="text-add text-center">{{ pref.name }}</span>
+                        <span class="text-add text-center">{{ prefType }}</span>
                     </div>
                 </div>
 
-                <img ChangeCursor *ngIf="shownPreferencesList[i] == true" class="close" src="../../../assets/images/cross.png " (click)="showThisPreferencesList(i)" alt=" " srcset="" />
+                <img ChangeCursor *ngIf="shownPreferencesList[i] == true" class="close" src="../../../assets/images/cross.png " (click)="showThisPreferencesList(i)" />
             </article>
         </section>
 
         <!-- Selected Preferences -->
-        <article *ngIf="preferencesList.length > 0" class="d-flex flex-wrap align-items-center my-2">
+        <article *ngIf="(preferencesList | matchesType: prefType).length > 0" class="d-flex flex-wrap align-items-center my-2">
             <div class="my-3 d-flex justify-content-center flex-wrap align-items-center">
-                <div class="me-3">Selected {{ pref.name }} :</div>
+                <div class="me-3">Selected {{ prefType }} :</div>
                 <div *ngFor="
-            let favouritePref of preferencesList[i].categories;
+            let selectedPref of preferencesList | matchesType: prefType;
             let y = index
           ">
-                    <div ChangeCursor (click)="removeFromPreferences(favouritePref, preferencesList[i])" class="d-flex selected-preferences-item rounded-pill me-2 my-2">
-                        <div class="category-name">{{ favouritePref }}</div>
+                    <div ChangeCursor class="d-flex selected-preferences-item rounded-pill me-2 my-2" (click)="
+              removeFromPreferences(
+                prefType,
+                selectedPref.preferenceValue,
+                selectedPref.preferenceId!
+              )
+            ">
+                        <div class="category-name">{{ selectedPref.preferenceValue }}</div>
                     </div>
                 </div>
             </div>
         </article>
         <!-- All Preferences -->
-        <section *ngIf="
-        shownPreferencesList[i] == true &&
-        allPreferences[i].categories.length != 0
-      " class="preferences">
+
+        <section *ngIf="shownPreferencesList[i] == true && unWantedPrefrences.length != 0" class="preferences">
             <div class="w-100 d-flex flex-lg-wrap m-auto justify-content-start justify-content-md-center">
-                <div ChangeCursor *ngFor="let cat of pref.categories" class="flex-shrink-0 d-flex align-items-center m-2">
-                    <div (click)="addToPreferencesList(cat, pref)" class="d-flex preferences-item rounded-pill flex-column align-items-center justify-content-center">
-                        <div class="category-name">{{ cat }}</div>
+                <div ChangeCursor *ngFor="
+            let pref of unWantedPrefrences | matchesType: prefType;
+            let y = index
+          " class="flex-shrink-0 d-flex align-items-center m-2">
+                    <div class="d-flex preferences-item rounded-pill flex-column align-items-center justify-content-center" (click)="addToPreferencesList(prefType, pref.preferenceValue)">
+                        <div class="category-name">{{ pref.preferenceValue }}</div>
                     </div>
                 </div>
             </div>
         </section>
         <div [hidden]="last" class="horizontal-sep"></div>
     </section>
-    <button (click)="save()" class="Learn-btn rounded-pill">
-    Save Preferences
-  </button>
 </main>

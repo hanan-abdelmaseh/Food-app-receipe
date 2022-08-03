@@ -52,10 +52,6 @@ main {
     font-size: .9em;
 }
 
-.location-item:hover {
-    cursor: pointer;
-}
-
 a {
     text-decoration: none;
     font-weight: 400;
@@ -83,8 +79,6 @@ a {
 
 @media screen and (max-width: 992px) {
     .sep-line {
-        width: 20px;
-        height: 1px;
-        margin: 5px 0px;
+        display: none;
     }
 }

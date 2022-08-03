@@ -4,6 +4,8 @@ import { CollectionModel } from 'src/app/Models/Collection Model/collection-mode
 import { CollectionsService } from 'src/app/Services/Profile Services/Collections-Service/collections-service.service';
 import { CurrentUserService } from 'src/app/Services/Profile Services/Current-User-Service/current-user.service';
 import { UserSettingsService } from 'src/app/Services/Profile Services/User-Settings-Service/user-settings.service';
+import { CollectionViewModel } from 'src/app/viewModel/CollectionViewModel/collection-view-model';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-user-collections',
@@ -12,28 +14,41 @@ import { UserSettingsService } from 'src/app/Services/Profile Services/User-Sett
 })
 export class UserCollectionsComponent implements OnInit {
   isAddFormShown: boolean = false;
-  collectionsList: CollectionModel[] | null = null;
-  newCollectionName: string | null = null;
+  collectionsList: CollectionViewModel[] = [];
+  newCollectionName: string = '';
   constructor(
     public collectionService: CollectionsService,
     private route: Router
   ) {}
-
-  openColletionDetails(collectionName: string) {
-    this.route.navigate(['/profile/collections', collectionName]);
-  }
   ngOnInit(): void {
-    this.collectionService.getAllCollections();
-    this.collectionsList = this.collectionService.userCollectionsList;
+    this.getAllCollections();
   }
 
+  openColletionDetails(collectionIndex: number) {
+    this.route.navigate(['/profile/collections', collectionIndex]);
+  }
+
+  getAllCollections() {
+    this.collectionService.getAllCollections().subscribe({
+      next: (allCollections) => {
+        this.collectionsList = allCollections;
+      },
+    });
+  }
+
+  addCollection(collectionName: string) {
+    console.log(collectionName);
+    this.collectionService.addCollection(collectionName).subscribe({
+      next: () => {
+        Swal.fire('Added').then(() => {
+          this.isAddFormShown = false;
+          this.getAllCollections();
+        });
+      },
+    });
+  }
   showHideAddForm() {
     console.log('open/colse');
     this.isAddFormShown = !this.isAddFormShown;
-  }
-
-  addCollection(name: string) {
-    this.newCollectionName = name;
-    console.log(this.newCollectionName);
   }
 }

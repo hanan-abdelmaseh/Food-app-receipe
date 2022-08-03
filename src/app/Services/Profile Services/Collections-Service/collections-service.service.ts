@@ -1,64 +1,92 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
 import { CollectionModel } from 'src/app/Models/Collection Model/collection-model';
+import { CollectionViewModel } from 'src/app/viewModel/CollectionViewModel/collection-view-model';
+import { RecipeCollectionViewModel } from 'src/app/viewModel/RecipeCollectionViewModel/recipe-collection-view-model';
+import { environment } from 'src/environments/environment';
 import { CurrentUserService } from '../Current-User-Service/current-user.service';
 
 @Injectable({
   providedIn: 'root',
 })
 export class CollectionsService {
-  public userCollectionsList: CollectionModel[] = [];
-  public getCollection: CollectionModel | null = null;
-  constructor(private userService: CurrentUserService) {
-    this.getAllCollections();
-  }
+  constructor(
+    private userService: CurrentUserService,
+    private httpClient: HttpClient
+  ) {}
 
-  getAllCollections() {
-    this.userCollectionsList =
-      this.userService.currentUser.userCollections == undefined
-        ? []
-        : this.userService.currentUser.userCollections;
-  }
-
-  getCollectionByName(collectionName: string) {
-    let collecion = this.userCollectionsList.find(
-      (collection) => collection.collectionName == collectionName
+  getAllCollections(): Observable<CollectionViewModel[]> {
+    return this.httpClient.get<CollectionViewModel[]>(
+      `${environment.APIURL}Collections/SavedRecipes`
     );
-    if (collecion != null) {
-      this.getCollection = collecion;
-    }
+  }
+  deleteCollection(collectionId: number) {
+    return this.httpClient.delete(
+      `${environment.APIURL}Collections/DeleteCollection/${collectionId}`
+    );
   }
 
-  deleteCollection(collectionName: string) {
-    this.userCollectionsList.forEach((collection, index) => {
-      if (collection.collectionName == collectionName) {
-        this.userService.currentUser.userCollections?.splice(index, 1);
-        this.getAllCollections();
+  addCollection(collectionName: string) {
+    let newCollection = {
+      collectionId: 0,
+      collectionImage:
+        'https://x.yummlystatic.com/web/default-collection-images/default.png',
+      collectionName: collectionName,
+      collectionDescription: '',
+      numberOfRecipes: 0,
+      collectionRecipes: null,
+    };
+    return this.httpClient.post(
+      `${environment.APIURL}Collections/AddCollection`,
+      newCollection,
+      {
+        responseType: 'text',
       }
-    });
+    );
   }
 
-  addCollection(collectionName: string, collecionDesc?: string) {
-    this.userService.currentUser.userCollections?.push({
+  updateCollection(
+    collectionId: number,
+    collectionName: string,
+    collectionImage: string,
+    collectionRecipes: RecipeCollectionViewModel[],
+    collecionDesc?: string
+  ) {
+    let newCollection = {
+      collectionId: 0,
+      collectionImage: collectionImage,
       collectionName: collectionName,
       collectionDescription: collecionDesc == undefined ? '' : collecionDesc,
-      collectionImg: '',
-      collectioRecipes: [],
-      noOfRecipes: 0,
-    });
-    this.getAllCollections();
+      numberOfRecipes: 0,
+      collectionRecipes: collectionRecipes,
+    };
+
+    return this.httpClient.post(
+      `${environment.APIURL}Collections/editCollection/${collectionId}`,
+      newCollection
+    );
   }
 
-  updateCollection(collectionName: string, collecionDesc?: string) {
-    let index = this.userService.currentUser.userCollections!.findIndex(
-      (collection) => collection.collectionName == collectionName
+  removeRecipeFromCollection(recipeId: number, collectionId: number) {
+    return this.httpClient.delete(
+      `${environment.APIURL}Collections/DeleteRecipeFromCollection`,
+      {
+        body: {
+          collectionID: collectionId,
+          recipeID: recipeId,
+        },
+      }
     );
-    if (index != undefined) {
-      this.userService.currentUser.userCollections![index].collectionName =
-        collectionName;
-      this.userService.currentUser.userCollections![
-        index
-      ].collectionDescription = collecionDesc == undefined ? '' : collecionDesc;
-    }
-    this.getAllCollections();
+  }
+
+  addRecipeToCollection(recipeId: number, collectionId: number) {
+    return this.httpClient.post(
+      `${environment.APIURL}Collections/AddRecipeToCollection`,
+      {
+        collectionID: collectionId,
+        recipeID: recipeId,
+      }
+    );
   }
 }

@@ -1,48 +1,68 @@
 <main>
     <section class="collection-header">
         <div class="collection-img-container">
-            <img class="collection-img" src="{{ currentCollection?.collectionImg }}" alt="" srcset="" />
+            <img class="collection-img" src="{{ currentCollection!.collectionImage }}" alt="" srcset="" />
         </div>
         <div class="blur"></div>
 
         <div class="header-content d-flex flex-column justify-content-center align-items-center text-light">
-            <input type="text" value="{{ currentCollection?.collectionName }}" />
-            <h3 ChangeCursor class="collection-name my-4">
+            <input class="my-4" type="text" value="{{ currentCollection?.collectionName }}" />
+            <!-- <h3 ChangeCursor class="collection-name my-4">
                 {{ currentCollection?.collectionName }}
-            </h3>
+            </h3> -->
             <div class="collection-recipes-no my-2">
-                {{ currentCollection?.noOfRecipes }} Recipes
+                {{ currentCollection!.numberOfRecipes }} Recipes
             </div>
-            <div ChangeCursor class="collection-description">
-                {{ currentCollection?.collectionDescription }}
-            </div>
-        </div>
-        <div ChangeCursor class="d-flex delete-collection" (click)="deleteCollection(currentCollection!.collectionName)">
-            <img class="mx-2" src="../../../assets/images/delete.png" alt="" srcset="" />
-            <span> Delete this collection</span>
-        </div>
-    </section>
-    <Section>
-        <div *ngFor="
-        let recipeId of currentCollection?.collectioRecipes;
-        let x = index
-      ">
-            <div>
-                {{ collectionRecipe[x].recipeName }}
-            </div>
-            <button (click)="(1)">delete</button>
-            <button (click)="openRecipeDetails(recipeId)">open</button>
-        </div>
-    </Section>
-    <section [class.d-none]="currentCollection?.noOfRecipes != 0 ? true : false" class="d-flex flex-column align-items-center justify-content-center recipes-section">
-        <div class="icon-container">
-            <img class="search-icon w-100" src="../../../assets/svg/search-icon.svg" alt="" />
-        </div>
-        <h3 style="font-size: 1.2em; color: gray" class="my-4">
-            Search for Recipes on Our Site
-        </h3>
-        <h4 class="text-dark fw-normal">
-            You have yet to add any recipes to this collection
-        </h4>
-    </section>
+
+            <textarea class="my-4 collection-description" name="bio" cols="40" rows="4" maxlength="120">
+   {{
+          currentCollection?.collectionDescription == ""
+            ? " Add a Short Decription to Your Collection "
+            : currentCollection?.collectionDescription
+        }} </textarea
+      >
+    </div>
+    <div
+      ChangeCursor
+      class="d-flex delete-collection"
+      (click)="deleteCollection(currentCollection!.collectionId)"
+    >
+      <img
+        class="mx-2"
+        src="../../../assets/images/delete.png"
+        alt=""
+        srcset=""
+      />
+      <span> Delete this collection</span>
+    </div>
+  </section>
+  <Section>
+    <div
+      *ngFor="let recipe of currentCollection?.collectionRecipes; let x = index"
+    >
+      <div>
+        {{ recipe.recipeName }}
+      </div>
+      <button (click)="(1)">delete</button>
+      <button (click)="openRecipeDetails(recipe.recipeID)">open</button>
+    </div>
+  </Section>
+  <section
+    [class.d-none]="currentCollection?.numberOfRecipes != 0 ? true : false"
+    class="d-flex flex-column align-items-center justify-content-center recipes-section"
+  >
+    <div class="icon-container">
+      <img
+        class="search-icon w-100"
+        src="../../../assets/svg/search-icon.svg"
+        alt=""
+      />
+    </div>
+    <h3 style="font-size: 1.2em; color: gray" class="my-4">
+      Search for Recipes on Our Site
+    </h3>
+    <h4 class="text-dark fw-normal text-center">
+      You have not add any recipes to this collection yet
+    </h4>
+  </section>
 </main>

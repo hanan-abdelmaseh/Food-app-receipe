@@ -14,9 +14,9 @@
         </i>
                 <h5 class="add-collection-text">Add Collection</h5>
             </div>
-            <form class="w-100" *ngIf="isAddFormShown == true" (ngSubmit)="addCollection(collectionName.name)">
+            <form class="w-100" *ngIf="isAddFormShown == true" (ngSubmit)="addCollection(newCollection.value)">
                 <div class="w-100 d-flex flex-column flex-wrap justify-content-center align-items-center text-center">
-                    <input type="text" class="form-control collection-name-input" #collectionName name="collectionName" placeholder="Collection Name" required maxlength="20" />
+                    <input #newCollection type="text" class="form-control collection-name-input" name="collectionName" placeholder="Collection Name" maxlength="20" required />
                     <div class="d-flex align-items-center">
                         <input class="add-btn" type="submit" value="Add" />
                         <div class="separator"></div>
@@ -26,16 +26,16 @@
             </form>
         </article>
 
-        <ng-container *ngFor="let collection of collectionsList">
-            <section ChangeCursor class="collection d-flex flex-column justify-content-between m-3" (click)="openColletionDetails(collection.collectionName)">
+        <ng-container *ngFor="let collection of collectionsList; let i = index">
+            <section ChangeCursor class="collection d-flex flex-column justify-content-between m-3" (click)="openColletionDetails(i)">
                 <figure>
-                    <img class="w-100 collection-img" src="{{ collection.collectionImg }}" alt="" srcset="" />
+                    <img class="w-100 collection-img" src="{{ collection.collectionImage }}" alt="" srcset="" />
                 </figure>
                 <div class="d-flex justify-content-between w-100" style="color: var(--bg-initial)">
                     <div class="collection-name">
                         {{ collection.collectionName }}
                     </div>
-                    <div>{{ collection.noOfRecipes }} Recipes</div>
+                    <div>{{ collection.numberOfRecipes }} Recipes</div>
                 </div>
             </section>
         </ng-container>

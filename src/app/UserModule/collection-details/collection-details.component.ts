@@ -4,58 +4,79 @@ import { CollectionModel } from 'src/app/Models/Collection Model/collection-mode
 import { CollectionsService } from 'src/app/Services/Profile Services/Collections-Service/collections-service.service';
 import { RecipeModel } from 'src/app/Models/RecipeModel/recipe-model';
 import { RecipeService } from 'src/app/Services/RecipeServices/recipe-services.service';
+import { CollectionViewModel } from 'src/app/viewModel/CollectionViewModel/collection-view-model';
+import Swal from 'sweetalert2';
 @Component({
   selector: 'app-collection-details',
   templateUrl: './collection-details.component.html',
   styleUrls: ['./collection-details.component.css'],
 })
 export class CollectionDetailsComponent implements OnInit {
-  public currentCollectionName: string = '';
-  public currentCollection: CollectionModel | undefined = undefined;
-  public collectionRecipe: RecipeModel[] = [];
+  public currentCollectionIndex!: number;
+  public currentCollection: CollectionViewModel | undefined = undefined;
   constructor(
     private activatedRoute: ActivatedRoute,
     private collectionService: CollectionsService,
-    private recipeService: RecipeService,
+    // private recipeService: RecipeService,
     private router: Router
   ) {}
 
   ngOnInit(): void {
     //Getting Collection From Service Or DataBase By Colection Name
-    this.currentCollectionName =
-      this.activatedRoute.snapshot.paramMap.get('collectionName')!;
 
-    if (this.currentCollectionName != null) {
-      this.collectionService.getCollectionByName(this.currentCollectionName);
-      this.currentCollection = this.collectionService.getCollection!;
-    }
-
-    //Fill Collection Recipes with Recipes Instead of IDs
-    if (this.currentCollection?.collectioRecipes != undefined) {
-      for (let x = 0; x < this.currentCollection.collectioRecipes.length; x++) {
-        this.recipeService.getCurrentRecipeById(
-          this.currentCollection.collectioRecipes[x]
-        );
-        if (this.recipeService.currentRecipe != null) {
-          this.collectionRecipe.push(this.recipeService.currentRecipe);
-        }
-      }
+    this.currentCollectionIndex =
+      +this.activatedRoute.snapshot.paramMap.get('collectionIndex')!;
+    if (this.currentCollectionIndex != null) {
+      this.getCollectionByIndex(this.currentCollectionIndex);
     }
   }
 
-  deleteCollection(collectionName: string) {
-    this.collectionService.deleteCollection(collectionName);
-    this.router.navigate(['profile']);
+  getCollectionByIndex(index: number) {
+    this.collectionService.getAllCollections().subscribe({
+      next: (allCollections) => {
+        this.currentCollection = allCollections[index];
+      },
+    });
+  }
+  deleteCollection(collectionId: number) {
+    this.collectionService.deleteCollection(collectionId).subscribe({
+      next: () => {
+        Swal.fire('Deleted').then((_) => {
+          this.router.navigate(['profile']);
+        });
+      },
+    });
+  }
+  editCollection(
+    collectionName: string,
+    collectionImage: string,
+    collecionDesc?: string
+  ) {
+    this.collectionService
+      .updateCollection(
+        this.currentCollection!.collectionId,
+        collectionName,
+        collectionImage,
+        this.currentCollection!.collectionRecipes!,
+        collecionDesc
+      )
+      .subscribe({
+        next: () => {
+          this.getCollectionByIndex(this.currentCollectionIndex!);
+        },
+      });
   }
 
-  getCollectionRecipe() {}
   openRecipeDetails(recipeId: number) {
     this.router.navigate(['/recipe', recipeId]);
   }
-  // removeRecipe(recipeId: number, collectionName: string) {
-  //   this.collectionService.removeFromCollectionRecipes(
-  //     collectionName,
-  //     recipeId
-  //   );
+  // addRecipeToCollection(recipeId: number, collectionId: number) {
+  //   this.collectionService
+  //     .addRecipeToCollection(recipeId, collectionId)
+  //     .subscribe({});
+  // }
+  // getCollectionRecipe() {}
+  // openRecipeDetails(recipeId: number) {
+  //   this.router.navigate(['/recipe', recipeId]);
   // }
 }

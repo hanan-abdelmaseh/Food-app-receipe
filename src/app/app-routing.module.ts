@@ -57,7 +57,7 @@ const routes: Routes = [
       { path: 'search', component: SearchComponent, canActivate: [AuthGuard] },
 
       {
-        path: 'profile/collections/:collectionName',
+        path: 'profile/collections/:collectionIndex',
         component: CollectionDetailsComponent,
         canActivate: [AuthGuard],
       },

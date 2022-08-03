@@ -1,4 +1,7 @@
 export interface PreferencesModel {
-  name: string;
-  categories: string[];
+  preferenceId?: number;
+  userID?: number;
+  preferenceType: string;
+  preferenceValue: string;
+  user?: string;
 }

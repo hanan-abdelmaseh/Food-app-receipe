@@ -39,6 +39,24 @@
     z-index: 2;
 }
 
+textarea {
+    width: fit-content;
+    max-width: 100%;
+    text-overflow: ellipsis;
+}
+
+.collection-description {
+    background-color: transparent;
+    font-size: 1.5rem;
+    color: white;
+    font-weight: 700;
+    box-shadow: none;
+    border: none;
+    text-align: center;
+    resize: none;
+    width: fit-content;
+}
+
 .delete-collection {
     height: 20px;
     bottom: 0px;
@@ -74,6 +92,7 @@ input {
     box-shadow: none;
     border: none;
     text-align: center;
+    width: 80%;
 }
 
 input:hover {

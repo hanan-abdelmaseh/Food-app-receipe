@@ -8,6 +8,7 @@ import { AppRoutingModule } from '../app-routing.module';
 import { FormsModule } from '@angular/forms';
 import { CollectionDetailsComponent } from './collection-details/collection-details.component';
 import { ChangeCusorDirective } from './ChangeCursorDirective/change-cusor.directive';
+import { MatchesTypePipe } from './Pipes/matches-type.pipe';
 
 @NgModule({
   declarations: [
@@ -17,6 +18,7 @@ import { ChangeCusorDirective } from './ChangeCursorDirective/change-cusor.direc
     UserProfileComponent,
     CollectionDetailsComponent,
     ChangeCusorDirective,
+    MatchesTypePipe,
   ],
   imports: [CommonModule, AppRoutingModule, FormsModule],
 })

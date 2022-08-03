@@ -1,16 +1,10 @@
-import { Location } from '@angular/common';
-import {
-  HttpClient,
-  HttpErrorResponse,
-  HttpHeaders,
-  HttpParams,
-  HttpResponse,
-} from '@angular/common/http';
-import { ElementRef, ErrorHandler, Injectable } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
-import { BehaviorSubject, catchError, map, Observable, throwError } from 'rxjs';
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
+import { ElementRef, Injectable } from '@angular/core';
+import { Router } from '@angular/router';
+import { BehaviorSubject, from, map, mergeMap } from 'rxjs';
 import { EditUserViewModel } from 'src/app/viewModel/EditUserViewModel/edit-user-view-model';
 import { environment } from 'src/environments/environment';
+import Swal from 'sweetalert2';
 
 @Injectable({
   providedIn: 'root',
@@ -39,10 +33,7 @@ export class AuthService {
             next: (response) => {
               console.log(response);
               console.log('Logged In');
-              localStorage.setItem(
-                'token',
-                googleAuthUser.getAuthResponse().id_token
-              );
+              localStorage.setItem('token', response);
               this.isLoggenInSubject.next(true);
               resolve(true);
             },
@@ -129,12 +120,12 @@ export class AuthService {
             console.log('User Intilaized');
             this.loginWithGoogle(currentUser).subscribe({
               next: (response) => {
-                console.log('Logged In');
-                localStorage.setItem('token', response);
-                this.isLoggenInSubject.next(true);
                 this.initializeDefaultCollections().subscribe({
                   next: () => {
-                    console.log('Default Collections Added');
+                    console.log('initializeDefaultCollections');
+                    console.log('Logged In');
+                    localStorage.setItem('token', response);
+                    this.isLoggenInSubject.next(true);
                   },
                 });
               },
@@ -205,22 +196,55 @@ export class AuthService {
   initializeDefaultCollections() {
     let httpHeaders = new HttpHeaders().set('content-type', 'application/json');
 
-    let newCollection = {
-      collectionId: 0,
-      collectionImage:
-        'https://x.yummlystatic.com/web/default-collection-images/sides.png',
-      collectionName: 'Sides',
-      collectionDescription: '',
-      numberOfRecipes: 0,
-      collectionRecipes: null,
-    };
-    return this.httpClient.post(
-      `${environment.APIURL}Collections/AddCollection`,
-      newCollection,
+    let collectionList = [
       {
-        headers: httpHeaders,
-        responseType: 'text',
-      }
+        collectionId: 0,
+        collectionImage:
+          'https://x.yummlystatic.com/web/default-collection-images/sides.png',
+        collectionName: 'Sides',
+        collectionDescription: '',
+        numberOfRecipes: 0,
+        collectionRecipes: null,
+      },
+      {
+        collectionId: 0,
+        collectionImage:
+          'https://x.yummlystatic.com/web/default-collection-images/dinners.png',
+        collectionName: 'Dinners',
+        collectionDescription: '',
+        numberOfRecipes: 0,
+        collectionRecipes: null,
+      },
+      {
+        collectionId: 0,
+        collectionImage:
+          'https://x.yummlystatic.com/web/default-collection-images/desserts.png',
+        collectionName: 'Desserts',
+        collectionDescription: '',
+        numberOfRecipes: 0,
+        collectionRecipes: null,
+      },
+      {
+        collectionId: 0,
+        collectionImage:
+          'https://x.yummlystatic.com/web/default-collection-images/drinks.png',
+        collectionName: 'Drinks',
+        collectionDescription: '',
+        numberOfRecipes: 0,
+        collectionRecipes: null,
+      },
+    ];
+    return from(collectionList).pipe(
+      mergeMap((collection) =>
+        this.httpClient.post(
+          `${environment.APIURL}Collections/AddCollection`,
+          collection,
+          {
+            headers: httpHeaders,
+            responseType: 'text',
+          }
+        )
+      )
     );
   }
   // Login with UserName Password
@@ -248,12 +272,17 @@ export class AuthService {
             console.log('User Intilaized');
             this.loginWithUserName(userName, password).subscribe({
               next: (response) => {
-                console.log('Logged In');
-                localStorage.setItem('token', response);
-                this.isLoggenInSubject.next(true);
                 this.initializeDefaultCollections().subscribe({
                   next: () => {
-                    console.log('Default Collections Added');
+                    console.log('initializeDefaultCollections');
+                    Swal.fire('registered successfully')
+                      .then(() => {
+                        localStorage.setItem('token', response);
+                        this.isLoggenInSubject.next(true);
+                      })
+                      .then(() => {
+                        this.router.navigate(['/home']);
+                      });
                   },
                 });
               },
