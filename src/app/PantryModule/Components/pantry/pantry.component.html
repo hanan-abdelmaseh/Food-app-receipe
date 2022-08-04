@@ -71,17 +71,12 @@
  <div *ngIf="Shown">
   <app-search-not-found></app-search-not-found>
  </div>
- <div class="container">
-  <div class="row mt-5" *ngIf="!loading">
-       <div class="col-lg-3 col-md-6 mb-4" *ngFor="
-  let receipe of AllReceipes
-    | paginate: { itemsPerPage: count, currentPage: p };
-  let i = index
-">
+ <div class="container" >
+  <div class="row mt-5" *ngIf="!loading" >
+       <div class="col-lg-3 col-md-6 mb-4" *ngFor="let receipe of AllReceipes| paginate: { itemsPerPage: count, currentPage: p };let i = index">
         <div>
             <app-card [title]="receipe.recipeName" [imgSrc]="receipe.recipeImage" [text]="receipe.recipeIngredients" [recivedRecipe]="receipe" [receipeRating]="receipe.recipeRating"></app-card>
         </div>
-      
     </div>
     <div class="text-center">
         <pagination-controls (click)="pagination()" (pageChange)="p = $event"></pagination-controls>
@@ -92,4 +87,4 @@
 <div class="row mt-5 text-center" *ngIf="loading">
     <app-spinner></app-spinner>
 </div>
- 
+ </div>

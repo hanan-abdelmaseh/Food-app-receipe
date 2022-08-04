@@ -79,10 +79,12 @@ AllReceipes: MainReceipe[] = [];
     let httpHeaders = new HttpHeaders().set('content-type', 'application/json');
     this.Shown=false;
     console.log("getpantry");
+    this.loading = true;
     //console.log(this.ingredientList);
    this.httpClient.post<any>(`https://localhost:7044/api/Recipes/Pantry_readyRecipes?pageNumber=${page}`
    ,ingredient,{headers:httpHeaders,responseType:'json'}).subscribe((res:any)=>{
       //console.log(res);
+      this.loading=false;
        this.AllReceipes = res ;
        //console.log(page);
        console.log("welcome from pantry");
