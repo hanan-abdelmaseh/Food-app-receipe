@@ -10,7 +10,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { SnakBarComponent } from './Components/snak-bar/snak-bar.component';
-
+import { NgxPaginationModule } from 'ngx-pagination';
 @NgModule({
   declarations: [PantryComponent, SnakBarComponent],
   imports: [
@@ -21,6 +21,7 @@ import { SnakBarComponent } from './Components/snak-bar/snak-bar.component';
     BrowserAnimationsModule,
     MatSnackBarModule,
     Ng2SearchPipeModule,
+    NgxPaginationModule
   ],
   exports: [PantryComponent],
 })
