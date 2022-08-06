@@ -5,10 +5,11 @@ import { UserCollectionsComponent } from './user-collections/user-collections.co
 import { UserSettingsComponent } from './user-settings/user-settings.component';
 import { UserProfileComponent } from './user-profile/user-profile.component';
 import { AppRoutingModule } from '../app-routing.module';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CollectionDetailsComponent } from './collection-details/collection-details.component';
 import { ChangeCusorDirective } from './ChangeCursorDirective/change-cusor.directive';
 import { MatchesTypePipe } from './Pipes/matches-type.pipe';
+import { SharedModule } from '../SharedModule/shared.module';
 
 @NgModule({
   declarations: [
@@ -20,6 +21,12 @@ import { MatchesTypePipe } from './Pipes/matches-type.pipe';
     ChangeCusorDirective,
     MatchesTypePipe,
   ],
-  imports: [CommonModule, AppRoutingModule, FormsModule],
+  imports: [
+    CommonModule,
+    AppRoutingModule,
+    FormsModule,
+    SharedModule,
+    ReactiveFormsModule,
+  ],
 })
 export class UserModule {}

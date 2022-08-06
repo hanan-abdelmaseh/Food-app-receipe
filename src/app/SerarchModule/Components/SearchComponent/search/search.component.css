@@ -40,3 +40,13 @@ select {
 select:hover {
     cursor: pointer;
 }
+
+.pagination-btn {
+    background-color: transparent;
+    color: var(--main-color);
+    border: none;
+}
+
+.pagination-btn:disabled {
+    color: black;
+}

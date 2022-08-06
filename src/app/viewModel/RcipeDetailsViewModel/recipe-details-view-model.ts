@@ -1,3 +1,4 @@
+import { ReviewModel } from 'src/app/Models/RecipeModel/ReviewModel/review-model';
 import { ReviewViewModel } from '../ReviewViewModel/review-view-model';
 
 export interface RecipeDetailsViewModel {
@@ -23,5 +24,5 @@ export interface RecipeDetailsViewModel {
   protein: number;
   serving: number;
   recipeInstructions: string[];
-  reviews: ReviewViewModel[];
+  reviews: ReviewModel[];
 }

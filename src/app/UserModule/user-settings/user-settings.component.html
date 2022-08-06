@@ -1,55 +1,107 @@
 <main class="my-5 w-100">
-    <form>
-        <section class="d-flex flex-column w-100 my-5">
-            <div class="mb-3 d-flex justify-content-evenly">
+    <form [formGroup]="userEditForm">
+        <section class="d-flex flex-column w-100 mt-5 mb-2">
+            <div *ngIf="loginWithEmail" class="mb-3 d-flex justify-content-evenly">
                 <label for="email" class="form-label">Your Email</label>
-                <input type="text" class="form-control custom-input" disabled name="email" id="email" value="Hassanfarag165" />
+                <input type="text" formControlName="email" class="form-control custom-input" name="email" id="email" />
             </div>
-            <div class="mb-3 d-flex justify-content-evenly">
-                <label for="name" class="form-label">Your Name</label>
-                <input type="text" class="form-control custom-input" name="name" id="name" required />
+            <div class="d-flex flex-column">
+                <div class="mb-3 d-flex justify-content-evenly">
+                    <label for="name" class="form-label">Your Name</label>
+                    <input type="text" formControlName="userName" class="form-control custom-input" name="name" id="name" required />
+                </div>
             </div>
-            <div class="mb-3 d-flex justify-content-evenly">
-                <label for="password" class="form-label">Your Password</label>
-                <input type="password" class="form-control custom-input" name="password" id="password" required />
+            <div *ngIf="!loginWithEmail" class="d-flex flex-column">
+                <div class="mb-3 d-flex justify-content-evenly">
+                    <label for="password" class="form-label">Your Password</label>
+                    <div class="custom-input d-flex">
+                        <input [type]="show ? 'text' : 'password'" formControlName="password" class="form-control custom-input-pass" name="password" id="password" required />
+                        <div class="input-group-append h-100">
+                            <span class="input-group-text h-100">
+                <img
+                  [src]="
+                    show
+                      ? '../../../assets/images/show.png'
+                      : '../../../assets/images/private.png'
+                  "
+                  alt=""
+                  class="show-hide"
+                  (click)="showPassword()"
+                />
+              </span>
+                        </div>
+                    </div>
+                </div>
             </div>
             <div class="mb-3 d-flex justify-content-evenly">
                 <label for="bio" class="form-label">Your Bio</label>
-                <textarea class="form-control custom-input" name="bio" id="bio" rows="3"></textarea>
+                <textarea formControlName="bio" class="form-control custom-input" name="bio" id="bio" maxlength="150" rows="3"></textarea>
             </div>
-            <div class="mb-3 d-flex justify-content-evenly">
-                <label for="facebook" class="form-label">FaceBook Acount</label>
-                <input type="text" class="form-control custom-input" name="faceBookLink" id="facebook" />
+            <div class="d-flex flex-column">
+                <div class="mb-3 d-flex justify-content-evenly">
+                    <label for="facebook" class="form-label">Facebook Acount</label>
+                    <input type="text" formControlName="facebook" class="form-control custom-input" name="facebook" id="facebook" />
+                </div>
             </div>
             <div class="mb-3 d-flex justify-content-evenly">
                 <label for="twitter" class="form-label">Twitter Acount</label>
-                <input type="text" class="form-control custom-input" name="faceBookLink" id="twitter" />
+                <input type="text" formControlName="twitter" class="form-control custom-input" name="twitter" id="twitter" />
             </div>
             <div class="mb-3 d-flex justify-content-evenly">
-                <label for="website" class="form-label">Your Website</label>
-                <input type="text" class="form-control custom-input" id="website" />
+                <label for="site" class="form-label">Your Website</label>
+                <input type="text" formControlName="site" class="form-control custom-input" name="site" id="site" />
             </div>
             <div class="mb-3 d-flex justify-content-evenly">
                 <label for="img" class="form-label">Avatar</label>
-                <input class="form-control custom-input" type="file" id="img" />
+                <input class="form-control custom-input" type="file" name="image" id="img" />
             </div>
             <div class="w-100 d-flex justify-content-evenly flex-wrap my-3">
                 <div class="mb-3 me-3 d-flex justify-content-evenly">
                     <label for="city" class="form-label">City</label>
-                    <input type="text" class="form-control custom-input-location" id="city" />
+                    <input type="text" formControlName="city" class="form-control custom-input-location" name="city" id="city" maxlength="20" />
                 </div>
                 <div class="mb-3 me-3 d-flex justify-content-evenly">
                     <label for="state" class="form-label">State</label>
-                    <input type="text" class="form-control custom-input-location" id="state" />
+                    <input type="text" formControlName="state" class="form-control custom-input-location" name="state" id="state" maxlength="20" />
                 </div>
                 <div class="mb-3 me-3 d-flex justify-content-evenly">
                     <label for="country" class="form-label">Country</label>
-                    <input type="text" class="form-control custom-input-location" id="country" />
+                    <input type="text" formControlName="country" class="form-control custom-input-location" name="country" id="country" maxlength="20" />
                 </div>
             </div>
         </section>
+        <section>
+            <div class="validator-class d-flex flex-column" *ngIf="!userName?.untouched">
+                <small *ngIf="
+            userName?.errors?.['required'] ">
+          * User Name Is Required
+        </small>
+                <small *ngIf="userName?.errors?.['pattern']">
+          * user name should be between 3 and 50 letters <br />
+          * user name can't be an email <br />
+          * user name should starts with a letter
+        </small>
+            </div>
+            <div class="validator-class d-flex flex-column" *ngIf="!password?.untouched">
+                <small *ngIf="
+            password?.errors?.['required'] ">
+          * Password Is Required
+        </small>
+                <small *ngIf="password?.errors?.['pattern']">
+          * password should be morethan 6 digits <br />
+          * password should contains at least one uppercase character, one
+          lowercase charachter and one number
+        </small>
+            </div>
+            <!-- <div class="validator-class d-flex flex-column" *ngIf="!facebook?.untouched">
+                <small *ngIf="facebook?.errors?.['pattern']">
+          * invaild facebook url
+        </small>
+            </div> -->
+        </section>
+
         <div class="w-100 d-flex justify-content-evenly">
-            <button type="submit" class="custom-submit-btn rounded-pill">
+            <button (click)="editUser()" type="submit" class="custom-submit-btn rounded-pill">
         Submit
       </button>
             <button type="button" class="custom-cancel-btn rounded-pill">

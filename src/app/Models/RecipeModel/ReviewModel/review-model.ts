@@ -1,8 +1,11 @@
 import { UserModel } from '../../User Model/user-model';
 
 export interface ReviewModel {
-  reviewWriterId: number;
-  reviewDate: string;
-  reviewContent: string;
-  rating: number;
+  reviewId: number | null;
+  recipeId: number;
+  writerId: number;
+  writerName: string;
+  reviewRating?: number;
+  reviewContent?: string;
+  reviewDate?: Date;
 }

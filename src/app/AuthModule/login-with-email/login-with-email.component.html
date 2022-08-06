@@ -16,28 +16,64 @@
             We're rated 4.5 out of 5 stars because our users have so much success finding recipes they love.
         </article>
 
-        <article class="d-felx flex-column">
-            <form (ngSubmit)="loginWithUserName()">
-                <input #loginName="ngModel" (focus)="hideRegiter()" [(ngModel)]="userName" class="my-4" type="text" id="userName" name="userName" placeholder="User Name" pattern="^[a-zA-z]{1}[a-zA-z0-9.-]{1,49}$" required />
-                <input #loginPass="ngModel" (focus)="hideRegiter()" [(ngModel)]="password" type="password" name="password" placeholder="Password" required />
+        <article>
+            <form [formGroup]="userLoginForm">
+                <input (focus)="hideRegiter()" formControlName="userName" type="text" id="userName" name="userName" placeholder="User Name" />
+                <div class="validator-class d-flex flex-column" style="height: 15px">
+                    <small *ngIf="!userName?.untouched && userName?.errors?.['required']">
+            * User Name Is Required
+          </small>
+                </div>
+                <input (focus)="hideRegiter()" formControlName="password" type="password" name="password" placeholder="Password" />
+                <div class="validator-class d-flex flex-column" style="height: 15px">
+                    <small *ngIf="
+                password?.errors?.['required'] && !password?.untouched">
+            * Password Is Required
+          </small>
+                </div>
                 <div class="my-5">
-                    <input type="submit" class="login-btn rounded-pill" value="login" />
+                    <button type="submit" (click)="loginWithUserName()" class="login-btn rounded-pill">
+            Login
+          </button>
                 </div>
             </form>
         </article>
-        <article class="m-5">
-            <div *ngIf="registerSerctionShown">
+        <article class="my-5">
+            <div *ngIf="registerSectionShown">
                 <h4 class="text-danger">Sorry, You Don't Have an Accout</h4>
 
                 <h4 class="m-3">Register Now?</h4>
 
                 <article class="d-felx flex-column">
-                    <form (ngSubmit)="registerWithUserName()">
-                        <input [(ngModel)]="registerUserName" class="my-4" type="text" name="userName" placeholder="User Name" pattern="^[a-zA-z]{1}[a-zA-z0-9.-]{1,49}$" required />
-
-                        <input [(ngModel)]="registerPassword" type="password" name="password" placeholder="Password" required />
-                        <div class="my-5">
-                            <button type="submit" class="login-btn rounded-pill m-2">
+                    <form [formGroup]="userRegisterForm">
+                        <input class="my-4" type="text" formControlName="userName" name="userName" placeholder="User Name" />
+                        <input type="password" formControlName="password" name="password" placeholder="password" />
+                        <div class="my-1">
+                            <section>
+                                <div class="validator-class d-flex flex-column" *ngIf="!userNameReg?.untouched">
+                                    <small *ngIf="
+                                userNameReg?.errors?.['required'] ">
+                    * User Name Is Required
+                  </small>
+                                    <small *ngIf="userNameReg?.errors?.['pattern']">
+                    * user name should be between 3 and 50 letters <br />
+                    * user name can't be an email <br />
+                    * user name should starts with a letter
+                  </small>
+                                </div>
+                                <div class="validator-class d-flex flex-column" *ngIf="!passwordReg?.untouched">
+                                    <small *ngIf="
+                                    passwordReg?.errors?.['required'] ">
+                    * Password Is Required
+                  </small>
+                                    <small *ngIf="passwordReg?.errors?.['pattern']">
+                    * password should be morethan 6 digits <br />
+                    * password should contains at least one uppercase character,
+                    one lowercase charachter and one number
+                  </small>
+                                </div>
+                            </section>
+                            <button type="submit" (click)="registerWithUserName()" class="login-btn rounded-pill my-3">
                 Register Now
               </button>
                         </div>

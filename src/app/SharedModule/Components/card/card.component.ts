@@ -50,6 +50,7 @@ export class CardComponent implements OnInit, OnChanges {
   ngOnInit(): void {}
 
   openRecipeDetails() {
-    this.route.navigateByUrl('recipe/' + this.recivedRecipe.recipeID);
+    window.open('recipe/' + this.recivedRecipe.recipeID, '_blank');
+    // this.route.navigateByUrl();
   }
 }

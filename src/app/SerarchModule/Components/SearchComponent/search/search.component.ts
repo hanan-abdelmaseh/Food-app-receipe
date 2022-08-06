@@ -1,5 +1,10 @@
 import { Component, OnInit, TemplateRef } from '@angular/core';
-import { SelectedFiltersModel } from 'src/app/Models/SelectedFiltersModel/selected-filters-Model';
+import {
+  FiltersModel,
+  SelectedFiltersModel,
+} from 'src/app/Models/SelectedFiltersModel/selected-filters-Model';
+import { SearchService } from 'src/app/Services/SearchService/search.service';
+import { MainReceipe } from 'src/app/viewModel/main-receipe';
 
 @Component({
   selector: 'app-search',
@@ -7,26 +12,38 @@ import { SelectedFiltersModel } from 'src/app/Models/SelectedFiltersModel/select
   styleUrls: ['./search.component.css'],
 })
 export class SearchComponent implements OnInit {
+  filterdList: MainReceipe[] = [];
   filterBtnShown: boolean = false;
   title: string = 'Receipes';
   text: string = 'Our Receipes';
   Time: string[];
-  Ingrediant: string[] | null = null;
+  Ingrediant: string | null = null;
   Allergies: string[];
   Cuisines: string[];
   Nutritions: string[];
-
+  recipeName: string = '';
+  spinnerShown: boolean = false;
+  pageNumber: number = 1;
+  searchClicked: boolean = true;
+  cryShown: boolean = false;
   selectedFilters: SelectedFiltersModel = {
-    recipeName: '',
     allergies: 'Dont Have Allergies',
     cuisines: 'All Cuisines',
-    ingrediant: '',
+    ingrediants: '',
     nutritions: 'All Nutritions',
     time: 'Any',
   };
-  constructor() {
-    this.Time = ['5', '10', '15', '20', '30', '60', '90', '120'];
-    this.Allergies = ['Egg-Free', 'Lactous-Free'];
+
+  // selectedFilters: SelectedFiltersModel = { name: '', preferences: [] };
+  constructor(private searchService: SearchService) {
+    this.Time = [
+      '< 15 Mins',
+      '< 30 Mins',
+      '< 60 Mins',
+      '< 2 Hours',
+      '< 4 Hours',
+    ];
+    this.Allergies = ['Egg Free', 'Lactous Free'];
     this.Cuisines = [
       'Southwest Asia (middle East)',
       'Asian',
@@ -51,12 +68,12 @@ export class SearchComponent implements OnInit {
       'German',
     ];
     this.Nutritions = [
-      'Low Fat',
-      'Low Calories',
-      'High Fiber',
-      'Low Carb',
-      'Low Sodium',
-      'Low Sugar',
+      'High Protein',
+      'High Calories',
+      'High Carbs',
+      'Low Protein',
+      'Low Cholesterol',
+      'Very Low Carbs',
     ];
   }
 
@@ -64,26 +81,78 @@ export class SearchComponent implements OnInit {
   hideSearchButton() {
     this.filterBtnShown = !this.filterBtnShown;
   }
-  printfn() {
-    let selectedFilters: SelectedFiltersModel = {};
-    if (this.selectedFilters.recipeName != '') {
-      selectedFilters.recipeName = this.selectedFilters.recipeName;
+  increaseCounter() {
+    this.pageNumber++;
+    if (this.searchClicked) {
+      this.search();
+    } else {
+      this.filter();
     }
-    if (this.selectedFilters.ingrediant != '') {
-      selectedFilters.ingrediant = this.selectedFilters.ingrediant;
+  }
+
+  decreaseCounter() {
+    this.pageNumber--;
+    if (this.searchClicked) {
+      this.search();
+    } else {
+      this.filter();
+    }
+  }
+  search() {
+    this.spinnerShown = true;
+
+    this.searchClicked = true;
+    this.searchService.search(this.recipeName, this.pageNumber).subscribe({
+      next: (recipes) => {
+        this.spinnerShown = false;
+
+        this.filterdList = recipes;
+      },
+    });
+  }
+  filter() {
+    this.spinnerShown = true;
+    let filtersModel: FiltersModel = {
+      name: '',
+      preferences: [],
+    };
+    if (this.recipeName != '') {
+      filtersModel.name = this.recipeName!;
+    }
+    if (this.selectedFilters.ingrediants != '') {
+      filtersModel.preferences.push(this.selectedFilters.ingrediants!);
     }
     if (this.selectedFilters.allergies != 'Dont Have Allergies') {
-      selectedFilters.allergies = this.selectedFilters.allergies;
+      filtersModel.preferences.push(this.selectedFilters.allergies!);
     }
     if (this.selectedFilters.cuisines != 'All Cuisines') {
-      selectedFilters.cuisines = this.selectedFilters.cuisines;
+      filtersModel.preferences.push(this.selectedFilters.cuisines!);
     }
     if (this.selectedFilters.nutritions != 'All Nutritions') {
-      selectedFilters.nutritions = this.selectedFilters.nutritions;
+      filtersModel.preferences.push(this.selectedFilters.nutritions!);
     }
     if (this.selectedFilters.time != 'Any') {
-      selectedFilters.time = this.selectedFilters.time;
+      filtersModel.preferences.push(this.selectedFilters.time!);
     }
-    console.log(selectedFilters);
+    this.searchService.filter(this.pageNumber, filtersModel).subscribe({
+      next: (recipes) => {
+        this.spinnerShown = false;
+        this.filterdList = recipes;
+      },
+    });
+  }
+  searchAndFilter() {
+    this.pageNumber = 1;
+    if (
+      this.selectedFilters.ingrediants == '' &&
+      this.selectedFilters.allergies == 'Dont Have Allergies' &&
+      this.selectedFilters.cuisines == 'All Cuisines' &&
+      this.selectedFilters.nutritions == 'All Nutritions' &&
+      this.selectedFilters.time == 'Any'
+    ) {
+      this.search();
+    } else {
+      this.filter();
+    }
   }
 }

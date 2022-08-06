@@ -1,7 +1,7 @@
 <main>
     <section class="collection-header">
         <div class="collection-img-container">
-            <img class="collection-img" src="{{ currentCollection!.collectionImage }}" alt="" srcset="" />
+            <img class="collection-img" src="{{ currentCollection?.collectionImage }}" alt="" srcset="" />
         </div>
         <div class="blur"></div>
 
@@ -11,7 +11,7 @@
                 {{ currentCollection?.collectionName }}
             </h3> -->
             <div class="collection-recipes-no my-2">
-                {{ currentCollection!.numberOfRecipes }} Recipes
+                {{ currentCollection?.numberOfRecipes }} Recipes
             </div>
 
             <textarea class="my-4 collection-description" name="bio" cols="40" rows="4" maxlength="120">
@@ -37,14 +37,23 @@
     </div>
   </section>
   <Section>
-    <div
-      *ngFor="let recipe of currentCollection?.collectionRecipes; let x = index"
-    >
-      <div>
-        {{ recipe.recipeName }}
+    <div class="container mt-5 recipes-section">
+      <div class="row">
+        <div
+          class="col-8 col-lg-3 col-md-4 col-sm-6 m-auto"
+          *ngFor="let recipe of recipes"
+        >
+          <div class="mb-4">
+            <app-card
+              [title]="recipe.recipeName"
+              [imgSrc]="recipe.recipeImage"
+              [text]="recipe.recipeIngredients"
+              [recivedRecipe]="recipe"
+              [receipeRating]="recipe.recipeRating"
+            ></app-card>
+          </div>
+        </div>
       </div>
-      <button (click)="(1)">delete</button>
-      <button (click)="openRecipeDetails(recipe.recipeID)">open</button>
     </div>
   </Section>
   <section

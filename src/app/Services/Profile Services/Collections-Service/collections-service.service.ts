@@ -1,8 +1,9 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { map, Observable } from 'rxjs';
 import { CollectionModel } from 'src/app/Models/Collection Model/collection-model';
 import { CollectionViewModel } from 'src/app/viewModel/CollectionViewModel/collection-view-model';
+import { MainReceipe } from 'src/app/viewModel/main-receipe';
 import { RecipeCollectionViewModel } from 'src/app/viewModel/RecipeCollectionViewModel/recipe-collection-view-model';
 import { environment } from 'src/environments/environment';
 import { CurrentUserService } from '../Current-User-Service/current-user.service';
@@ -81,12 +82,22 @@ export class CollectionsService {
   }
 
   addRecipeToCollection(recipeId: number, collectionId: number) {
+    let httpHeaders = new HttpHeaders().set('content-type', 'application/json');
     return this.httpClient.post(
       `${environment.APIURL}Collections/AddRecipeToCollection`,
       {
         collectionID: collectionId,
         recipeID: recipeId,
+      },
+      {
+        responseType: 'text',
       }
+    );
+  }
+
+  getCollectionRecipes(collectionId: number) {
+    return this.httpClient.get<MainReceipe[]>(
+      `${environment.APIURL}Collections/GetCollectionRecipes/${collectionId}`
     );
   }
 }

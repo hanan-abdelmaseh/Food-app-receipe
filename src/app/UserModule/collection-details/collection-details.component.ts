@@ -6,6 +6,8 @@ import { RecipeModel } from 'src/app/Models/RecipeModel/recipe-model';
 import { RecipeService } from 'src/app/Services/RecipeServices/recipe-services.service';
 import { CollectionViewModel } from 'src/app/viewModel/CollectionViewModel/collection-view-model';
 import Swal from 'sweetalert2';
+import { RecipeDetailsViewModel } from 'src/app/viewModel/RcipeDetailsViewModel/recipe-details-view-model';
+import { MainReceipe } from 'src/app/viewModel/main-receipe';
 @Component({
   selector: 'app-collection-details',
   templateUrl: './collection-details.component.html',
@@ -13,6 +15,7 @@ import Swal from 'sweetalert2';
 })
 export class CollectionDetailsComponent implements OnInit {
   public currentCollectionIndex!: number;
+  public recipes: MainReceipe[] = [];
   public currentCollection: CollectionViewModel | undefined = undefined;
   constructor(
     private activatedRoute: ActivatedRoute,
@@ -35,8 +38,20 @@ export class CollectionDetailsComponent implements OnInit {
     this.collectionService.getAllCollections().subscribe({
       next: (allCollections) => {
         this.currentCollection = allCollections[index];
+        this.getCollectionRecipes();
       },
     });
+  }
+
+  getCollectionRecipes() {
+    this.collectionService
+      .getCollectionRecipes(this.currentCollection!.collectionId)
+      .subscribe({
+        next: (recipes) => {
+          console.log(recipes);
+          this.recipes = recipes;
+        },
+      });
   }
   deleteCollection(collectionId: number) {
     this.collectionService.deleteCollection(collectionId).subscribe({

@@ -1,0 +1,14 @@
+.material-icons {
+    font-family: 'Material Icons' !important;
+}
+
+button {
+    border: none;
+    background-color: #fff;
+    display: flex;
+    flex-wrap: nowrap;
+}
+
+.mat-icon {
+    color: var( --secondary-color) !important;
+}

@@ -84,6 +84,7 @@ import { AuthInterceptor } from './Interceptors/auth.interceptor';
     NgxPaginationModule,
     SearchModule,
     RatingModule,
+    ReactiveFormsModule,
   ],
 
   exports: [],

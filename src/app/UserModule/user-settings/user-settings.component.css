@@ -25,6 +25,11 @@
     max-height: 5em;
 }
 
+.custom-input-pass {
+    font-size: 1.2em;
+    max-height: 5em;
+}
+
 label {
     width: 9em
 }
@@ -43,6 +48,15 @@ label {
     color: var(--main-color);
 }
 
+.show-hide {
+    width: 1.3em;
+    max-width: 100%;
+}
+
+.show-hide:hover {
+    cursor: pointer;
+}
+
 .custom-input-location {
     font-size: 1em;
 }
@@ -51,4 +65,16 @@ label {
 .custom-input-location:focus {
     box-shadow: none;
     border: 1px solid var(--main-color);
+}
+
+.validator-class {
+    border-radius: 1em;
+    width: fit-content;
+    margin: 10px;
+    text-align: start;
+    color: red;
+}
+
+textarea {
+    resize: none;
 }

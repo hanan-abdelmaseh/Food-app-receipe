@@ -2,7 +2,10 @@ import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { catchError, Observable, retry, throwError } from 'rxjs';
 import { RecipeModel } from 'src/app/Models/RecipeModel/recipe-model';
+import { UserModel } from 'src/app/Models/User Model/user-model';
+import { MainReceipe } from 'src/app/viewModel/main-receipe';
 import { RecipeDetailsViewModel } from 'src/app/viewModel/RcipeDetailsViewModel/recipe-details-view-model';
+import { UserViewModel } from 'src/app/viewModel/UserViewModel/user-view-model';
 import { environment } from 'src/environments/environment';
 
 @Injectable({
@@ -31,9 +34,9 @@ export class RecipeService {
   constructor(private httpClient: HttpClient) {}
 
   getCurrentRecipeById(recipeId: number): Observable<RecipeDetailsViewModel> {
-    return this.httpClient
-      .get<RecipeDetailsViewModel>(`${environment.APIURL}Recipes/${recipeId}`)
-      .pipe(retry(2), catchError(this.handleError));
+    return this.httpClient.get<RecipeDetailsViewModel>(
+      `${environment.APIURL}Recipes/GetRecipeDetails/${recipeId}`
+    );
   }
   getRecipeById(recipeId: number) {
     let recipe = this.recipesList?.find(
@@ -48,5 +51,16 @@ export class RecipeService {
     //will change in environment
     return this.httpClient.get(`${environment.APIURL}Recipes/HomeRecipes`);
     //return this.httpClient.get('https://fakestoreapi.com/products');
+  }
+
+  getFeedRecipes(pageNum: Number) {
+    return this.httpClient.get<MainReceipe[]>(
+      `${environment.APIURL}Recipes/FeedRecipes?pageNumber=${pageNum}`
+    );
+  }
+  getAuther(autherID: number) {
+    return this.httpClient.get<UserViewModel>(
+      `${environment.APIURL}Users/GetUserById/${autherID}`
+    );
   }
 }

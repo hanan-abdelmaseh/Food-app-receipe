@@ -47,7 +47,7 @@ main {
 
 .recipe-summary-item {
     text-align: center;
-    margin: 2em 2em;
+    margin: 1.5em;
 }
 
 .recipe-summary-interaction {
@@ -82,15 +82,14 @@ main {
 
 .recipe-img-container {
     text-align: center;
-    max-width: 500px;
     width: 60%;
+    max-width: 550px;
 }
 
 .recipe-img {
     width: 100%;
     object-fit: cover;
     border-radius: 20px;
-    min-width: 450px;
 }
 
 .horizontal-sep {
@@ -242,11 +241,34 @@ ul li::marker {
 }
 
 .delete-review-icon {
+    margin-left: 1em;
     width: 1.5em;
 }
 
 .delete-review-icon:hover {
     cursor: pointer;
+}
+
+textarea {
+    resize: none;
+}
+
+.collections {
+    border-radius: 20px;
+    box-shadow: 5px 10px 18px #888888;
+    height: 15em;
+    width: 10em;
+    padding: 1em;
+    position: absolute;
+    top: 4em;
+    left: -3em;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    background-color: white;
+}
+
+.collections::-webkit-scrollbar {
+    display: none;
 }
 
 @media screen and (max-width: 992px) {

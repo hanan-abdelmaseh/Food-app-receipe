@@ -27,6 +27,7 @@ import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { SpinnerComponent } from './Components/spinner/spinner.component';
+import { StarRatingBuilderComponent } from './Components/StartRatingBuilder/star-rating-builder/star-rating-builder.component';
 
 @NgModule({
   declarations: [
@@ -45,6 +46,7 @@ import { SpinnerComponent } from './Components/spinner/spinner.component';
     SearchNotFoundComponent,
     StarRatingComponent,
     SpinnerComponent,
+    StarRatingBuilderComponent,
   ],
   imports: [
     CommonModule,
@@ -73,6 +75,7 @@ import { SpinnerComponent } from './Components/spinner/spinner.component';
     SearchNotFoundComponent,
     StarRatingComponent,
     SpinnerComponent,
+    StarRatingBuilderComponent,
   ],
 })
 export class SharedModule {}

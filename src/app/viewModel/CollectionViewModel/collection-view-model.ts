@@ -6,5 +6,5 @@ export interface CollectionViewModel {
   collectionName: string;
   collectionDescription?: string;
   numberOfRecipes: number;
-  collectionRecipes?: RecipeCollectionViewModel[];
+  collectionRecipes: RecipeCollectionViewModel[];
 }

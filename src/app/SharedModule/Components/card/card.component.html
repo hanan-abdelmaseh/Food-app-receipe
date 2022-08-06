@@ -13,25 +13,6 @@
     <div class="lastrow mt-3 w-100">
         <div class="boxes d-flex justify-content-between w-100">
             <app-star-rating [rating]="receipeRating" [starCount]="starCount" [color]="starColor"></app-star-rating>
-            <button>
-        <mat-form-field>
-          <mat-select [formControl]="toppings" multiple>
-            <mat-select-trigger>
-              {{toppings.value?.[0] || ''}}
-              <span
-                *ngIf="(toppings.value?.length || 0) > 1"
-                class="example-additional-selection"
-              >
-                (+{{ (toppings.value?.length || 0) - 1 }}
-                {{ toppings.value?.length === 2 ? "other" : "others" }})
-              </span>
-            </mat-select-trigger>
-            <mat-option *ngFor="let topping of toppingList" [value]="topping">{{
-              topping
-            }}</mat-option>
-          </mat-select>
-        </mat-form-field>
-      </button>
         </div>
     </div>
 </div>

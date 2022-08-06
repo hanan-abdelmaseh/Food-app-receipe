@@ -1,7 +1,9 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { RecipeModel } from 'src/app/Models/RecipeModel/recipe-model';
 import { ReviewModel } from 'src/app/Models/RecipeModel/ReviewModel/review-model';
 import { UserModel } from 'src/app/Models/User Model/user-model';
+import { environment } from 'src/environments/environment';
 import { CurrentUserService } from '../Profile Services/Current-User-Service/current-user.service';
 import { RecipeService } from '../RecipeServices/recipe-services.service';
 
@@ -14,32 +16,23 @@ export class ReviewService {
   public recipeReviewers?: UserModel[];
   constructor(
     private userService: CurrentUserService,
-    private recipeService: RecipeService
+    private recipeService: RecipeService,
+    private httpClient: HttpClient
   ) {}
 
-  getAllReviews() {
-    this.allReviews = this.recipeService.currentRecipe?.reviews!;
-  }
-
   addReview(newReview: ReviewModel) {
-    // this.recipeService.currentRecipe?.reviews.push(newReview);
-    // this.getAllReviews();
-    // this.getReviewsWriters();
+    return this.httpClient.post(
+      `${environment.APIURL}Reviews/AddReview`,
+      newReview,
+      {
+        responseType: 'text',
+      }
+    );
   }
 
-  getReviewsWriters() {
-    this.recipeReviewers = [];
-    this.recipeService.currentRecipe?.reviews.forEach((review) => {
-      let user = this.userService.getUserById(review.reviewWriterId)!;
-      // this.recipeReviewers?.push(user);
+  deleteReview(id: number) {
+    return this.httpClient.delete(`${environment.APIURL}Reviews/${id}`, {
+      responseType: 'text',
     });
-  }
-
-  deleteReview(index: number) {
-    this.allReviews.splice(index, 1);
-    this.recipeReviewers?.splice(index, 1);
-    console.log(index);
-    console.log(this.allReviews);
-    console.log(this.recipeReviewers);
   }
 }

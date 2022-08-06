@@ -1,5 +1,5 @@
 <main>
-    <form (submit)="printfn()">
+    <form (submit)="searchAndFilter()">
         <div class="bg-dark heroSection">
             <app-bread-crumb [Title]="title" [Text]="text"></app-bread-crumb>
         </div>
@@ -7,7 +7,7 @@
             <div class="container">
                 <div class="row pt-5 pb-5">
                     <div class="col-lg-8 col-md-6 col-sm-12">
-                        <input class="form-control" name="recipename" placeholder="Receipe" [(ngModel)]="selectedFilters.recipeName" />
+                        <input name="recipename" placeholder="Receipe" [(ngModel)]="recipeName" />
                     </div>
                     <div class="col-lg-4 col-md-6 mt-3 mt-lg-0" *ngIf="!filterBtnShown">
                         <button type="submit" class="btn submit-btn">Search</button>
@@ -18,7 +18,7 @@
 
         <!-- Filter Btn -->
         <section class="container">
-            <button class="btn Learn-btn mt-3" type="button" data-bs-toggle="collapse" data-bs-target="#advancedSearch" aria-expanded="false" aria-controls="collapseExample" (click)="hideSearchButton()">
+            <button class="btn Learn-btn my-3" type="button" data-bs-toggle="collapse" data-bs-target="#advancedSearch" aria-expanded="false" aria-controls="collapseExample" (click)="hideSearchButton()">
         Find Recipes
         <i class="fa-solid fa-arrow-down" *ngIf="!filterBtnShown"></i>
         <i class="fa-solid fa-arrow-up" *ngIf="filterBtnShown"></i>
@@ -31,7 +31,7 @@
                 <article class="d-flex flex-column flex-fill me-lg-4">
                     <!-- Filter By Ingrediants -->
                     <div>
-                        <input class="form-control filter-section-padding" name="ingrediant" placeholder="All Ingrediants" [(ngModel)]="selectedFilters.ingrediant" />
+                        <input class="form-control filter-section-padding" name="ingrediant" placeholder="Ingrediant Name" [(ngModel)]="selectedFilters.ingrediants" />
                     </div>
                     <div class="d-flex flex-column flex-lg-row justify-content-md-between filter-section-padding">
                         <!-- Filter by Allergies -->
@@ -49,7 +49,7 @@
                             <label class="me-3">Cuisines </label>
                             <select class="form-select" name="cuisines" aria-label="Default select example" [(ngModel)]="selectedFilters.cuisines">
                 <option selected>All Cuisines</option>
-                <option value="cuisine" *ngFor="let cuisine of Cuisines">
+                <option *ngFor="let cuisine of Cuisines">
                   {{ cuisine }}
                 </option>
               </select>
@@ -69,7 +69,7 @@
                             <label class="me-3">Time</label>
                             <select class="form-select" name="time" aria-label="Default select example" [(ngModel)]="selectedFilters.time">
                 <option selected>Any</option>
-                <option *ngFor="let time of Time">&lt; {{ time }} Min</option>
+                <option *ngFor="let time of Time">{{ time }}</option>
               </select>
                         </div>
                     </div>
@@ -82,4 +82,31 @@
             </section>
         </div>
     </form>
+
+    <div class="container mt-3" *ngIf="filterdList.length > 0 && spinnerShown == false">
+        <div class="row">
+            <div class="col-8 col-lg-3 col-md-4 col-sm-6 m-auto" *ngFor="let recipe of filterdList">
+                <div>
+                    <app-card [title]="recipe.recipeName" [imgSrc]="recipe.recipeImage" [text]="recipe.recipeIngredients" [recivedRecipe]="recipe" [receipeRating]="recipe.recipeRating"></app-card>
+                </div>
+            </div>
+        </div>
+        <section class="pagination justify-content-center my-5 d-flex">
+            <button [disabled]="pageNumber == 1" class="pagination-btn" (click)="decreaseCounter()">
+        Previous
+      </button>
+            <div class="mx-5">
+                {{ pageNumber }}
+            </div>
+            <button [disabled]="filterdList.length < 20" class="pagination-btn" (click)="increaseCounter()">
+        Next
+      </button>
+        </section>
+    </div>
+    <div *ngIf="filterdList.length == 0 && cryShown == true">
+        <app-search-not-found></app-search-not-found>
+    </div>
+    <div style="height: 30em" class="w-100 d-flex justify-content-center align-items-center" *ngIf="spinnerShown == true">
+        <app-spinner></app-spinner>
+    </div>
 </main>

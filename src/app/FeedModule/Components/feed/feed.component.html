@@ -1,32 +1,40 @@
-<div class="bg-dark heroSection">
-    <app-bread-crumb [Title]="title" [Text]="text"></app-bread-crumb>
-</div>
-<app-saving></app-saving>
-<app-slider [images]="imgagesList" [autoSlide]="true"></app-slider>
-<div class="container">
-    <div class="row">
-        <div class="col-m-12">
-            <h2 class="mb-2">Just For You</h2>
-           <button class="btn submit-btn" (click)="getCollection()">See Your Collection</button>
+<main>
+    <div class="bg-dark heroSection">
+        <app-bread-crumb [Title]="title" [Text]="text"></app-bread-crumb>
+    </div>
+    <app-saving></app-saving>
+    <app-slider [images]="imgagesList" [autoSlide]="true"></app-slider>
+    <div class="container">
+        <div class="row">
+            <div class="col-m-12">
+                <h2 class="my-2">Just For You</h2>
+            </div>
         </div>
     </div>
-</div>
-<div class="container" *ngIf="!shown">
-    <div class="row mt-5">
-        <div class="col-md-3">
-            <app-card></app-card>
+    <div class="container mt-3" *ngIf="feedRecipes.length > 0 && spinnerShown == false">
+        <div class="row">
+            <div class="col-8 col-lg-3 col-md-4 col-sm-6 m-auto" *ngFor="let recipe of feedRecipes">
+                <div>
+                    <app-card [title]="recipe.recipeName" [imgSrc]="recipe.recipeImage" [text]="recipe.recipeIngredients" [recivedRecipe]="recipe" [receipeRating]="recipe.recipeRating"></app-card>
+                </div>
+            </div>
         </div>
-        <div class="col-md-3">
-            <app-card></app-card>
-        </div>
-        <div class="col-md-3">
-            <app-card></app-card>
-        </div>
-        <div class="col-md-3">
-            <app-card></app-card>
-        </div>
+        <section class="pagination justify-content-center my-5 d-flex">
+            <button [disabled]="pageNumber == 1" class="pagination-btn" (click)="decreaseCounter()">
+        Previous
+      </button>
+            <div class="mx-5">
+                {{ pageNumber }}
+            </div>
+            <button [disabled]="feedRecipes.length < 20" class="pagination-btn" (click)="increaseCounter()">
+        Next
+      </button>
+        </section>
     </div>
-</div>
-<div *ngIf="shown">
-<app-search-not-found></app-search-not-found>
-</div>
+    <div *ngIf="feedRecipes.length == 0 && shown == true">
+        <app-search-not-found></app-search-not-found>
+    </div>
+    <div style="height: 30em" class="w-100 d-flex justify-content-center align-items-center" *ngIf="spinnerShown == true">
+        <app-spinner></app-spinner>
+    </div>
+</main>

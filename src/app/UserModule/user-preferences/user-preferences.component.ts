@@ -16,20 +16,13 @@ export class UserPreferencesComponent implements OnInit {
   public preferencesList: PreferencesModel[] = [];
   constructor(private preferencesService: PreferencesService) {
     this.preferencesTypesList = [
-      'Nutrition',
-      'ALLERGIES',
-      'Cusions',
-      'Disliked Ingrediants',
+      'nutrition',
+      'allegries',
+      'cusions',
+      'ingrediants',
     ];
     this.allPreferences = [
-      [
-        'Low Fat',
-        'Low Calories',
-        'High Fiber',
-        'Low Carb',
-        'Low Sodium',
-        'Low Sugar',
-      ],
+      ['High Protein', 'Low Cholesterol', 'Very Low Carbs', 'Low Protein'],
       ['Egg Free', 'Lactose Free'],
       [
         'Southwest Asia (middle East)',
@@ -54,7 +47,18 @@ export class UserPreferencesComponent implements OnInit {
         'Hawaiian',
         'German',
       ],
-      ['Egg', 'Meat', 'Fish', 'Soy', 'Chicken'],
+      [
+        'egg',
+        'meat',
+        'fish',
+        'soy',
+        'chicken',
+        'onion',
+        'cabbage',
+        'carrots',
+        'garlic',
+        'orange',
+      ],
     ];
   }
   showThisPreferencesList(panelId: number) {

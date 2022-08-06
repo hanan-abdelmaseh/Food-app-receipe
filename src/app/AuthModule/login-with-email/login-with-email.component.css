@@ -37,5 +37,20 @@ form {
     background-color: var(--main-color);
     color: white;
     border: none;
-    padding: .5em 2em;
+    padding: .3em 1.5em;
+    font-size: 1.2em;
+    width: 50%;
+    min-width: fit-content;
+}
+
+.validator-class {
+    border-radius: 1em;
+    width: fit-content;
+    margin: 10px;
+    text-align: start;
+    color: red;
+}
+
+textarea {
+    resize: none;
 }

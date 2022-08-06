@@ -30,6 +30,7 @@ export class UserProfileComponent implements OnInit {
         console.log('userID' + id);
         this.currentUserService.getUserById(+id).subscribe({
           next: (currentUser) => {
+            console.log('usrr');
             console.log(currentUser);
             this.currentUser = currentUser;
           },
