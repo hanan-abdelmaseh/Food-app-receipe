@@ -17,8 +17,8 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { BreadCrumbComponent } from './Components/bread-crumb/bread-crumb.component';
 import { RatingModule } from 'primeng/rating';
-import { RatingBuilderComponent } from './Components/RatingBuilder/rating-builder/rating-builder.component';
-import { BarRatingModule } from 'ngx-bar-rating';
+
+
 import { SearchNotFoundComponent } from './Components/search-not-found/search-not-found.component';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -42,7 +42,7 @@ import { StarRatingBuilderComponent } from './Components/StartRatingBuilder/star
     BreadCrumbComponent,
     SavingComponent,
     FooterComponent,
-    RatingBuilderComponent,
+    
     SearchNotFoundComponent,
     StarRatingComponent,
     SpinnerComponent,
