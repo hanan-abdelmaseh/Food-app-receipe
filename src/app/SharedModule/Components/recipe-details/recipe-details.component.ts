@@ -23,6 +23,7 @@ import { CollectionViewModel } from 'src/app/viewModel/CollectionViewModel/colle
 import { throwDialogContentAlreadyAttachedError } from '@angular/cdk/dialog';
 import { UserViewModel } from 'src/app/viewModel/UserViewModel/user-view-model';
 import { ThisReceiver } from '@angular/compiler';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-recipe-details',
@@ -101,10 +102,17 @@ export class RecipeDetailsComponent implements OnInit {
       console.log(this.addReviewForm.value);
     }
   }
+  emptyInputs() {
+    this.addReviewForm.value['reviewContent'] = '';
+    this.addReviewForm.value['reviewRating'] = 1;
+    this.reviewRating = 1;
+  }
   removeReview(reviewID: number) {
     this.reviewService.deleteReview(reviewID).subscribe({
       next: () => {
         this.currentUserHasReview = false;
+
+        this.emptyInputs();
         this.getCurrentRecipe();
       },
     });
@@ -226,5 +234,21 @@ export class RecipeDetailsComponent implements OnInit {
         this.currentUserHasReview = true;
       }
     });
+  }
+
+  goToSocialAcc(social: string) {
+    if (social == 'FaceBook') {
+      this.currentUser?.facebook == ''
+        ? Swal.fire(`You Dont Have ${social} Account`)
+        : window.open(this.currentUser?.facebook, '_blank');
+    } else if (social == 'Twitter') {
+      this.currentUser?.twitter == ''
+        ? Swal.fire(`You Dont Have ${social} Account`)
+        : window.open(this.currentUser?.twitter, '_blank');
+    } else if (social == 'Website') {
+      this.currentUser?.site == ''
+        ? Swal.fire(`You Dont Have ${social}`)
+        : window.open(this.currentUser?.site, '_blank');
+    }
   }
 }

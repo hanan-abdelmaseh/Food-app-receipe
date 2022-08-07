@@ -1,7 +1,7 @@
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { ElementRef, Injectable } from '@angular/core';
 import { Router } from '@angular/router';
-import { BehaviorSubject, from, map, mergeMap } from 'rxjs';
+import { BehaviorSubject, catchError, from, map, mergeMap } from 'rxjs';
 import { EditUserViewModel } from 'src/app/viewModel/EditUserViewModel/edit-user-view-model';
 import { environment } from 'src/environments/environment';
 import Swal from 'sweetalert2';
@@ -50,7 +50,6 @@ export class AuthService {
         },
         (error: any) => {
           this.router.canceledNavigationResolution.replace;
-          alert(JSON.stringify(error, undefined, 2));
           reject(false);
         }
       );
@@ -127,9 +126,18 @@ export class AuthService {
                     localStorage.setItem('token', response);
                     this.isLoggenInSubject.next(true);
                   },
+                  error: (error) => {
+                    console.log(error);
+                  },
                 });
               },
+              error: (error) => {
+                console.log(error);
+              },
             });
+          },
+          error: (error) => {
+            console.log(error);
           },
         });
       },
@@ -250,17 +258,24 @@ export class AuthService {
   // Login with UserName Password
   loginWithUserName(userName: string, password: string) {
     let httpHeaders = new HttpHeaders().set('content-type', 'application/json');
-    return this.httpClient.post(
-      `${environment.APIURL}Users/Login`,
-      {
-        userName: userName,
-        password: password,
-      },
-      {
-        headers: httpHeaders,
-        responseType: 'text',
-      }
-    );
+    return this.httpClient
+      .post(
+        `${environment.APIURL}Users/Login`,
+        {
+          userName: userName,
+          password: password,
+        },
+        {
+          headers: httpHeaders,
+          responseType: 'text',
+        }
+      )
+      .pipe(
+        catchError((error) => {
+          console.log('Caught in CatchError. Throwing error');
+          throw new Error(error);
+        })
+      );
   }
 
   CreateNewUserWithUserName(userName: string, password: string) {
@@ -285,6 +300,9 @@ export class AuthService {
                       });
                   },
                 });
+              },
+              error: (error) => {
+                console.log(error);
               },
             });
           },

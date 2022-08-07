@@ -233,6 +233,10 @@ ul li::marker {
     color: var(--main-color);
 }
 
+.Learn-btn:hover {
+    cursor: pointer;
+}
+
 .submit-btn:hover,
 .cancel-btn:hover {
     color: var(--secondary-color);

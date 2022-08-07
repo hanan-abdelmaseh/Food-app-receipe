@@ -1,25 +1,25 @@
-.main-container{
-  height:100vh;
+.main-container {
+    height: fit-content;
+    min-height: 100vh;
 }
 
-.main-item img{
+.main-item img {
     animation: imgRotate 50s linear infinite;
 }
+
 @keyframes imgRotate {
     0% {
         transform: rotate(0deg);
-      }
-      100% {
+    }
+    100% {
         transform: rotate(360deg);
-      }
+    }
 }
-@media (max-width:992px){
-  .main-item{
-    margin-top: 3rem;
-      width: 60%;
-      height: 60%;
-      
-  }
 
-  
+@media (max-width:992px) {
+    .main-item {
+        margin-top: 3rem;
+        width: 60%;
+        height: 60%;
+    }
 }

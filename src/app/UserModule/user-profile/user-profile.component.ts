@@ -41,17 +41,17 @@ export class UserProfileComponent implements OnInit {
 
   goToSocialAcc(social: string) {
     if (social == 'FaceBook') {
-      this.currentUser.facebook == ''
+      this.currentUser?.facebook == ''
         ? Swal.fire(`You Dont Have ${social} Account`)
-        : this.router.navigateByUrl(this.currentUser.facebook!);
+        : window.open(this.currentUser?.facebook, '_blank');
     } else if (social == 'Twitter') {
-      this.currentUser.twitter == ''
+      this.currentUser?.twitter == ''
         ? Swal.fire(`You Dont Have ${social} Account`)
-        : this.router.navigateByUrl(this.currentUser.twitter!);
+        : window.open(this.currentUser?.twitter, '_blank');
     } else if (social == 'Website') {
-      this.currentUser.site == ''
+      this.currentUser?.site == ''
         ? Swal.fire(`You Dont Have ${social}`)
-        : this.router.navigateByUrl(this.currentUser.site!);
+        : window.open(this.currentUser?.site, '_blank');
     }
   }
 }

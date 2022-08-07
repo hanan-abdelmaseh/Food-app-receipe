@@ -51,14 +51,7 @@ export class UserSettingsComponent implements OnInit {
         { value: this.currentUser?.email, disabled: true },
         Validators.required,
       ],
-      password: [
-        '',
-        [
-          Validators.pattern(
-            `^(?=.*\\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{6,50}$`
-          ),
-        ],
-      ],
+      password: [''],
     });
   }
 
@@ -76,7 +69,19 @@ export class UserSettingsComponent implements OnInit {
             this.currentUser = user;
             if (this.currentUser?.email == '') {
               this.loginWithEmail = false;
-            } else this.loginWithEmail = true;
+              this.userEditForm.setControl(
+                'password',
+                new FormControl('', [
+                  Validators.pattern(
+                    `^(?=.*\\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{6,50}$`
+                  ),
+                  Validators.required,
+                ])
+              );
+            } else {
+              this.loginWithEmail = true;
+              this.userEditForm.addControl('password', new FormControl(''));
+            }
             this.userEditForm.patchValue(this.currentUser);
           },
         });
@@ -97,9 +102,17 @@ export class UserSettingsComponent implements OnInit {
   // }
 
   editUser() {
-    for (const email in this.userEditForm.controls) {
-      this.userEditForm.value[email] = this.userEditForm.controls[email].value;
+    console.log(this.userEditForm.value);
+    // for (const email in this.userEditForm.controls) {
+    //   this.userEditForm.setValue = this.currentUser?.email;
+    // }
+    // this.userEditForm.get('email')?.setValue(this.currentUser?.email);
+    this.userEditForm.value['email'] = this.currentUser?.email;
+    if (this.loginWithEmail) {
+      this.userEditForm.value['password'] = '';
     }
+    console.log(this.userEditForm.controls);
+    console.log(this.userEditForm.value);
     if (this.userEditForm.valid) {
       this.currentUserService
         .editUser(this.currentUser?.userId!, this.userEditForm.value)
@@ -113,6 +126,17 @@ export class UserSettingsComponent implements OnInit {
           },
         });
     }
-    // console.log(this.userEditForm.value);
+    console.log(this.userEditForm.value);
+  }
+
+  public findInvalidControls() {
+    const invalid = [];
+    const controls = this.userEditForm.controls;
+    for (const name in controls) {
+      if (controls[name].invalid) {
+        invalid.push(name);
+      }
+    }
+    return invalid;
   }
 }

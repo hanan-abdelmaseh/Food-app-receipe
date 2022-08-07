@@ -20,6 +20,8 @@ export class FeedComponent implements OnInit {
   spinnerShown: boolean = false;
   pageNumber: number = 1;
   feedRecipes: MainReceipe[] = [];
+  textShown: string =
+    'Sorry There Are No Recipies Yet According To Your Preferences.';
   constructor(
     private _ImagesService: ImagesService,
     private recipeService: RecipeService,
@@ -37,7 +39,6 @@ export class FeedComponent implements OnInit {
     this.spinnerShown = true;
     this.recipeService.getFeedRecipes(this.pageNumber).subscribe({
       next: (recipes) => {
-        console.log(recipes);
         this.feedRecipes = recipes;
         if (recipes.length == 0) {
           this.shown = true;

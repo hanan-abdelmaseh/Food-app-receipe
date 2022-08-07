@@ -32,7 +32,7 @@ export class CollectionsService {
     let newCollection = {
       collectionId: 0,
       collectionImage:
-        'https://x.yummlystatic.com/web/default-collection-images/default.png',
+        'https://simply-delicious-food.com/wp-content/uploads/2018/10/breakfast-board.jpg',
       collectionName: collectionName,
       collectionDescription: '',
       numberOfRecipes: 0,
@@ -57,15 +57,19 @@ export class CollectionsService {
     let newCollection = {
       collectionId: 0,
       collectionImage: collectionImage,
+
       collectionName: collectionName,
       collectionDescription: collecionDesc == undefined ? '' : collecionDesc,
       numberOfRecipes: 0,
       collectionRecipes: collectionRecipes,
     };
 
-    return this.httpClient.post(
+    return this.httpClient.put(
       `${environment.APIURL}Collections/editCollection/${collectionId}`,
-      newCollection
+      newCollection,
+      {
+        responseType: 'text',
+      }
     );
   }
 

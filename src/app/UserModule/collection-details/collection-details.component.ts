@@ -54,24 +54,44 @@ export class CollectionDetailsComponent implements OnInit {
       });
   }
   deleteCollection(collectionId: number) {
-    this.collectionService.deleteCollection(collectionId).subscribe({
-      next: () => {
-        Swal.fire('Deleted').then((_) => {
-          this.router.navigate(['profile']);
-        });
-      },
-    });
+    if (this.currentCollection?.numberOfRecipes == 0) {
+      this.collectionService.deleteCollection(collectionId).subscribe({
+        next: () => {
+          Swal.fire('Deleted').then((_) => {
+            this.router.navigate(['profile']);
+          });
+        },
+      });
+    } else {
+      this.collectionService.getCollectionRecipes(collectionId).subscribe({
+        next: (recipes) => {
+          recipes.forEach((recipe) => {
+            this.collectionService
+              .removeRecipeFromCollection(recipe.recipeID, collectionId)
+              .subscribe({
+                next: () => {
+                  this.collectionService
+                    .deleteCollection(collectionId)
+                    .subscribe({
+                      next: () => {
+                        Swal.fire('Deleted').then((_) => {
+                          this.router.navigate(['profile']);
+                        });
+                      },
+                    });
+                },
+              });
+          });
+        },
+      });
+    }
   }
-  editCollection(
-    collectionName: string,
-    collectionImage: string,
-    collecionDesc?: string
-  ) {
+  editCollection(collectionName: string, collecionDesc?: string) {
     this.collectionService
       .updateCollection(
         this.currentCollection!.collectionId,
         collectionName,
-        collectionImage,
+        this.currentCollection?.collectionImage!,
         this.currentCollection!.collectionRecipes!,
         collecionDesc
       )

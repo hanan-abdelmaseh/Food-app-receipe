@@ -30,9 +30,13 @@ export class LoginComponent implements OnInit, AfterViewInit, AfterViewChecked {
   }
 
   signin() {
-    console.log('clicked');
-    this.authService.callLogin(this.loginElement).then((resolve) => {
-      this.router.navigate(['/home']);
-    });
+    this.authService
+      .callLogin(this.loginElement)
+      .then((resolve) => {
+        this.router.navigate(['/home']);
+      })
+      .catch(() => {
+        console.log('Google Login Popup Colsed');
+      });
   }
 }

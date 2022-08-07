@@ -5,8 +5,6 @@ import { RecipeService } from 'src/app/Services/RecipeServices/recipe-services.s
 import { CarsolImg } from 'src/app/SharedModule/Interface/carsol-img';
 import { MainReceipe } from 'src/app/viewModel/main-receipe';
 
-
-
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
@@ -38,7 +36,6 @@ export class HomeComponent implements OnInit {
     this._ReceipesService.getAllReceipes().subscribe((res: any) => {
       this.AllReceipes = res;
       this.loading = false;
-      console.log(this.AllReceipes);
     });
   }
 }

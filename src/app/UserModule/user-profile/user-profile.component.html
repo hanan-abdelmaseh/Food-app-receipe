@@ -1,7 +1,7 @@
 <main class="d-flex flex-column justify-content-center">
     <section class="d-flex flex-lg-row flex-column align-items-center justify-content-center w-100 mt-5 main-page">
         <div class="user-avatar d-flex align-items-center justify-content-center mx-auto mx-md-3">
-            <h2 class="m-0">{{ currentUser.userName![0] }}</h2>
+            <h2 class="m-0">{{ currentUser.userName![0] | titlecase }}</h2>
             <!-- <img class="user-avatar-img" src="https://ichef.bbci.co.uk/news/999/cpsprodpb/79F2/production/_123381213_06.jpg" alt="" /> -->
         </div>
         <div class="d-flex align-items-start">
@@ -30,9 +30,17 @@
 
                     <div>
                         <div>
-                            <span class="location-item">City</span>,
-                            <span class="location-item">State</span>,
-                            <span class="location-item">Countery</span>
+                            <span class="location-item">{{
+                currentUser.city == "" ? "City" : currentUser.city
+              }}</span
+              >,
+              <span class="location-item">{{
+                currentUser.state == "" ? "State" : currentUser.state
+              }}</span
+              >,
+              <span class="location-item">{{
+                currentUser.country == "" ? "Country" : currentUser.country
+              }}</span>
                         </div>
                     </div>
                 </div>

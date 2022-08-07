@@ -8,13 +8,15 @@
         </span>
             </a>
             <div class="user-social d-flex justify-content-between">
-                <a href=""><img class="face-link" src="../../../../assets/svg/facebook.svg" alt="" /></a>
-                <a href="">
+                <div (click)="goToSocialAcc('facebook')">
+                    <img class="face-link" src="../../../../assets/svg/facebook.svg" alt="" />
+                </div>
+                <div (click)="goToSocialAcc('twitter')">
                     <img class="twitter-link" src="../../../../assets/svg/twitter.svg" alt="" />
-                </a>
-                <a href="">
+                </div>
+                <div (click)="goToSocialAcc('site')">
                     <img class="site-link" src="../../../../assets/svg/website.svg" alt="" />
-                </a>
+                </div>
             </div>
 
             <div class="d-flex recipe-summary justify-content-center">
@@ -39,13 +41,15 @@
             </div>
             <span class="mx-auto my-4"> {{ currentRecipe?.serving }} Serving</span>
 
-            <div class="d-flex px-5 my-3 my-md-2 recipe-summary-interaction justify-content-between align-items-center">
-                <div class="Learn-btn">Read Direction</div>
+            <div class="d-flex px-5 my-3 my-md-2 recipe-summary-interaction justify-content-center align-items-center">
+                <!-- <a [routerLink]="['/recipe/', currentRecipe?.recipeID!, 'direction']">
+                    <div class="Learn-btn">Read Direction</div>
+                </a> -->
 
                 <div class="position-relative">
                     <img class="add-icon" src="../../../../assets/images/add-recipe.png" alt="" srcset="" (click)="collectionShown = !collectionShown" />
                     <div class="collections d-flex flex-column align-items-start" *ngIf="collectionShown">
-                        <div class="mb-2" *ngFor="let collection of userColletions; let i = index">
+                        <div class="mb-2 d-flex flex-nowrap overflow-hidden" *ngFor="let collection of userColletions; let i = index">
                             <input (change)="
                   addRecipeToCollection(
                     currentRecipe?.recipeID!,
@@ -144,7 +148,7 @@
                         </ul>
                     </div>
                 </article>
-                <article class="directions d-flex flex-column">
+                <article id="direction" class="directions d-flex flex-column">
                     <h3>Directions</h3>
                     <div class="gradiant-line"></div>
 
@@ -207,7 +211,7 @@
               </small>
                             <div class="d-flex">
                                 <input class="submit-btn" type="submit" value="Submit" (click)="addNewReview()" />
-                                <input class="cancel-btn" type="button" value="Cancel" />
+                                <input class="cancel-btn" type="button" value="Cancel" (click)="emptyInputs()" />
                             </div>
                         </form>
                     </div>

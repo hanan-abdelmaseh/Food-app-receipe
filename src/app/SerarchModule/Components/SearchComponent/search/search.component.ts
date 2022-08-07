@@ -13,6 +13,8 @@ import { MainReceipe } from 'src/app/viewModel/main-receipe';
 })
 export class SearchComponent implements OnInit {
   filterdList: MainReceipe[] = [];
+  textShown: string =
+    'Sorry There Are No Recipies Yet According To Your Search Options.';
   filterBtnShown: boolean = false;
   title: string = 'Receipes';
   text: string = 'Our Receipes';

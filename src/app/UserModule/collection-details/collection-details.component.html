@@ -6,7 +6,17 @@
         <div class="blur"></div>
 
         <div class="header-content d-flex flex-column justify-content-center align-items-center text-light">
-            <input class="my-4" type="text" value="{{ currentCollection?.collectionName }}" />
+            <input class="my-4" #collectionName (blur)="
+          editCollection(
+            collectionName.value,
+            currentCollection?.collectionDescription
+          )
+        " (keyup.enter)="
+          editCollection(
+            collectionName.value,
+            currentCollection?.collectionDescription
+          )
+        " type="text" value="{{ currentCollection?.collectionName }}" />
             <!-- <h3 ChangeCursor class="collection-name my-4">
                 {{ currentCollection?.collectionName }}
             </h3> -->
@@ -14,7 +24,9 @@
                 {{ currentCollection?.numberOfRecipes }} Recipes
             </div>
 
-            <textarea class="my-4 collection-description" name="bio" cols="40" rows="4" maxlength="120">
+            <textarea #desc class="my-4 collection-description" (blur)="editCollection(currentCollection?.collectionName!, desc.value)" (keyup.enter)="
+          editCollection(currentCollection?.collectionName!, desc.value)
+        " name="bio" cols="40" rows="4" maxlength="120">
    {{
           currentCollection?.collectionDescription == ""
             ? " Add a Short Decription to Your Collection "

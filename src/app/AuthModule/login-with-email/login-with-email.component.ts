@@ -88,7 +88,7 @@ export class LoginWithEmailComponent implements OnInit {
             this.router.navigate(['/home']);
           },
           error: (error) => {
-            console.log(error.status);
+            console.log(error);
             this.registerSectionShown = true;
           },
         });
