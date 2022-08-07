@@ -27,7 +27,7 @@ export class SearchComponent implements OnInit {
   spinnerShown: boolean = false;
   pageNumber: number = 1;
   searchClicked: boolean = true;
-  cryShown: boolean = false;
+  cryShown: boolean = true;
   selectedFilters: SelectedFiltersModel = {
     allergies: 'Dont Have Allergies',
     cuisines: 'All Cuisines',
@@ -102,18 +102,19 @@ export class SearchComponent implements OnInit {
   }
   search() {
     this.spinnerShown = true;
-
+    this.cryShown = false;
     this.searchClicked = true;
     this.searchService.search(this.recipeName, this.pageNumber).subscribe({
       next: (recipes) => {
         this.spinnerShown = false;
-
+        this.cryShown = true;
         this.filterdList = recipes;
       },
     });
   }
   filter() {
     this.spinnerShown = true;
+    this.cryShown = false;
     let filtersModel: FiltersModel = {
       name: '',
       preferences: [],
@@ -140,6 +141,7 @@ export class SearchComponent implements OnInit {
       next: (recipes) => {
         this.spinnerShown = false;
         this.filterdList = recipes;
+        this.cryShown = true;
       },
     });
   }

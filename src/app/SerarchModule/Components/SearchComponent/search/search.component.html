@@ -103,7 +103,7 @@
       </button>
         </section>
     </div>
-    <div *ngIf="filterdList.length == 0">
+    <div *ngIf="filterdList.length == 0 && cryShown == true">
         <app-search-not-found [textShown]="textShown"></app-search-not-found>
     </div>
     <div style="height: 30em" class="w-100 d-flex justify-content-center align-items-center" *ngIf="spinnerShown == true">
